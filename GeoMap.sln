@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GeoMap", "GeoMap.vcproj", "{FE3AFA4A-6837-4622-82AD-E8BF7466EB8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		DebugA17|Win32 = DebugA17|Win32
+		DebugBRX9|Win32 = DebugBRX9|Win32
+		ReleaseA17|Win32 = ReleaseA17|Win32
+		ReleaseBRX9|Win32 = ReleaseBRX9|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE3AFA4A-6837-4622-82AD-E8BF7466EB8D}.DebugA17|Win32.ActiveCfg = DebugA17|Win32
+		{FE3AFA4A-6837-4622-82AD-E8BF7466EB8D}.DebugA17|Win32.Build.0 = DebugA17|Win32
+		{FE3AFA4A-6837-4622-82AD-E8BF7466EB8D}.DebugBRX9|Win32.ActiveCfg = DebugBRX9|Win32
+		{FE3AFA4A-6837-4622-82AD-E8BF7466EB8D}.DebugBRX9|Win32.Build.0 = DebugBRX9|Win32
+		{FE3AFA4A-6837-4622-82AD-E8BF7466EB8D}.ReleaseA17|Win32.ActiveCfg = ReleaseA17|Win32
+		{FE3AFA4A-6837-4622-82AD-E8BF7466EB8D}.ReleaseA17|Win32.Build.0 = ReleaseA17|Win32
+		{FE3AFA4A-6837-4622-82AD-E8BF7466EB8D}.ReleaseBRX9|Win32.ActiveCfg = ReleaseBRX9|Win32
+		{FE3AFA4A-6837-4622-82AD-E8BF7466EB8D}.ReleaseBRX9|Win32.Build.0 = ReleaseBRX9|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
