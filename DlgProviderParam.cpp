@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "DlgProviderParam.h"
+#include "ButtonFile.h"
 
 // Cuadro de diálogo de DlgProviderParam
 
@@ -107,21 +108,24 @@ void DlgProviderParam::showProviderParamsCtrls() {
       }
     
     } else {
+      CEdit * value = new CEdit();
+
       if (param->IsFilePath() || param->IsFileName()) {
         rect.left = rect.right - 30;
         rect.right = rect.left + 30;
         
-        CButton * file = new CButton();
+        CButtonFile * file = new CButtonFile();
         file->Create(L"...", WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_PUSHBUTTON, 
           rect, this, IDC_CONTROLES + numControl);
         file->SetFont(GetFont());
+        file->SetTextBoxFile(value);
+        
         numControl++;
         
         rect.right = rect.left - 10;
         rect.left = 10;
-      } 
+      }
       
-      CEdit * value = new CEdit();
       value->CreateEx(WS_EX_CLIENTEDGE, L"EDIT", L"", 
         WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP | ES_LEFT | ES_AUTOHSCROLL, 
         rect, this, IDC_CONTROLES + numControl);

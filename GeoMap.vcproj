@@ -376,11 +376,19 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\ButtonFile.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Connection.h"
 				>
 			</File>
 			<File
 				RelativePath=".\ConnectionParam.h"
+				>
+			</File>
+			<File
+				RelativePath=".\FeatureClass.h"
 				>
 			</File>
 			<File
@@ -452,11 +460,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ButtonFile.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Connection.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\ConnectionParam.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\FeatureClass.cpp"
 				>
 			</File>
 			<File

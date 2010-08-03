@@ -20,6 +20,8 @@ DlgProviders
 
 #include "Connection.h"
 
+#include "FeatureClass.h"
+
 //*ads* *underscore sperator* *Lisp function Name*
 // Sample command    *Group name*  *global name* *local name*
  
@@ -178,6 +180,29 @@ void GeoMap_DlgProviders()
   ads_DlgProviders();
 }
 
+int ads_TestShape() {
+  CProvidersCollection pc;
+  CStringPairs providersList = pc.ToStringPairs();
+  CProvider provider = pc.GetItem(L"OSGeo.SHP.3.4");
+  CConnection connection = provider.CreateConnection();
+  
+  String featureClassName = L"pgou_ca";
+  connection.SetConnectionString(L"DefaultFileLocation = C:\\temp\\Shapes\\" + featureClassName);
+  if (connection.Open() != FdoConnectionState_Open) {
+    return(RSERR);
+  }
+  
+  CFeatureClass featureClass(&connection, featureClassName);
+  featureClass.SelectByExtent(L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850))");
+  
+  return(RSRSLT);
+}
+
+void GeoMap_TestShape()
+{
+  ads_TestShape();
+}
+
 
 ////////////////////////////////////////////////////
 #ifndef BRX_APP
@@ -207,4 +232,7 @@ ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _MyDialog2, MyDialog2, ACRX_CMD_TRANSPAREN
 
 ACED_ADSCOMMAND_ENTRY_AUTO( , DlgProviders, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _DlgProviders, DlgProviders, ACRX_CMD_TRANSPARENT, NULL)
+
+ACED_ADSCOMMAND_ENTRY_AUTO( , TestShape, false)
+ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestShape, TestShape, ACRX_CMD_TRANSPARENT, NULL)
 	

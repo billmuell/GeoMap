@@ -21,7 +21,14 @@ void CConnection::SetConnectionString(String connString)
 }
 
 FdoConnectionState CConnection::Open() {
-  FdoConnectionState state = _connection->Open();
+  FdoConnectionState state;
+  try {
+	  state = _connection->Open();
+	} catch (FdoConnectionException * ce) {
+    state = FdoConnectionState_Closed;
+	} catch (FdoException * e) {
+    state = FdoConnectionState_Closed;
+	}
   
   return state;
 }
@@ -57,4 +64,9 @@ CConnectionParam CConnection::GetParam(String id) const
   FdoPtr<FdoIConnectionPropertyDictionary> connDict = info->GetConnectionProperties();
   CConnectionParam p(connDict, id);
   return p;
+}
+
+FdoICommand * CConnection::CreateCommand(FdoCommandType commandType) 
+{
+  return 0;
 }
