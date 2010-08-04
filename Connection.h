@@ -1,7 +1,5 @@
 #pragma once
 
-#include "stdafx.h"
-
 #include "ConnectionParam.h"
 
 #include <fdo.h>

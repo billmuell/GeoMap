@@ -62,11 +62,10 @@ CConnectionParam CConnection::GetParam(String id) const
 { 
   FdoPtr<FdoIConnectionInfo> info = _connection->GetConnectionInfo();
   FdoPtr<FdoIConnectionPropertyDictionary> connDict = info->GetConnectionProperties();
-  CConnectionParam p(connDict, id);
-  return p;
+  return CConnectionParam(connDict, id);
 }
 
 FdoICommand * CConnection::CreateCommand(FdoCommandType commandType) 
 {
-  return 0;
+  return _connection->CreateCommand(commandType);
 }

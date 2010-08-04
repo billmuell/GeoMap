@@ -186,14 +186,18 @@ int ads_TestShape() {
   CProvider provider = pc.GetItem(L"OSGeo.SHP.3.4");
   CConnection connection = provider.CreateConnection();
   
-  String featureClassName = L"pgou_ca";
-  connection.SetConnectionString(L"DefaultFileLocation = C:\\temp\\Shapes\\" + featureClassName);
+  connection.SetConnectionString(L"DefaultFileLocation = C:\\temp\\Shapes\\");
   if (connection.Open() != FdoConnectionState_Open) {
     return(RSERR);
   }
   
-  CFeatureClass featureClass(&connection, featureClassName);
-  featureClass.SelectByExtent(L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850))");
+  String featureClassName = L"pgou_ca";
+  String spatialColumn = L"Geometry";
+  CFeatureClass featureClass(&connection, featureClassName, spatialColumn);
+  String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850))";
+  CFeatureReader featureReader = featureClass.SelectByExtent(extent);
+  
+  featureReader.DrawAll();
   
   return(RSRSLT);
 }
@@ -201,6 +205,34 @@ int ads_TestShape() {
 void GeoMap_TestShape()
 {
   ads_TestShape();
+}
+
+int ads_TestArcSDE() {
+  CProvidersCollection pc;
+  CStringPairs providersList = pc.ToStringPairs();
+  CProvider provider = pc.GetItem(L"OSGeo.ArcSDE.3.4");
+  CConnection connection = provider.CreateConnection();
+  
+  //CConnectionParams params = connection.GetParams();
+  
+  connection.SetConnectionString(L"Server=sigsde2;Instance=esri_sde;Username=sde;Password=benaguacil;Datastore=esri_sde");
+  if (connection.Open() != FdoConnectionState_Open) {
+    return(RSERR);
+  }
+  
+  String featureClassName = L"PGOU_CA";
+  String spatialColumn = L"SHAPE";
+  CFeatureClass featureClass(&connection, featureClassName, spatialColumn);
+  String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850))";
+  CFeatureReader featureReader = featureClass.SelectByExtent(extent);
+  featureReader.DrawAll();
+  
+  return(RSRSLT);
+}
+
+void GeoMap_TestArcSDE()
+{
+  ads_TestArcSDE();
 }
 
 
@@ -235,4 +267,6 @@ ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _DlgProviders, DlgProviders, ACRX_CMD_TRAN
 
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestShape, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestShape, TestShape, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ADSCOMMAND_ENTRY_AUTO( , TestArcSDE, false)
+ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestArcSDE, TestArcSDE, ACRX_CMD_TRANSPARENT, NULL)
 	

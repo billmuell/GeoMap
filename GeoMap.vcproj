@@ -380,6 +380,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CadEntity.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CadEntityFactory.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Connection.h"
 				>
 			</File>
@@ -389,6 +397,14 @@
 			</File>
 			<File
 				RelativePath=".\FeatureClass.h"
+				>
+			</File>
+			<File
+				RelativePath=".\FeatureReader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\FeatureReaderFactory.h"
 				>
 			</File>
 			<File
@@ -464,6 +480,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CadEntity.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CadEntityFactory.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Connection.cpp"
 				>
 			</File>
@@ -473,6 +497,14 @@
 			</File>
 			<File
 				RelativePath=".\FeatureClass.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\FeatureReader.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\FeatureReaderFactory.cpp"
 				>
 			</File>
 			<File
