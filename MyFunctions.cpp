@@ -20,7 +20,8 @@ DlgProviders
 
 #include "Connection.h"
 
-#include "FeatureClass.h"
+#include "TestFunctions.h"
+
 
 //*ads* *underscore sperator* *Lisp function Name*
 // Sample command    *Group name*  *global name* *local name*
@@ -180,60 +181,14 @@ void GeoMap_DlgProviders()
   ads_DlgProviders();
 }
 
-int ads_TestShape() {
-  CProvidersCollection pc;
-  CStringPairs providersList = pc.ToStringPairs();
-  CProvider provider = pc.GetItem(L"OSGeo.SHP.3.4");
-  CConnection connection = provider.CreateConnection();
-  
-  connection.SetConnectionString(L"DefaultFileLocation = C:\\temp\\Shapes\\");
-  if (connection.Open() != FdoConnectionState_Open) {
-    return(RSERR);
-  }
-  
-  String featureClassName = L"pgou_ca";
-  String spatialColumn = L"Geometry";
-  CFeatureClass featureClass(&connection, featureClassName, spatialColumn);
-  String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850))";
-  CFeatureReader featureReader = featureClass.SelectByExtent(extent);
-  
-  featureReader.DrawAll();
-  
-  return(RSRSLT);
-}
-
-void GeoMap_TestShape()
-{
-  ads_TestShape();
-}
-
-int ads_TestArcSDE() {
-  CProvidersCollection pc;
-  CStringPairs providersList = pc.ToStringPairs();
-  CProvider provider = pc.GetItem(L"OSGeo.ArcSDE.3.4");
-  CConnection connection = provider.CreateConnection();
-  
-  //CConnectionParams params = connection.GetParams();
-  
-  connection.SetConnectionString(L"Server=sigsde2;Instance=esri_sde;Username=sde;Password=benaguacil;Datastore=esri_sde");
-  if (connection.Open() != FdoConnectionState_Open) {
-    return(RSERR);
-  }
-  
-  String featureClassName = L"PGOU_CA";
-  String spatialColumn = L"SHAPE";
-  CFeatureClass featureClass(&connection, featureClassName, spatialColumn);
-  String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850))";
-  CFeatureReader featureReader = featureClass.SelectByExtent(extent);
-  featureReader.DrawAll();
-  
-  return(RSRSLT);
-}
-
-void GeoMap_TestArcSDE()
-{
-  ads_TestArcSDE();
-}
+int ads_TestShape() { return CTestFunctions::TestShape(); }
+void GeoMap_TestShape() { ads_TestShape(); }
+int ads_TestArcSDE() { return CTestFunctions::TestArcSDE(); }
+void GeoMap_TestArcSDE() { ads_TestArcSDE(); }
+int ads_TestPostGIS() { return CTestFunctions::TestPostGIS(); }
+void GeoMap_TestPostGIS() { ads_TestPostGIS(); }
+int ads_TestAll() { return CTestFunctions::TestAll(); }
+void GeoMap_TestAll() { ads_TestAll(); }
 
 
 ////////////////////////////////////////////////////
@@ -269,4 +224,8 @@ ACED_ADSCOMMAND_ENTRY_AUTO( , TestShape, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestShape, TestShape, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestArcSDE, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestArcSDE, TestArcSDE, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ADSCOMMAND_ENTRY_AUTO( , TestPostGIS, false)
+ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestPostGIS, TestPostGIS, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ADSCOMMAND_ENTRY_AUTO( , TestAll, false)
+ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestAll, TestAll, ACRX_CMD_TRANSPARENT, NULL)
 	
