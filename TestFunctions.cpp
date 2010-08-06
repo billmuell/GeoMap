@@ -23,7 +23,7 @@ int CTestFunctions::TestProvider(String &providerName, String &connectionString,
     return(RSERR);
   }
   
-  CConnectionParams params = connection.GetParams();
+  //CConnectionParams params = connection.GetParams();
   
   connection.SetConnectionString(connectionString);
   if (connection.Open() != FdoConnectionState_Open) {
@@ -37,11 +37,34 @@ int CTestFunctions::TestProvider(String &providerName, String &connectionString,
   return(RSRSLT);
 }
 
+int CTestFunctions::TestPostGIS() 
+{
+  //String providerName = L"OSGeo.PostgreSQL.3.5";
+  //String connectionString = L"Service=sigweb2:5434;Username=gis;Password=gisd;DataStore=gispm";
+  
+  String providerName = L"OSGeo.PostGIS.3.4";
+  String connectionString = L"service=gispm@sigweb2:5434;username=gis;password=gisd;datastore=gis";
+  
+  String featureClassName = L"barrios";
+  String spatialColumn = L"the_geom";
+  String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850))";
+  return TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);
+  /*
+  featureClassName = L"Pgou_ca";
+  TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);
+
+  featureClassName = L"gis.pgou_ca";
+  TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);
+  
+  featureClassName = L"gis@pgou_ca";
+  TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);*/
+}
+
 int CTestFunctions::TestShape() 
 {
   String providerName = L"OSGeo.SHP.3.4";
   String connectionString = L"DefaultFileLocation = C:\\temp\\Shapes\\";
-  String featureClassName = L"pgou_ca";
+  String featureClassName = L"barrios";
   String spatialColumn = L"Geometry";
   String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850))";
   return TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);
@@ -51,22 +74,8 @@ int CTestFunctions::TestArcSDE()
 {
   String providerName = L"OSGeo.ArcSDE.3.4";
   String connectionString = L"Server=sigsde2;Instance=esri_sde;Username=sde;Password=benaguacil;Datastore=esri_sde";
-  String featureClassName = L"PGOU_CA";
+  String featureClassName = L"BARRIOS";
   String spatialColumn = L"SHAPE";
-  String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850))";
-  return TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);
-}
-
-int CTestFunctions::TestPostGIS() 
-{
-  //String providerName = L"OSGeo.PostgreSQL.3.4";
-  //String connectionString = L"Service=sigweb2:5434;Username=gis;Password=gisd;DataStore=gispm";
-  
-  String providerName = L"OSGeo.PostGIS.3.4";
-  String connectionString = L"Service=gispm@sigweb2:5434;Username=gis;Password=gisd;DataStore=gis";
-  
-  String featureClassName = L"pgou_ca";
-  String spatialColumn = L"the_geom";
   String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850))";
   return TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);
 }
