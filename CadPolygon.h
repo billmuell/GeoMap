@@ -9,10 +9,11 @@ class CCadPolygon : public CCadEntity
 protected:
   CCadPolygon();
 public:
-  CCadPolygon(FdoIPolygon * geomPoly);
+  CCadPolygon(FdoIPolygon * geom);
+  CCadPolygon(FdoIMultiPolygon * geom);
 public:
   ~CCadPolygon(void);
 
 protected:
-  AcDbEntity * getEntity(FdoIPolygon * geomPoly);
+  AcDbEntity * getEntity(FdoIPolygon * geom);
 };

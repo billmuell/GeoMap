@@ -27,8 +27,10 @@ void CFeatureReader::Draw()
 		FdoPtr<FdoIGeometry> geom = gf->CreateGeometryFromFgf(geometry);
       
     CCadEntity * entity = CCadEntityFactory::GetCadEntity(geom);
-    entity->Draw();
-    delete entity;
+    if (entity != 0) {
+      entity->Draw();
+      delete entity;
+    }
 	}
 }
 

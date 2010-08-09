@@ -5,18 +5,25 @@ CCadPolygon::CCadPolygon()
 {
 }
 
-CCadPolygon::CCadPolygon(FdoIPolygon * geomPoly)
+CCadPolygon::CCadPolygon(FdoIPolygon * geom)
 {
-  _entities.push_back(getEntity(geomPoly));
+  _entities.push_back(getEntity(geom));
+}
+
+CCadPolygon::CCadPolygon(FdoIMultiPolygon * geom)
+{
+  for (FdoInt32 i = 0; i < geom->GetCount(); i++) {
+    _entities.push_back(getEntity(geom->GetItem(i)));
+  }
 }
 
 CCadPolygon::~CCadPolygon(void)
 {
 }
 
-AcDbEntity * CCadPolygon::getEntity(FdoIPolygon * geomPoly)
+AcDbEntity * CCadPolygon::getEntity(FdoIPolygon * geom)
 {
-  FdoPtr<FdoILinearRing> exteriorRing = geomPoly->GetExteriorRing();
+  FdoPtr<FdoILinearRing> exteriorRing = geom->GetExteriorRing();
 	
 	AcDb2dPolyline * poly = new AcDb2dPolyline();
 	poly->makeClosed();

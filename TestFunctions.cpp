@@ -44,7 +44,8 @@ int CTestFunctions::TestPostGIS()
   String providerName = L"OSGeo.PostGIS.3.4";
   String connectionString = L"service=gispm@sigweb2:5434;username=gis;password=gisd;datastore=gis";
   
-  String featureClassName = L"barrios";
+  //String featureClassName = L"barrios";
+  String featureClassName = L"ejes_calle_txt";
   String spatialColumn = L"the_geom";
   String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850, 726000 4372508))";
   return TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);
@@ -64,7 +65,8 @@ int CTestFunctions::TestArcSDE()
 {
   String providerName = L"OSGeo.ArcSDE.3.4";
   String connectionString = L"Server=sigsde2;Instance=esri_sde;Username=sde;Password=benaguacil;Datastore=esri_sde";
-  String featureClassName = L"BARRIOS";
+  //String featureClassName = L"BARRIOS";
+  String featureClassName = L"CALLEJERO_PNT";
   String spatialColumn = L"SHAPE";
   String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850, 726000 4372508))";
   return TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);

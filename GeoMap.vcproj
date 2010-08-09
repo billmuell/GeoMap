@@ -596,11 +596,19 @@
 				>
 			</File>
 			<File
-				RelativePath=".\CadMultiPolygon.cpp"
+				RelativePath=".\CadLine.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\CadMultiPolygon.h"
+				RelativePath=".\CadLine.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CadPoint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CadPoint.h"
 				>
 			</File>
 			<File
