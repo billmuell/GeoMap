@@ -1,15 +1,23 @@
 #pragma once
 
+#include <vector>
+#include "AcDb/AcDbEntity.h"
+
+typedef std::vector<AcDbEntity*> Entities;
+
 class CCadEntity
 {
 protected:
-  AcDbEntity * _entity;
+  Entities _entities;
+protected:
+  CCadEntity();
 public:
   CCadEntity(AcDbEntity * entity);
+  //CCadEntity(Entities entities);
 public:
   ~CCadEntity(void);
 public:
-  CCadEntity(const CCadEntity & entity);
+  //CCadEntity(const CCadEntity & entity);
 public:
   void Draw();
 };

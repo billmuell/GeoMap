@@ -11,5 +11,5 @@ private:
 private:
   ~CCadEntityFactory(void);
 public:
-  static CCadEntity GetCadEntity(FdoPtr<FdoIGeometry> geom);
+  static CCadEntity * GetCadEntity(FdoPtr<FdoIGeometry> geom);
 };

@@ -20,6 +20,8 @@ DlgProviders
 
 #include "Connection.h"
 
+#include "TestProviderCollection.h"
+#include "TestProvider.h"
 #include "TestFunctions.h"
 
 
@@ -181,13 +183,21 @@ void GeoMap_DlgProviders()
   ads_DlgProviders();
 }
 
-int ads_TestShape() { return CTestFunctions::TestShape(); }
-void GeoMap_TestShape() { ads_TestShape(); }
-int ads_TestArcSDE() { return CTestFunctions::TestArcSDE(); }
-void GeoMap_TestArcSDE() { ads_TestArcSDE(); }
-int ads_TestPostGIS() { return CTestFunctions::TestPostGIS(); }
-void GeoMap_TestPostGIS() { ads_TestPostGIS(); }
-int ads_TestAll() { return CTestFunctions::TestAll(); }
+int ads_TestProviderCollection() { return CTestProviderCollection::TestAll(); }
+void GeoMap_TestProviderCollection() { ads_TestProviderCollection(); }
+int ads_TestProvider() { return CTestProvider::TestAll(); }
+void GeoMap_TestProvider() { ads_TestProvider(); }
+int ads_TestFunctions() { return CTestFunctions::TestAll(); }
+void GeoMap_TestFunctions() { ads_TestFunctions(); }
+
+int ads_TestAll() 
+{ 
+  ads_TestProviderCollection();
+  ads_TestProvider();
+  ads_TestFunctions();
+  
+  return 1;
+}
 void GeoMap_TestAll() { ads_TestAll(); }
 
 
@@ -220,11 +230,11 @@ ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _MyDialog2, MyDialog2, ACRX_CMD_TRANSPAREN
 ACED_ADSCOMMAND_ENTRY_AUTO( , DlgProviders, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _DlgProviders, DlgProviders, ACRX_CMD_TRANSPARENT, NULL)
 
-ACED_ADSCOMMAND_ENTRY_AUTO( , TestShape, false)
-ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestShape, TestShape, ACRX_CMD_TRANSPARENT, NULL)
-ACED_ADSCOMMAND_ENTRY_AUTO( , TestArcSDE, false)
-ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestArcSDE, TestArcSDE, ACRX_CMD_TRANSPARENT, NULL)
-ACED_ADSCOMMAND_ENTRY_AUTO( , TestPostGIS, false)
-ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestPostGIS, TestPostGIS, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ADSCOMMAND_ENTRY_AUTO( , TestProviderCollection, false)
+ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestProviderCollection, TestProviderCollection, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ADSCOMMAND_ENTRY_AUTO( , TestProvider, false)
+ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestProvider, TestProvider, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ADSCOMMAND_ENTRY_AUTO( , TestFunctions, false)
+ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestFunctions, TestFunctions, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestAll, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestAll, TestAll, ACRX_CMD_TRANSPARENT, NULL)

@@ -26,8 +26,9 @@ void CFeatureReader::Draw()
 		FdoPtr<FdoByteArray> geometry = _reader->GetGeometry (_spatialColumn.c_str());
 		FdoPtr<FdoIGeometry> geom = gf->CreateGeometryFromFgf(geometry);
       
-    CCadEntity entity = CCadEntityFactory::GetCadEntity(geom);
-    entity.Draw();
+    CCadEntity * entity = CCadEntityFactory::GetCadEntity(geom);
+    entity->Draw();
+    delete entity;
 	}
 }
 

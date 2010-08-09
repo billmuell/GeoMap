@@ -376,46 +376,6 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\ButtonFile.h"
-				>
-			</File>
-			<File
-				RelativePath=".\CadEntity.h"
-				>
-			</File>
-			<File
-				RelativePath=".\CadEntityFactory.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Connection.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ConnectionParam.h"
-				>
-			</File>
-			<File
-				RelativePath=".\FeatureClass.h"
-				>
-			</File>
-			<File
-				RelativePath=".\FeatureReader.h"
-				>
-			</File>
-			<File
-				RelativePath=".\FeatureReaderFactory.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Provider.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ProvidersCollection.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Resource.h"
 				>
 				<FileConfiguration
@@ -451,10 +411,6 @@
 				RelativePath=".\stdafx.h"
 				>
 			</File>
-			<File
-				RelativePath=".\TestFunctions.h"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -480,47 +436,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ButtonFile.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\CadEntity.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\CadEntityFactory.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Connection.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ConnectionParam.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\FeatureClass.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\FeatureReader.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\FeatureReaderFactory.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\MyFunctions.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Provider.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ProvidersCollection.cpp"
 				>
 			</File>
 			<File
@@ -559,14 +475,18 @@
 					/>
 				</FileConfiguration>
 			</File>
-			<File
-				RelativePath=".\TestFunctions.cpp"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="gui"
 			>
+			<File
+				RelativePath=".\ButtonFile.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ButtonFile.h"
+				>
+			</File>
 			<File
 				RelativePath=".\DlgLayers.cpp"
 				>
@@ -626,6 +546,130 @@
 						Name="VCCustomBuildTool"
 					/>
 				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="test"
+			>
+			<File
+				RelativePath=".\TestFunctions.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\TestFunctions.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TestProvider.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\TestProvider.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TestProviderCollection.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\TestProviderCollection.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="cad"
+			>
+			<File
+				RelativePath=".\CadEntity.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CadEntity.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CadEntityFactory.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CadEntityFactory.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CadMultiPolygon.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CadMultiPolygon.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CadPolygon.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CadPolygon.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="fdo"
+			>
+			<File
+				RelativePath=".\Connection.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Connection.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ConnectionParam.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ConnectionParam.h"
+				>
+			</File>
+			<File
+				RelativePath=".\FeatureClass.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\FeatureClass.h"
+				>
+			</File>
+			<File
+				RelativePath=".\FeatureReader.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\FeatureReader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\FeatureReaderFactory.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\FeatureReaderFactory.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Provider.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Provider.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ProvidersCollection.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ProvidersCollection.h"
+				>
 			</File>
 		</Filter>
 	</Files>

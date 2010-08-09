@@ -12,7 +12,6 @@ int CTestFunctions::TestProvider(String &providerName, String &connectionString,
         String &extent) 
 {
   CProvidersCollection pc;
-  CStringPairs providersList = pc.ToStringPairs();
   CProvider provider = pc.GetItem(providerName);
   
   CConnection connection;
@@ -34,7 +33,7 @@ int CTestFunctions::TestProvider(String &providerName, String &connectionString,
   CFeatureReader featureReader = featureClass.SelectByExtent(extent);
   featureReader.DrawAll();
   
-  return(RSRSLT);
+  return 1;
 }
 
 int CTestFunctions::TestPostGIS() 
@@ -47,17 +46,8 @@ int CTestFunctions::TestPostGIS()
   
   String featureClassName = L"barrios";
   String spatialColumn = L"the_geom";
-  String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850))";
+  String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850, 726000 4372508))";
   return TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);
-  /*
-  featureClassName = L"Pgou_ca";
-  TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);
-
-  featureClassName = L"gis.pgou_ca";
-  TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);
-  
-  featureClassName = L"gis@pgou_ca";
-  TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);*/
 }
 
 int CTestFunctions::TestShape() 
@@ -66,7 +56,7 @@ int CTestFunctions::TestShape()
   String connectionString = L"DefaultFileLocation = C:\\temp\\Shapes\\";
   String featureClassName = L"barrios";
   String spatialColumn = L"Geometry";
-  String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850))";
+  String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850, 726000 4372508))";
   return TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);
 }
 
@@ -76,7 +66,7 @@ int CTestFunctions::TestArcSDE()
   String connectionString = L"Server=sigsde2;Instance=esri_sde;Username=sde;Password=benaguacil;Datastore=esri_sde";
   String featureClassName = L"BARRIOS";
   String spatialColumn = L"SHAPE";
-  String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850))";
+  String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850, 726000 4372508))";
   return TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);
 }
 
@@ -86,5 +76,5 @@ int CTestFunctions::TestAll()
   CTestFunctions::TestArcSDE();
   CTestFunctions::TestPostGIS();
   
-  return (RSRSLT);
+  return 1;
 }
