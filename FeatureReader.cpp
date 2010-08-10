@@ -2,6 +2,7 @@
 #include "FeatureReader.h"
 #include "CadEntityFactory.h"
 #include "CadEntity.h"
+#include <boost/lexical_cast.hpp>
 
 CFeatureReader::CFeatureReader(FdoPtr<FdoIFeatureReader> reader, String &spatialColumn) :
   _reader(reader), _spatialColumn(spatialColumn)
@@ -20,39 +21,62 @@ CFeatureReader::CFeatureReader(const CFeatureReader & featureReader)
 
 CFeatureData CFeatureReader::GetData()
 {
-  //FdoPtr<FdoSchemaAttributeDictionary> dict = def->GetAttributes();
-  //FdoInt32 length = 0;
-  //FdoString ** names = dict->GetAttributeNames(length);
-  //FdoString * name = names[i];
-  //FdoString * value = dict->GetAttributeValue(name);
-  
   FdoPtr<FdoClassDefinition> def = _reader->GetClassDefinition();
-  FdoPtr<FdoPropertyDefinitionCollection> prop = def->GetProperties();
+  FdoPtr<FdoPropertyDefinitionCollection> properties = def->GetProperties();
   
   CFeatureData featureData;
-  for (FdoInt32 i = 0; i < prop->GetCount(); i++) {
-    FdoPropertyDefinition * p = prop->GetItem(i);
+  for (FdoInt32 i = 0; i < properties->GetCount(); i++) {
+    FdoPropertyDefinition * prop = properties->GetItem(i);
     
-    FdoString * name = p->GetName();
+    FdoString * name = prop->GetName();
+    String value = L"";
     
-    FdoPropertyType type = p->GetPropertyType();
-    
-    //pd = 0;
-    switch (type) {
-      case FdoPropertyType_DataProperty:
-        FdoDataPropertyDefinition * pd = (FdoDataPropertyDefinition*)p;
-        FdoDataType dataType = pd->GetDataType();
-        acutPrintf(L"\n");
-        break;
-/*      default:
-        break;*/
+    if (_reader->IsNull(name)){
+       value = L"__NULL__";
+    } else {
+      if (prop->GetPropertyType() == FdoPropertyType_DataProperty) {
+          FdoDataPropertyDefinition * propDef = (FdoDataPropertyDefinition*)prop;
+          value = this->GetDataValue(name, propDef->GetDataType());
+      }
     }
-    
-    FdoString * value = L"";
     featureData.Add(name, value);
   }
   
   return featureData;
+}
+
+String CFeatureReader::GetDataValue(FdoString * name, FdoDataType dataType)
+{
+    switch (dataType) {
+      case FdoDataType_String:
+        return _reader->GetString(name);
+      case FdoDataType_Single:
+        return boost::lexical_cast<String>(_reader->GetSingle(name));
+      case FdoDataType_Decimal:
+        return boost::lexical_cast<String>(_reader->GetDouble(name));
+      case FdoDataType_Double:
+        return boost::lexical_cast<String>(_reader->GetDouble(name));
+      case FdoDataType_Int16:
+        return boost::lexical_cast<String>(_reader->GetInt16(name));
+      case FdoDataType_Int32:
+        return boost::lexical_cast<String>(_reader->GetInt32(name));
+      case FdoDataType_Int64:
+        return boost::lexical_cast<String>(_reader->GetInt64(name));
+      case FdoDataType_Boolean:
+        return boost::lexical_cast<String>(_reader->GetBoolean(name));
+      case FdoDataType_Byte:
+        return boost::lexical_cast<String>(_reader->GetByte(name));
+      case FdoDataType_DateTime:
+        {
+          FdoDateTime date = _reader->GetDateTime(name);
+          
+          return boost::lexical_cast<String>(date.year) + L"/" +
+              boost::lexical_cast<String>(date.month) + L"/" +
+              boost::lexical_cast<String>(date.day);
+        }
+      default:
+        return L"";
+    }
 }
 
 void CFeatureReader::Draw() 

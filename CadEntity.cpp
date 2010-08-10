@@ -52,7 +52,7 @@ void CCadEntity::Draw() {
 	  AcDbObjectId entityId;
 	  pBlockTableRecord->appendAcDbEntity(entityId, entity);
 	  pBlockTableRecord->close();
-
+    
     entity->close();
   }
 }
