@@ -2720,3 +2720,151 @@ ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D3
 ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
 GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
 ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1
+
+--------------- 10-08-2010 08:10:35 ---------------
+Exception:
+ACCESS_VIOLATION (C0000005) in module GeoMap.Brx at 001B:022D7561
+Registers:
+EAX=00000000  EBX=01A52058  ECX=0D39CA64  EDX=010D0608  ESI=0455E190  EDI=044CA988  EBP=0D39C910  ESP=0D39C8B8  EIP=022D7561  FLG=00210216  CS=001B  DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
+
+Call stack:
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\provider.cpp(18): CProvider::GetName()+33 byte(s), (0x0D39C91C 0x04549D40 0x044AE570 0x0000001E)GeoMap.Brx, 001B:022D7561
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\provider.cpp(15): CProvider::CreateConnection()+67 byte(s), (0x0D39C9E0 0x7E88E254 0x044CA988 0x0455E190)GeoMap.Brx, 001B:022D7433
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(28): CTestProvider::TestCreateConnection()+130 byte(s), (0x0D39CBBC 0x7E88E380 0x044CA988 0x0455E190)GeoMap.Brx, 001B:022CF352
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(19): CTestProvider::TestProvider()+331 byte(s), (0x0D39CBBC 0x7E88E334 0x044CA988 0x0455E190)GeoMap.Brx, 001B:022CF23B
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(46): CTestProvider::TestAll()+138 byte(s), (0x044CA988 0x0455E190 0x01A52058 0x00160000)GeoMap.Brx, 001B:022CF55A
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(190): ads_TestProvider()+14 byte(s), (0x044CA988 0x0455E190 0x01A52058 0x0001CBAC)GeoMap.Brx, 001B:022C637E
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(199): ads_TestAll()+19 byte(s), (0x044CA988 0x0455E190 0x01A52058 0x78134C39)GeoMap.Brx, 001B:022C6403
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(203): GeoMap_TestAll()+14 byte(s), (0x044CA988 0x62FB95DE 0x044CA988 0x7D94437F)GeoMap.Brx, 001B:022C642E
+OdEdCommand::module()+776 byte(s), (0x0455E190 0x044CA988 0x78B439CE 0x02D1A2B4)DD_Root_2.06_8.dll, 001B:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x044D7FE0 0x00000000 0x78B41B02 0x015EFA60)cadapp.dll, 001B:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x78B41B32 0xBAADF00D 0x015EFA60)cadapp.dll, 001B:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x78B41B9E)cadapp.dll, 001B:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 001B:014C0EA7
+, (0x78B41BA6 0xBAADF00D 0xBAADF00D 0x00000000), 001B:78B41B9E
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1
+
+--------------- 10-08-2010 08:11:24 ---------------
+Exception:
+ACCESS_VIOLATION (C0000005) in module GeoMap.Brx at 001B:022D7561
+Registers:
+EAX=00000000  EBX=01A52078  ECX=0D39CA64  EDX=010D0608  ESI=0455DCE0  EDI=044CAB98  EBP=0D39C910  ESP=0D39C8B8  EIP=022D7561  FLG=00210216  CS=001B  DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
+
+Call stack:
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\provider.cpp(18): CProvider::GetName()+33 byte(s), (0x0D39C91C 0x0432DDF8 0x044B0858 0x0000001E)GeoMap.Brx, 001B:022D7561
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\provider.cpp(15): CProvider::CreateConnection()+67 byte(s), (0x0D39C9E0 0x53405676 0x044CAB98 0x0455DCE0)GeoMap.Brx, 001B:022D7433
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(28): CTestProvider::TestCreateConnection()+130 byte(s), (0x0D39CBBC 0x534057A2 0x044CAB98 0x0455DCE0)GeoMap.Brx, 001B:022CF352
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(19): CTestProvider::TestProvider()+331 byte(s), (0x0D39CBBC 0x53405716 0x044CAB98 0x0455DCE0)GeoMap.Brx, 001B:022CF23B
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(46): CTestProvider::TestAll()+138 byte(s), (0x044CAB98 0x0455DCE0 0x01A52078 0x00160000)GeoMap.Brx, 001B:022CF55A
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(190): ads_TestProvider()+14 byte(s), (0x044CAB98 0x0455DCE0 0x01A52078 0x0001CBAC)GeoMap.Brx, 001B:022C637E
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(199): ads_TestAll()+19 byte(s), (0x044CAB98 0x0455DCE0 0x01A52078 0x78134C39)GeoMap.Brx, 001B:022C6403
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(203): GeoMap_TestAll()+14 byte(s), (0x044CAB98 0x62FB95DE 0x044CAB98 0x7739DA7D)GeoMap.Brx, 001B:022C642E
+OdEdCommand::module()+776 byte(s), (0x0455DCE0 0x044CAB98 0x70AC3968 0x02D1A2B4)DD_Root_2.06_8.dll, 001B:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x044AE938 0x00000000 0x70AC1BA4 0x015EFA60)cadapp.dll, 001B:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x70AC1B94 0xBAADF00D 0x015EFA60)cadapp.dll, 001B:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x70AC1B38)cadapp.dll, 001B:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 001B:014C0EA7
+, (0x70AC1B00 0xBAADF00D 0xBAADF00D 0x00000000), 001B:70AC1B38
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1
+
+--------------- 10-08-2010 08:12:26 ---------------
+Exception:
+ACCESS_VIOLATION (C0000005) in module GeoMap.Brx at 001B:022D7561
+Registers:
+EAX=00000000  EBX=01A52058  ECX=0D39CA64  EDX=010D0608  ESI=0455DF10  EDI=044CA988  EBP=0D39C910  ESP=0D39C8B8  EIP=022D7561  FLG=00210216  CS=001B  DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
+
+Call stack:
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\provider.cpp(18): CProvider::GetName()+33 byte(s), (0x0D39C91C 0x043329F0 0x044E4D80 0x0000001E)GeoMap.Brx, 001B:022D7561
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\provider.cpp(15): CProvider::CreateConnection()+67 byte(s), (0x0D39C9E0 0x24E4E29A 0x044CA988 0x0455DF10)GeoMap.Brx, 001B:022D7433
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(28): CTestProvider::TestCreateConnection()+130 byte(s), (0x0D39CBBC 0x24E4E34E 0x044CA988 0x0455DF10)GeoMap.Brx, 001B:022CF352
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(19): CTestProvider::TestProvider()+331 byte(s), (0x0D39CBBC 0x24E4E3FA 0x044CA988 0x0455DF10)GeoMap.Brx, 001B:022CF23B
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(48): CTestProvider::TestAll()+164 byte(s), (0x044CA988 0x0455DF10 0x01A52058 0x00160000)GeoMap.Brx, 001B:022CF574
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(190): ads_TestProvider()+14 byte(s), (0x044CA988 0x0455DF10 0x01A52058 0x0001CBAC)GeoMap.Brx, 001B:022C637E
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(199): ads_TestAll()+19 byte(s), (0x044CA988 0x0455DF10 0x01A52058 0x78134C39)GeoMap.Brx, 001B:022C6403
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(203): GeoMap_TestAll()+14 byte(s), (0x044CA988 0x62FB95DE 0x044CA988 0xBE20198C)GeoMap.Brx, 001B:022C642E
+OdEdCommand::module()+776 byte(s), (0x0455DF10 0x044CA988 0xB3C59B9F 0x02D1A2B4)DD_Root_2.06_8.dll, 001B:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x04499058 0x00000000 0xB3C5B953 0x015EFA60)cadapp.dll, 001B:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xB3C5B963 0xBAADF00D 0x015EFA60)cadapp.dll, 001B:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xB3C5B9CF)cadapp.dll, 001B:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 001B:014C0EA7
+, (0xB3C5B9F7 0xBAADF00D 0xBAADF00D 0x00000000), 001B:B3C5B9CF
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1
+
+--------------- 10-08-2010 08:12:56 ---------------
+Exception:
+ACCESS_VIOLATION (C0000005) in module GeoMap.Brx at 001B:022D7561
+Registers:
+EAX=00000000  EBX=01A52058  ECX=0D39CA64  EDX=010D0608  ESI=0455DCE0  EDI=044E3510  EBP=0D39C910  ESP=0D39C8B8  EIP=022D7561  FLG=00210216  CS=001B  DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
+
+Call stack:
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\provider.cpp(18): CProvider::GetName()+33 byte(s), (0x0D39C91C 0x01E8A440 0x041C9440 0x0000001E)GeoMap.Brx, 001B:022D7561
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\provider.cpp(15): CProvider::CreateConnection()+67 byte(s), (0x0D39C9E0 0x150B0884 0x044E3510 0x0455DCE0)GeoMap.Brx, 001B:022D7433
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(28): CTestProvider::TestCreateConnection()+130 byte(s), (0x0D39CBBC 0x150B0950 0x044E3510 0x0455DCE0)GeoMap.Brx, 001B:022CF352
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(19): CTestProvider::TestProvider()+331 byte(s), (0x0D39CBBC 0x150B09E4 0x044E3510 0x0455DCE0)GeoMap.Brx, 001B:022CF23B
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(48): CTestProvider::TestAll()+164 byte(s), (0x044E3510 0x0455DCE0 0x01A52058 0x00160000)GeoMap.Brx, 001B:022CF574
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(190): ads_TestProvider()+14 byte(s), (0x044E3510 0x0455DCE0 0x01A52058 0x0001CBAC)GeoMap.Brx, 001B:022C637E
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(199): ads_TestAll()+19 byte(s), (0x044E3510 0x0455DCE0 0x01A52058 0x78134C39)GeoMap.Brx, 001B:022C6403
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(203): GeoMap_TestAll()+14 byte(s), (0x044E3510 0x62FB95DE 0x044E3510 0x040014D0)GeoMap.Brx, 001B:022C642E
+OdEdCommand::module()+776 byte(s), (0x0455DCE0 0x044E3510 0x06D33AD6 0x02D1A2B4)DD_Root_2.06_8.dll, 001B:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x0448EA90 0x00000000 0x06D3181A 0x015EFA60)cadapp.dll, 001B:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x06D3182A 0xBAADF00D 0x015EFA60)cadapp.dll, 001B:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x06D31886)cadapp.dll, 001B:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 001B:014C0EA7
+, (0x06D318BE 0xBAADF00D 0xBAADF00D 0x00000000), 001B:06D31886
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1
+
+--------------- 10-08-2010 08:13:38 ---------------
+Exception:
+ACCESS_VIOLATION (C0000005) in module GeoMap.Brx at 001B:022D7561
+Registers:
+EAX=00000000  EBX=01A52078  ECX=0D39CA64  EDX=010D0608  ESI=0455DD50  EDI=044E3540  EBP=0D39C910  ESP=0D39C8B8  EIP=022D7561  FLG=00210216  CS=001B  DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
+
+Call stack:
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\provider.cpp(18): CProvider::GetName()+33 byte(s), (0x0D39C91C 0x0432F6A0 0x041C9400 0x0000001E)GeoMap.Brx, 001B:022D7561
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\provider.cpp(15): CProvider::CreateConnection()+67 byte(s), (0x0D39C9E0 0x4D1FC7AC 0x044E3540 0x0455DD50)GeoMap.Brx, 001B:022D7433
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(28): CTestProvider::TestCreateConnection()+130 byte(s), (0x0D39CBBC 0x4D1FC678 0x044E3540 0x0455DD50)GeoMap.Brx, 001B:022CF352
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(19): CTestProvider::TestProvider()+331 byte(s), (0x0D39CBBC 0x4D1FC6CC 0x044E3540 0x0455DD50)GeoMap.Brx, 001B:022CF23B
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(48): CTestProvider::TestAll()+164 byte(s), (0x044E3540 0x0455DD50 0x01A52078 0x00160000)GeoMap.Brx, 001B:022CF574
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(190): ads_TestProvider()+14 byte(s), (0x044E3540 0x0455DD50 0x01A52078 0x0001CBAC)GeoMap.Brx, 001B:022C637E
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(199): ads_TestAll()+19 byte(s), (0x044E3540 0x0455DD50 0x01A52078 0x78134C39)GeoMap.Brx, 001B:022C6403
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(203): GeoMap_TestAll()+14 byte(s), (0x044E3540 0x62FB95DE 0x044E3540 0x99A315F2)GeoMap.Brx, 001B:022C642E
+OdEdCommand::module()+776 byte(s), (0x0455DD50 0x044E3540 0x9E8684D3 0x02D1A2B4)DD_Root_2.06_8.dll, 001B:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x044E3BA0 0x00000000 0x9E86A61F 0x015EFA60)cadapp.dll, 001B:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x9E86A62F 0xBAADF00D 0x015EFA60)cadapp.dll, 001B:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x9E86A683)cadapp.dll, 001B:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 001B:014C0EA7
+, (0x9E86A6BB 0xBAADF00D 0xBAADF00D 0x00000000), 001B:9E86A683
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1
+
+--------------- 10-08-2010 08:16:49 ---------------
+Exception:
+ACCESS_VIOLATION (C0000005) in module GeoMap.Brx at 001B:022D7581
+Registers:
+EAX=00000000  EBX=01A52058  ECX=0D39CB38  EDX=010D0608  ESI=0455E018  EDI=044CA988  EBP=0D39CA28  ESP=0D39C9D0  EIP=022D7581  FLG=00210206  CS=001B  DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
+
+Call stack:
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\provider.cpp(18): CProvider::GetName()+33 byte(s), (0x0D39CA60 0x5B6FA1A9 0x044CA988 0x0455E018)GeoMap.Brx, 001B:022D7581
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(14): CTestProvider::TestProvider()+130 byte(s), (0x0D39CBBC 0x5B6FA11D 0x044CA988 0x0455E018)GeoMap.Brx, 001B:022DAFB2
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\testprovider.cpp(52): CTestProvider::TestAll()+164 byte(s), (0x044CA988 0x0455E018 0x01A52058 0x00160000)GeoMap.Brx, 001B:022CF574
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(190): ads_TestProvider()+14 byte(s), (0x044CA988 0x0455E018 0x01A52058 0x0001CBAC)GeoMap.Brx, 001B:022C637E
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(199): ads_TestAll()+19 byte(s), (0x044CA988 0x0455E018 0x01A52058 0x78134C39)GeoMap.Brx, 001B:022C6403
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(203): GeoMap_TestAll()+14 byte(s), (0x044CA988 0x62FB95DE 0x044CA988 0x981AC4FF)GeoMap.Brx, 001B:022C642E
+OdEdCommand::module()+776 byte(s), (0x0455E018 0x044CA988 0x9B756EA7 0x02D1A2B4)DD_Root_2.06_8.dll, 001B:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x0431C698 0x00000000 0x9B754C6B 0x015EFA60)cadapp.dll, 001B:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x9B754C5B 0xBAADF00D 0x015EFA60)cadapp.dll, 001B:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x9B754CF7)cadapp.dll, 001B:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 001B:014C0EA7
+, (0x9B754CCF 0xBAADF00D 0xBAADF00D 0x00000000), 001B:9B754CF7
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1

@@ -1,3 +1,5 @@
+#ifdef TEST
+
 #include "stdafx.h"
 #include "TestProvider.h"
 
@@ -9,6 +11,11 @@ int CTestProvider::TestProvider(String & providerName)
   
   try {
     CProvider provider = pc.GetItem(providerName);
+  } catch (FdoException * e) {
+    String msg = L"Error 'CTestProvider::TestProvider': ";
+    msg += e->GetExceptionMessage();
+    acutPrintf(msg.c_str());
+    return 0;
   } catch (...) {
     acutPrintf((L"Error 'CTestProvider::TestProvider': Unexpected error when accessing provider " + providerName + L"\n").c_str());
     return 0;
@@ -34,19 +41,22 @@ int CTestProvider::TestCreateConnection(String & providerName)
 
 int CTestProvider::TestAll()
 {
-  String providerName = L"OSGeo.ArcSDE.3.4";
+  String providerName = L"OSGeo.ArcSDE.3.5";
   TestProvider(providerName);
-  providerName = L"OSGeo.PostGIS.3.4";
+  providerName = L"OSGeo.PostGIS.3.5";
+  TestProvider(providerName);
+  providerName = L"OSGeo.PostgreSQL.3.5";
   TestProvider(providerName);
   
-  providerName = L"OSGeo.Shape.3.4";
+  providerName = L"OSGeo.Shape.3.5";
   acutPrintf(L"This must fail *****\n\t");
-  if (TestProvider(providerName) == 1) {
-    acutPrintf(L"***** Error 'CTestProvider::TestAll': Check test");
+  if (TestProvider(providerName) != 0) {
+    acutPrintf(L"***** Error 'CTestProvider::TestAll': Check test\n");
   }
-  
-  providerName = L"OSGeo.SHP.3.4";
+  providerName = L"OSGeo.SHP.3.5";
   TestProvider(providerName);
 
   return 1;
 }
+
+#endif

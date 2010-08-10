@@ -7,8 +7,19 @@ CCadEntity::CCadEntity()
 
 CCadEntity::CCadEntity(AcDbEntity * entity) 
 {
-  _entities.push_back(entity);
+  AddEntity(entity);
 }
+
+CCadEntity::CCadEntity(AcDbEntity * entity, CFeatureData data) : 
+  _data(data) 
+{
+  AddEntity(entity);
+}
+
+ void CCadEntity::AddEntity(AcDbEntity * entity)
+ {
+   _entities.push_back(entity);
+ }
 
 CCadEntity::~CCadEntity(void)
 {
@@ -45,3 +56,6 @@ void CCadEntity::Draw() {
     entity->close();
   }
 }
+
+void CCadEntity::SetData(CFeatureData data) { this->_data = data; }
+CFeatureData CCadEntity::GetData() { return _data; }

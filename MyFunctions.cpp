@@ -20,10 +20,11 @@ DlgProviders
 
 #include "Connection.h"
 
+#ifdef TEST
 #include "TestProviderCollection.h"
 #include "TestProvider.h"
 #include "TestFunctions.h"
-
+#endif
 
 //*ads* *underscore sperator* *Lisp function Name*
 // Sample command    *Group name*  *global name* *local name*
@@ -183,6 +184,7 @@ void GeoMap_DlgProviders()
   ads_DlgProviders();
 }
 
+#ifdef TEST
 int ads_TestProviderCollection() { return CTestProviderCollection::TestAll(); }
 void GeoMap_TestProviderCollection() { ads_TestProviderCollection(); }
 int ads_TestProvider() { return CTestProvider::TestAll(); }
@@ -199,7 +201,7 @@ int ads_TestAll()
   return 1;
 }
 void GeoMap_TestAll() { ads_TestAll(); }
-
+#endif
 
 ////////////////////////////////////////////////////
 #ifndef BRX_APP
@@ -230,6 +232,7 @@ ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _MyDialog2, MyDialog2, ACRX_CMD_TRANSPAREN
 ACED_ADSCOMMAND_ENTRY_AUTO( , DlgProviders, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _DlgProviders, DlgProviders, ACRX_CMD_TRANSPARENT, NULL)
 
+#ifdef TEST
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestProviderCollection, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestProviderCollection, TestProviderCollection, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestProvider, false)
@@ -238,3 +241,4 @@ ACED_ADSCOMMAND_ENTRY_AUTO( , TestFunctions, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestFunctions, TestFunctions, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestAll, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestAll, TestAll, ACRX_CMD_TRANSPARENT, NULL)
+#endif

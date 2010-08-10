@@ -2,6 +2,8 @@
 
 #include <fdo.h>
 
+#include "FeatureData.h"
+
 class CFeatureReader
 {
 protected:
@@ -13,6 +15,8 @@ public:
   CFeatureReader(const CFeatureReader & featureReader);
 public:
   ~CFeatureReader(void);
+protected:
+  CFeatureData GetData();
 public:
   void Draw();
   void DrawAll();

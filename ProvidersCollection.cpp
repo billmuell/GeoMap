@@ -18,6 +18,7 @@ CProvidersCollection::~CProvidersCollection(void)
 }
 
 int CProvidersCollection::GetCount() const { return _providers.size(); }
+
 CProvider CProvidersCollection::GetItem(int num) const 
 { 
   return _providers[num];
@@ -28,8 +29,8 @@ CProvider CProvidersCollection::GetItem(String id) const
     CProvider provider = this->GetItem(i);
     if (provider.GetName() == id) return provider;
   }
-
-  return NULL;
+  
+  throw FdoException::Create((L"Provider " + id + L" not found").c_str());
 }
 
 CStringPairs CProvidersCollection::ToStringPairs() {

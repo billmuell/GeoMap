@@ -1,3 +1,5 @@
+#ifdef TEST
+
 #include "stdafx.h"
 #include "TestProviderCollection.h"
 
@@ -27,3 +29,5 @@ int CTestProviderCollection::TestAll()
 
   return 1;
 }
+
+#endif

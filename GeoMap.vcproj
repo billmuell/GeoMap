@@ -45,7 +45,7 @@
 				Optimization="0"
 				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories="$(BRX_PATH)\inc;&quot;$(FDO_PATH)\Inc&quot;"
-				PreprocessorDefinitions="_ACRXAPP;_AFXEXT;_WINDOWS;BRX_APP;WIN32"
+				PreprocessorDefinitions="_ACRXAPP;_AFXEXT;_WINDOWS;BRX_APP;WIN32;TEST"
 				MinimalRebuild="true"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -645,6 +645,14 @@
 			</File>
 			<File
 				RelativePath=".\FeatureClass.h"
+				>
+			</File>
+			<File
+				RelativePath=".\FeatureData.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\FeatureData.h"
 				>
 			</File>
 			<File
