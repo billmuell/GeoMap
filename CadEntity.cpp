@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "CadEntity.h"
+#include "CadData.h"
 
 CCadEntity::CCadEntity() 
 {
@@ -17,8 +18,23 @@ CCadEntity::CCadEntity(AcDbEntity * entity, CFeatureData data) :
 }
 
  void CCadEntity::AddEntity(AcDbEntity * entity)
- {
-   _entities.push_back(entity);
+ { 
+  if (!entity->isReadEnabled()) {
+    acutPrintf(L"Cerrado");
+  }
+  
+  if (entity->isReadEnabled()) {
+    AcDbObjectId oid = entity->objectId();
+    if (oid != NULL) {
+      resbuf * data = entity->xData(L"GEOMAP_DICT_ID");
+      if (data != NULL) {
+        _data.FromString(data->rbnext->resval.rstring);
+      }
+      acutRelRb(data);
+    }
+  }
+  
+  _entities.push_back(entity);
  }
 
 CCadEntity::~CCadEntity(void)
@@ -53,7 +69,18 @@ void CCadEntity::Draw() {
 	  pBlockTableRecord->appendAcDbEntity(entityId, entity);
 	  pBlockTableRecord->close();
     
+    AcDbObjectId oid = entity->objectId();
+    
+    //acdbRegApp(L"GEOMAP_DICT_ID");
+    resbuf * data = acutBuildList(AcDb::kDxfRegAppName, L"GEOMAP_DICT_ID",
+        AcDb::kDxfXdAsciiString, const_cast<ACHAR*>(_data.ToString().c_str()),
+        NULL);
+    entity->setXData(data);
+    acutRelRb(data);
+    
     entity->close();
+    
+    //CCadData::Write(oid, _data.ToString());
   }
 }
 

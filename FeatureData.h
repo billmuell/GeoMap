@@ -14,4 +14,7 @@ public:
 public:
   void Add(String key, String value);
   String GetValue(String key);
+  
+  String ToString();
+  void FromString(String data);
 };

@@ -25,3 +25,17 @@ String CFeatureData::GetValue(String key)
   
   throw FdoException::Create((L"Value for key " + key + L" not found").c_str());
 }
+
+String CFeatureData::ToString() 
+{
+  String toS = L"";
+  for (CStringPairs::iterator it = _data.begin(); it != _data.end(); it++) {
+    toS += it->first + L"###" + it->second;
+  }
+  return toS;
+}
+
+void CFeatureData::FromString(String data) 
+{
+  _data.push_back(CStringPair(data, data));
+}
