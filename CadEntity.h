@@ -14,8 +14,9 @@ protected:
 protected:
   CCadEntity();
 public:
-  CCadEntity(AcDbEntity * entity);
-  CCadEntity(AcDbEntity * entity, CFeatureData data);
+  CCadEntity(AcDbObjectId & idEntity);
+  //CCadEntity(AcDbEntity * entity);
+  //CCadEntity(AcDbEntity * entity, CFeatureData data);
   //CCadEntity(Entities entities);
 public:
   ~CCadEntity(void);

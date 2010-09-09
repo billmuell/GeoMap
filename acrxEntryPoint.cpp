@@ -33,6 +33,7 @@ extern "C" BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpRes
     _hdllInstance = hInstance;
     TheArxAppDLL.AttachInstance(hInstance);
     InitAcUiDLL();
+    acdbRegApp(APPNAME);
   }
   else 
   if (DLL_PROCESS_DETACH == dwReason)

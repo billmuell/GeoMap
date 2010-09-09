@@ -79,3 +79,5 @@ typedef AcDbObjectPointer<AcDbLayerTableRecord> LayerTableRecordPointer;
 typedef std::list< int, std::allocator<int> > ListaControles;
 
 const unsigned short IDC_CONTROLES  = 10000;
+
+#define APPNAME L"GEOMAP_DICT_ID"

@@ -2,6 +2,9 @@
 
 #include <map>
 
+#define VALUE_SEPARATOR L"###"
+#define FIELD_SEPARATOR L"~~~"
+
 class CFeatureData
 {
 protected:
@@ -16,5 +19,8 @@ public:
   String GetValue(String key);
   
   String ToString();
+  String ToFormattedString();
   void FromString(String data);
+
+  Strings split(String data, const String & separator);
 };
