@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "CadEntity.h"
-#include "CadData.h"
 
 CCadEntity::CCadEntity() 
 {

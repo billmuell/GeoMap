@@ -27,17 +27,16 @@ CFeatureData CFeatureReader::GetData()
   CFeatureData featureData;
   for (FdoInt32 i = 0; i < properties->GetCount(); i++) {
     FdoPropertyDefinition * prop = properties->GetItem(i);
-    
+    if (prop->GetPropertyType() != FdoPropertyType_DataProperty) continue;
+
     FdoString * name = prop->GetName();
     String value = L"";
     
     if (_reader->IsNull(name)){
-       value = L"__NULL__";
+      value = L"__NULL__";
     } else {
-      if (prop->GetPropertyType() == FdoPropertyType_DataProperty) {
-          FdoDataPropertyDefinition * propDef = (FdoDataPropertyDefinition*)prop;
-          value = this->GetDataValue(name, propDef->GetDataType());
-      }
+      FdoDataPropertyDefinition * propDef = (FdoDataPropertyDefinition*)prop;
+      value = this->GetDataValue(name, propDef->GetDataType());
     }
     featureData.Add(name, value);
   }

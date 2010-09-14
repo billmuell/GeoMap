@@ -11,7 +11,8 @@ CFeatureClass::~CFeatureClass(void)
 {
 }
 
-CFeatureReader CFeatureClass::SelectByExtent(String &extent) {
+CFeatureReader CFeatureClass::SelectByExtent(String &extent) 
+{
   try {
 		FdoPtr<FdoISelect> select = (FdoISelect*)_connection->CreateCommand(FdoCommandType_Select);
     select->SetFeatureClassName(_name.c_str());

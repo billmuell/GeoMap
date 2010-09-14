@@ -3357,3 +3357,23 @@ Call stack:
 , (0x7C97F098 0x010D0608 0x7C97F07C 0x010D0000), 001B:7C92927D
 , (0xFFFFFF90 0x000000FF 0x92933500 0x0000007C), 001B:0D39BF98
 , (0x00000000 0x00000000 0x00000000 0x00000000), 001B:90909090
+
+--------------- 14-09-2010 17:44:30 ---------------
+Exception:
+ACCESS_VIOLATION (C0000005) in module GeoMap.Brx at 001B:022DC3C4
+Registers:
+EAX=00000000  EBX=01A522A8  ECX=0D39C930  EDX=0D39C7F4  ESI=0D39C8B4  EDI=044CAD28  EBP=0D39C8B4  ESP=0D39C844  EIP=022DC3C4  FLG=00010202  CS=001B  DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
+
+Call stack:
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\featurereader.cpp(101): CFeatureReader::DrawAll()+68 byte(s), (0x4A93B735 0x044CAD28 0x0455BFC0 0x01A522A8)GeoMap.Brx, 001B:022DC3C4
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(187): ads_DlgProviders()+594 byte(s), (0x044CAD28 0x0455BFC0 0x01A522A8 0x78134C39)GeoMap.Brx, 001B:022E40F2
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(197): GeoMap_DlgProviders()+14 byte(s), (0x044CAD28 0x62FB95DE 0x044CAD28 0x32E0B08B)GeoMap.Brx, 001B:022C8C9E
+OdEdCommand::module()+776 byte(s), (0x0455BFC0 0x044CAD28 0x0842FCB1 0x02D1A2B4)DD_Root_2.06_8.dll, 001B:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x0432A8F8 0x00000000 0x0842DE7D 0x015EFA60)cadapp.dll, 001B:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x0842DE4D 0xBAADF00D 0x015EFA60)cadapp.dll, 001B:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x0842DEE1)cadapp.dll, 001B:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 001B:014C0EA7
+, (0x0842DED9 0xBAADF00D 0xBAADF00D 0x00000000), 001B:0842DEE1
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1

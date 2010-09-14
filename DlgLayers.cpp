@@ -22,9 +22,12 @@ void DlgLayers::SetConnection(CConnection * connection) {
   m_Connection = connection;
 }
 
+const String DlgLayers::GetLayer() { return m_layer; }
+
 void DlgLayers::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
+  CDialog::DoDataExchange(pDX);
+  DDX_Control(pDX, IDC_LIST1, lstLayers);
 }
 
 BOOL DlgLayers::OnInitDialog() {
@@ -32,68 +35,25 @@ BOOL DlgLayers::OnInitDialog() {
   
   m_Connection->Open();
   
-  /*FdoPtr<FdoIGetClassNames> cmdGCN = NULL;
+  FdoPtr<FdoIDescribeSchema> cmdGDS = NULL;
   try {
-    cmdGCN = (FdoIGetClassNames*)m_Connection->CreateCommand(FdoCommandType_GetClassNames); 
+    cmdGDS = (FdoIDescribeSchema*)m_Connection->CreateCommand(FdoCommandType_DescribeSchema); 
   } catch (FdoException * e) {
-    //AfxMessageBox(e->GetExceptionMessage());
-    //return FALSE;
+    AfxMessageBox(e->GetExceptionMessage());
+    return FALSE;
   }
-
-  if (cmdGCN != NULL) {
-    FdoStringCollection* layers = cmdGCN->Execute();
-    FdoInt32 num = layers->GetCount();
-    for (int i=0; i<num; i++) { 
-      AfxMessageBox(layers->GetString(i));
-      break;
-    }
-  } else {
-    FdoPtr<FdoIDescribeSchema> cmdDS = NULL;
-    cmdDS = (FdoIDescribeSchema*)m_Connection->CreateCommand(FdoCommandType_DescribeSchema);
-    //FdoCommandType_DescribeSchemaMapping
-
-    cmdDS->SetSchemaName(L"SDE");
-    try {
-      cmdDS->Execute();
-    } catch (FdoException * e) {
-      AfxMessageBox(e->GetExceptionMessage());
-      return FALSE;
-    }
-    
-    FdoPtr<FdoStringCollection> names = cmdDS->GetClassNames();
-    FdoInt32 num = names->GetCount();
-    for (int i=0; i<num; i++) {
-      AfxMessageBox(names->GetString(i));
-      break;
-    }
-  }
-  */
-
-  /*describeSchemaCmd->SetSchemaName(L"gis");
-  FdoPtr<FdoFeatureSchemaCollection> schemas = describeSchemaCmd->Execute(); 
   
-  FdoInt32 numSchemas = schemas->GetCount(); 
-  for (int i=0; i<numSchemas; i++) 
-  { 
-      FdoPtr<FdoFeatureSchema> schema = schemas->GetItem(i); 
-
-      FdoString* schemaName = schema->GetName(); 
-                  wprintf(L"Current schema '%ls'\n", schemaName); 
-      FdoPtr<FdoClassCollection> classes = schema->GetClasses(); 
-
-      FdoInt32 numClasses = classes->GetCount(); 
-      for (int j=0; j<numClasses; j++) 
-      {
-        // Note the assumption here that it is a feature class (it is set up so 
-        // in the test data). 
-        FdoPtr<FdoClassDefinition> classDef = classes->GetItem(j); 
-        
-        // analyze the feature class
-        FdoString* className = classDef->GetName();
-        AfxMessageBox(className);
-        break;
-      }
-  }*/
+  cmdGDS->SetSchemaName(L"SDE");
+  FdoPtr<FdoFeatureSchemaCollection> schemas = cmdGDS->Execute();
+  for (FdoInt32 i = 0; i < schemas->GetCount(); i++) { 
+    FdoPtr<FdoFeatureSchema> schema = schemas->GetItem(0);
+    FdoClassCollection * layers = schema->GetClasses();
+    for (FdoInt32 j = 0; j < layers->GetCount(); j++) { 
+      FdoClassDefinition * layer = layers->GetItem(j);
+      lstLayers.AddString(layer->GetName());
+    }
+  }
+  
   m_Connection->Close();
 
   return TRUE;
@@ -104,6 +64,10 @@ void DlgLayers::OnCancel() {
 }
 
 void DlgLayers::OnOK() {
+  CString layer;
+  lstLayers.GetText(lstLayers.GetCurSel(), layer);
+  m_layer = layer;
+  
   EndDialog(NULL);
 }
 

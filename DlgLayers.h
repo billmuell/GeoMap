@@ -3,6 +3,7 @@
 #include "resource.h"
 
 #include "Connection.h"
+#include "afxwin.h"
 
 // Cuadro de diálogo de DlgLayers
 
@@ -10,9 +11,11 @@ class DlgLayers : public CDialog
 {
 protected:
   CConnection * m_Connection;
+  String m_layer;
 
 public:
   void SetConnection(CConnection * connection);
+  const String GetLayer();
 
   DECLARE_DYNAMIC(DlgLayers)
 
@@ -30,4 +33,6 @@ protected:
   virtual void OnOK();
 
 	DECLARE_MESSAGE_MAP()
+public:
+  CListBox lstLayers;
 };

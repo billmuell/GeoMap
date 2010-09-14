@@ -18,6 +18,8 @@ DlgProviders
 #include "DlgProviderParam.h"
 #include "DlgLayers.h"
 
+#include "FeatureClass.h"
+#include "FeatureReader.h"
 #include "Connection.h"
 
 #include "CadEntity.h"
@@ -175,6 +177,16 @@ int ads_DlgProviders()
   if (connection != NULL) {
     DlgLayers dlgLayers(connection);
     dlgLayers.DoModal();
+    String featureClassName = dlgLayers.GetLayer();
+    if (featureClassName.length() > 0) {
+      connection->Open();
+      String spatialColumn = L"SHAPE";
+      CFeatureClass featureClass(&*connection, featureClassName, spatialColumn);
+      String extent = L"";
+      CFeatureReader featureReader = featureClass.SelectByExtent(extent);
+      featureReader.DrawAll();
+      connection->Close();
+    }
   }
 
   ads_retnil();

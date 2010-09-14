@@ -580,22 +580,6 @@
 			Name="cad"
 			>
 			<File
-				RelativePath=".\AsdkInventoryData.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\AsdkInventoryData.h"
-				>
-			</File>
-			<File
-				RelativePath=".\CadData.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\CadData.h"
-				>
-			</File>
-			<File
 				RelativePath=".\CadEntity.cpp"
 				>
 			</File>
