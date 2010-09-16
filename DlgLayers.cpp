@@ -4,13 +4,12 @@
 #include "stdafx.h"
 #include "DlgLayers.h"
 
-
 // Cuadro de diálogo de DlgLayers
 
 IMPLEMENT_DYNAMIC(DlgLayers, CDialog)
 
 DlgLayers::DlgLayers(CConnection * connection, CWnd* pParent /*=NULL*/)
-	: CDialog(DlgLayers::IDD, pParent), m_Connection(connection)
+	: CDialog(DlgLayers::IDD, pParent), _connection(connection)
 {
 }
 
@@ -19,10 +18,10 @@ DlgLayers::~DlgLayers()
 }
 
 void DlgLayers::SetConnection(CConnection * connection) {
-  m_Connection = connection;
+  _connection = connection;
 }
 
-const String DlgLayers::GetLayer() { return m_layer; }
+CFeatureClass * DlgLayers::GetFeatureClass() { return _featureClass; }
 
 void DlgLayers::DoDataExchange(CDataExchange* pDX)
 {
@@ -33,11 +32,11 @@ void DlgLayers::DoDataExchange(CDataExchange* pDX)
 BOOL DlgLayers::OnInitDialog() {
   CDialog::OnInitDialog();
   
-  m_Connection->Open();
+  _connection->Open();
   
   FdoPtr<FdoIDescribeSchema> cmdGDS = NULL;
   try {
-    cmdGDS = (FdoIDescribeSchema*)m_Connection->CreateCommand(FdoCommandType_DescribeSchema); 
+    cmdGDS = (FdoIDescribeSchema*)_connection->CreateCommand(FdoCommandType_DescribeSchema); 
   } catch (FdoException * e) {
     AfxMessageBox(e->GetExceptionMessage());
     return FALSE;
@@ -50,11 +49,21 @@ BOOL DlgLayers::OnInitDialog() {
     FdoClassCollection * layers = schema->GetClasses();
     for (FdoInt32 j = 0; j < layers->GetCount(); j++) { 
       FdoClassDefinition * layer = layers->GetItem(j);
-      lstLayers.AddString(layer->GetName());
+      FdoPtr<FdoPropertyDefinitionCollection> properties = layer->GetProperties();
+      for (FdoInt32 i = 0; i < properties->GetCount(); i++) {
+        FdoPropertyDefinition * prop = properties->GetItem(i);
+        if (prop->GetPropertyType() != FdoPropertyType_GeometricProperty) continue;
+        
+        String featureClassName = layer->GetName();
+        String spatialColumn = prop->GetName();
+        _featureClass = new CFeatureClass(_connection, featureClassName, spatialColumn);
+
+        lstLayers.AddString(layer->GetName());
+      }
     }
   }
   
-  m_Connection->Close();
+  _connection->Close();
 
   return TRUE;
 }
@@ -66,7 +75,8 @@ void DlgLayers::OnCancel() {
 void DlgLayers::OnOK() {
   CString layer;
   lstLayers.GetText(lstLayers.GetCurSel(), layer);
-  m_layer = layer;
+
+  //_featureClass = layer;
   
   EndDialog(NULL);
 }

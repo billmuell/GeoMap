@@ -16,7 +16,7 @@ BEGIN_MESSAGE_MAP(DlgProviders, CDialog)
 END_MESSAGE_MAP()
 
 DlgProviders::DlgProviders(CStringPairs providersList, CWnd* pParent /* = NULL */)
-	: CDialog(DlgProviders::IDD, pParent), m_ProvidersList(providersList), m_ProviderName(L"")
+	: CDialog(DlgProviders::IDD, pParent), _providersList(providersList), _providerName(L"")
 {
 
 }
@@ -25,7 +25,7 @@ DlgProviders::~DlgProviders()
 {
 }
 
-String DlgProviders::GetProviderName() const { return m_ProviderName; }
+String DlgProviders::GetProviderName() const { return _providerName; }
 
 void DlgProviders::DoDataExchange(CDataExchange* pDX)
 {
@@ -42,9 +42,9 @@ BOOL DlgProviders::OnInitDialog() {
 }
 
 void DlgProviders::fillProvidersList() {
-  for (int i = 0 ; i < m_ProvidersList.size() ; i++) { 
+  for (int i = 0 ; i < _providersList.size() ; i++) { 
     String itemStr = L"Add a new connection with ";
-    itemStr.append(m_ProvidersList[i].first);
+    itemStr.append(_providersList[i].first);
     HTREEITEM provider = m_TreeList.InsertItem(itemStr.c_str());
     if (i == 0) m_TreeList.SelectItem(provider);
     m_TreeList.SetItemData(provider, i);
@@ -69,9 +69,9 @@ void DlgProviders::OnNMClickTree1(NMHDR *pNMHDR, LRESULT *pResult)
   *pResult = 0;
 
   int providerIndex = m_TreeList.GetItemData(hti); //m_TreeList.GetSelectedItem());
-  m_ProviderName = m_ProvidersList[providerIndex].second;
+  _providerName = _providersList[providerIndex].second;
   
-  /*DlgProviderParam dlgProviders(m_ProvidersList[providerIndex].second, this);
+  /*DlgProviderParam dlgProviders(_providersList[providerIndex].second, this);
   dlgProviders.DoModal();
   
   FdoPtr<FdoIConnection> fdoConnection = dlgProviders.GetConnection();

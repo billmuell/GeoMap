@@ -3377,3 +3377,23 @@ ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D3
 ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
 GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
 ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1
+
+--------------- 16-09-2010 17:36:19 ---------------
+Exception:
+ACCESS_VIOLATION (C0000005) in module GeoMap.Brx at 001B:022DCA54
+Registers:
+EAX=00000000  EBX=01A52290  ECX=0D39C9B8  EDX=0D39C874  ESI=0D39C934  EDI=044C97C8  EBP=0D39C934  ESP=0D39C8C4  EIP=022DCA54  FLG=00210206  CS=001B  DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
+
+Call stack:
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\featurereader.cpp(101): CFeatureReader::DrawAll()+68 byte(s), (0xF190CE51 0x044C97C8 0x0455C168 0x01A52290)GeoMap.Brx, 001B:022DCA54
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(186): ads_DlgProviders()+512 byte(s), (0x044C97C8 0x0455C168 0x01A52290 0x78134C39)GeoMap.Brx, 001B:022C8C70
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(196): GeoMap_DlgProviders()+14 byte(s), (0x044C97C8 0x62FB95DE 0x044C97C8 0x6BBD9AFA)GeoMap.Brx, 001B:022C8E7E
+OdEdCommand::module()+776 byte(s), (0x0455C168 0x044C97C8 0x55178B06 0x02D1A2B4)DD_Root_2.06_8.dll, 001B:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x046FE1D0 0x00000000 0x5517A9CA 0x015EFA60)cadapp.dll, 001B:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x5517A9FA 0xBAADF00D 0x015EFA60)cadapp.dll, 001B:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x5517A956)cadapp.dll, 001B:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 001B:014C0EA7
+, (0x5517A96E 0xBAADF00D 0xBAADF00D 0x00000000), 001B:5517A956
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1

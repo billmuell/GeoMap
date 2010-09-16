@@ -27,5 +27,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
   CListCtrl m_CListCtrl;
-  const CStringPairs &m_LayerList;
+  
+  const CStringPairs & _layerList;
 };

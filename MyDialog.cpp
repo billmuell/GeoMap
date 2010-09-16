@@ -8,7 +8,7 @@
 IMPLEMENT_DYNAMIC(MyDialog, CAcUiDialog)
 
 MyDialog::MyDialog(const CStringPairs &LayerList, CWnd* pParent /*=NULL*/)
-	: CAcUiDialog(MyDialog::IDD, pParent) , m_LayerList(LayerList) { }
+	: CAcUiDialog(MyDialog::IDD, pParent) , _layerList(LayerList) { }
 
 MyDialog::~MyDialog() { }
 
@@ -94,9 +94,9 @@ BOOL MyDialog::addListCtrlField( int iItem, CString FieldName, CString FieldValu
 
 void MyDialog::DisplayListCtrl()
 {
-  for (int i = 0 ; i < m_LayerList.size() ; i++)
+  for (int i = 0 ; i < _layerList.size() ; i++)
   { 
-    addListCtrlField(i ,  m_LayerList[i].second.c_str() , m_LayerList[i].first.c_str());
+    addListCtrlField(i ,  _layerList[i].second.c_str() , _layerList[i].first.c_str());
   }
   m_CListCtrl.SetItemState(0, LVIS_SELECTED, LVIS_SELECTED | LVIS_FOCUSED);
   m_CListCtrl.EnsureVisible(0, FALSE);

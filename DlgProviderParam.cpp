@@ -14,7 +14,7 @@ END_MESSAGE_MAP()
 DlgProviderParam::DlgProviderParam(CProvider provider, /* int ParentX, int ParentY, */ CWnd* pParent /*=NULL*/)
 : CDialog(DlgProviderParam::IDD, pParent), _provider(provider), 
   m_ParamCtrls(NULL), m_Etiquetas(NULL),
-  m_Connection(NULL)
+  _connection(NULL)
 {
 
 }
@@ -151,12 +151,12 @@ bool DlgProviderParam::fillEnumerablePropertiesValues(CConnectionParam & param, 
 // Controladores de mensajes de DlgProviderParam
 void DlgProviderParam::OnCancel()
 {
-  if (m_Connection != NULL) {
+  if (_connection != NULL) {
     try {
-      m_Connection->Close();
+      _connection->Close();
     } catch (...) {
     }  
-    m_Connection = NULL;
+    _connection = NULL;
   }
 
   CDialog::OnCancel();
@@ -176,18 +176,18 @@ void DlgProviderParam::OnOK()
     if (label.Right(1) == "*") label = label.Left(label.GetLength() - 1);
     connString += label + L"= " + value + L";";
   }
-  if (m_Connection == NULL) m_Connection = new CConnection(_provider.GetName());
-  m_Connection->SetConnectionString(connString);
+  if (_connection == NULL) _connection = new CConnection(_provider.GetName());
+  _connection->SetConnectionString(connString);
 
   try {
-		FdoConnectionState state = m_Connection->Open();
+		FdoConnectionState state = _connection->Open();
     if (state != FdoConnectionState_Open) {
       if (state == FdoConnectionState_Pending) {
         for (itParam = m_Etiquetas->begin(), itValues = m_ParamCtrls->begin(); itParam != m_Etiquetas->end() && itValues != m_ParamCtrls->end(); itParam++, itValues++) {
           GetDlgItemText(*itParam, label);
           if (label.Right(1) == "*") label = label.Left(label.GetLength() - 1);
           
-          CConnectionParam param = m_Connection->GetParam(String(label));
+          CConnectionParam param = _connection->GetParam(String(label));
           if (param.IsEnumerable()) {
             CComboBox * cbo = (CComboBox*)GetDlgItem(*itValues);
             if (cbo != NULL &&
@@ -210,19 +210,19 @@ void DlgProviderParam::OnOK()
     }
   } catch (FdoConnectionException * ce) {
     AfxMessageBox(ce->GetExceptionMessage());
-    m_Connection->Close();
-    m_Connection = NULL;
+    _connection->Close();
+    _connection = NULL;
     return;
 	} catch (FdoException * e) {
     AfxMessageBox(e->GetExceptionMessage());
-    m_Connection->Close();
-    m_Connection = NULL;
+    _connection->Close();
+    _connection = NULL;
     return;
 	}
   
-  m_Connection->Close();
+  _connection->Close();
   
   EndDialog(NULL);
 }
 
-CConnection * DlgProviderParam::GetConnection() const { return m_Connection; }
+CConnection * DlgProviderParam::GetConnection() const { return _connection; }

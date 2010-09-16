@@ -8,8 +8,9 @@
 class DlgProviders : public CDialog
 {
 public:
-  CStringPairs m_ProvidersList;
-  String m_ProviderName;
+  CStringPairs _providersList;
+  String _providerName;
+
   CTreeCtrl m_TreeList;
   
 	DECLARE_DYNAMIC(DlgProviders)

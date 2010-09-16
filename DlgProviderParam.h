@@ -12,9 +12,10 @@ class DlgProviderParam : public CDialog
 {
 protected:
   CProvider _provider;
+  CConnection * _connection;
+  
   ListaControles* m_Etiquetas;
   ListaControles* m_ParamCtrls;
-  CConnection * m_Connection;
   
   DECLARE_DYNAMIC(DlgProviderParam)
 

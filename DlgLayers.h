@@ -4,18 +4,19 @@
 
 #include "Connection.h"
 #include "afxwin.h"
+#include "FeatureClass.h"
 
 // Cuadro de diálogo de DlgLayers
 
 class DlgLayers : public CDialog
 {
 protected:
-  CConnection * m_Connection;
-  String m_layer;
+  CConnection * _connection;
+  CFeatureClass * _featureClass;
 
 public:
   void SetConnection(CConnection * connection);
-  const String GetLayer();
+  CFeatureClass * GetFeatureClass();
 
   DECLARE_DYNAMIC(DlgLayers)
 
