@@ -178,13 +178,17 @@ int ads_DlgProviders()
     DlgLayers dlgLayers(connection);
     dlgLayers.DoModal();
     CFeatureClass * featureClass = dlgLayers.GetFeatureClass();
-    //connection->Open();
+    
+    connection->Open();
+    
     String extent = L"";
     CFeatureReader featureReader = featureClass->SelectByExtent(extent);
     featureReader.DrawAll();
-    //connection->Close();
+    
+    connection->Close();
     delete featureClass;
   }
+  delete connection;
 
   ads_retnil();
   return( RSRSLT);

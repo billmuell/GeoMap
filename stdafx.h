@@ -68,7 +68,6 @@
 // and will tell the compiler witch libraries to link with
 #include "arxHeaders.h"
 
-
 typedef std::wstring String;
 typedef std::vector<String> Strings;
 typedef std::pair<String, String> CStringPair; 

@@ -6,13 +6,15 @@
 #include "afxwin.h"
 #include "FeatureClass.h"
 
-// Cuadro de diálogo de DlgLayers
+typedef std::map<String, CFeatureClass*> FeatureClasses;
 
+// Cuadro de diálogo de DlgLayers
 class DlgLayers : public CDialog
 {
 protected:
   CConnection * _connection;
   CFeatureClass * _featureClass;
+  FeatureClasses features;
 
 public:
   void SetConnection(CConnection * connection);
@@ -32,6 +34,8 @@ protected:
   virtual BOOL OnInitDialog();
   virtual void OnCancel();
   virtual void OnOK();
+  
+  virtual BOOL FillLayersList(const String & schemaName);
 
 	DECLARE_MESSAGE_MAP()
 public:

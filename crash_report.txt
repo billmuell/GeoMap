@@ -3397,3 +3397,63 @@ ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D3
 ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
 GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
 ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1
+
+--------------- 21-09-2010 16:57:20 ---------------
+Exception:
+ACCESS_VIOLATION (C0000005) in module GeoMap.Brx at 001B:022DCA54
+Registers:
+EAX=00000000  EBX=01A523E0  ECX=0D39C9A8  EDX=0D39C85C  ESI=0D39C91C  EDI=044E39C0  EBP=0D39C91C  ESP=0D39C8AC  EIP=022DCA54  FLG=00010206  CS=001B  DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
+
+Call stack:
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\featurereader.cpp(101): CFeatureReader::DrawAll()+68 byte(s), (0x4EDDED5D 0x044E39C0 0x0455C238 0x01A523E0)GeoMap.Brx, 001B:022DCA54
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(184): ads_DlgProviders()+512 byte(s), (0x044E39C0 0x0455C238 0x01A523E0 0x78134C39)GeoMap.Brx, 001B:022C8C70
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(195): GeoMap_DlgProviders()+14 byte(s), (0x044E39C0 0x62FB95DE 0x044E39C0 0x565231C0)GeoMap.Brx, 001B:022C8E9E
+OdEdCommand::module()+776 byte(s), (0x0455C238 0x044E39C0 0x53455E0C 0x02D1A2B4)DD_Root_2.06_8.dll, 001B:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x0432E298 0x00000000 0x53457CC0 0x015EFA60)cadapp.dll, 001B:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x53457CF0 0xBAADF00D 0x015EFA60)cadapp.dll, 001B:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x53457C5C)cadapp.dll, 001B:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 001B:014C0EA7
+, (0x53457C64 0xBAADF00D 0xBAADF00D 0x00000000), 001B:53457C5C
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1
+
+--------------- 21-09-2010 16:58:51 ---------------
+Exception:
+ACCESS_VIOLATION (C0000005) in module GeoMap.Brx at 001B:022DF4D4
+Registers:
+EAX=00000000  EBX=01A523E0  ECX=0D39C9A8  EDX=0D39C85C  ESI=0D39C91C  EDI=044E3A10  EBP=0D39C91C  ESP=0D39C8AC  EIP=022DF4D4  FLG=00010206  CS=001B  DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
+
+Call stack:
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\featurereader.cpp(101): CFeatureReader::DrawAll()+68 byte(s), (0xA6A90796 0x044E3A10 0x0455C438 0x01A523E0)GeoMap.Brx, 001B:022DF4D4
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(184): ads_DlgProviders()+512 byte(s), (0x044E3A10 0x0455C438 0x01A523E0 0x78134C39)GeoMap.Brx, 001B:022C9EE0
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(195): GeoMap_DlgProviders()+14 byte(s), (0x044E3A10 0x62FB95DE 0x044E3A10 0x642CB08A)GeoMap.Brx, 001B:022CA18E
+OdEdCommand::module()+776 byte(s), (0x0455C438 0x044E3A10 0x7BB3E057 0x02D1A2B4)DD_Root_2.06_8.dll, 001B:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x0432E298 0x00000000 0x7BB3C29B 0x015EFA60)cadapp.dll, 001B:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x7BB3C2AB 0xBAADF00D 0x015EFA60)cadapp.dll, 001B:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x7BB3C207)cadapp.dll, 001B:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 001B:014C0EA7
+, (0x7BB3C23F 0xBAADF00D 0xBAADF00D 0x00000000), 001B:7BB3C207
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1
+
+--------------- 21-09-2010 17:08:20 ---------------
+Exception:
+ACCESS_VIOLATION (C0000005) in module GeoMap.Brx at 001B:022E26B4
+Registers:
+EAX=00000000  EBX=01A523F8  ECX=0D39C9AC  EDX=0D39C860  ESI=0D39C920  EDI=044E39C0  EBP=0D39C920  ESP=0D39C8B0  EIP=022E26B4  FLG=00010202  CS=001B  DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
+
+Call stack:
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\featurereader.cpp(101): CFeatureReader::DrawAll()+68 byte(s), (0x9FC015EB 0x044E39C0 0x0455C3F0 0x01A523F8)GeoMap.Brx, 001B:022E26B4
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(184): ads_DlgProviders()+512 byte(s), (0x044E39C0 0x0455C3F0 0x01A523F8 0x78134C39)GeoMap.Brx, 001B:022CAFE0
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(195): GeoMap_DlgProviders()+14 byte(s), (0x044E39C0 0x62FB95DE 0x044E39C0 0x989C3F44)GeoMap.Brx, 001B:022CB28E
+OdEdCommand::module()+776 byte(s), (0x0455C3F0 0x044E39C0 0x9AE6892E 0x02D1A2B4)DD_Root_2.06_8.dll, 001B:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x042F9948 0x00000000 0x9AE6ABE2 0x015EFA60)cadapp.dll, 001B:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x9AE6ABD2 0xBAADF00D 0x015EFA60)cadapp.dll, 001B:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x9AE6AB7E)cadapp.dll, 001B:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 001B:014C0EA7
+, (0x9AE6AB46 0xBAADF00D 0xBAADF00D 0x00000000), 001B:9AE6AB7E
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1

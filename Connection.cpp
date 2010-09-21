@@ -13,6 +13,7 @@ CConnection::CConnection(String providerName)
 
 CConnection::~CConnection(void)
 {
+  Close();
 }
 
 void CConnection::SetConnectionString(String connString)
