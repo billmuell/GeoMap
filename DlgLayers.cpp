@@ -47,10 +47,11 @@ BOOL DlgLayers::FillLayersList(const String & schemaName)
     return FALSE;
   }
   
-  cmdGDS->SetSchemaName(schemaName.c_str());
   FdoPtr<FdoFeatureSchemaCollection> schemas = cmdGDS->Execute();
   for (FdoInt32 i = 0; i < schemas->GetCount(); i++) { 
     FdoPtr<FdoFeatureSchema> schema = schemas->GetItem(0);
+    String schemaName = schema->GetName();
+    
     FdoClassCollection * layers = schema->GetClasses();
     for (FdoInt32 j = 0; j < layers->GetCount(); j++) { 
       FdoClassDefinition * layer = layers->GetItem(j);
@@ -62,10 +63,9 @@ BOOL DlgLayers::FillLayersList(const String & schemaName)
         String featureClassName = layer->GetName();
         String spatialColumn = prop->GetName();
         
-        //features.push_back(featureClassName, CFeatureClass(_connection, featureClassName, spatialColumn));
-        features[featureClassName] = new CFeatureClass(_connection, featureClassName, spatialColumn);
+        features[schemaName + L"." + featureClassName] = new CFeatureClass(_connection, featureClassName, spatialColumn);
         
-        lstLayers.AddString(layer->GetName());
+        lstLayers.AddString((schemaName + L"." + featureClassName).c_str());
       }
     }
   }
@@ -76,16 +76,15 @@ BOOL DlgLayers::FillLayersList(const String & schemaName)
 }
 
 void DlgLayers::OnCancel() {
+  _featureClass = 0;
+
   CDialog::OnCancel();
 }
 
 void DlgLayers::OnOK() {
   CString layer;
   lstLayers.GetText(lstLayers.GetCurSel(), layer);
-  String featureClassName = layer;
-  //_featureClass = features.at(lstLayers.GetCurSel());
-  //_featureClass = new CFeatureClass(_connection, featureClassName, spatialColumn)
-  _featureClass = features[featureClassName];
+  _featureClass = features[String(layer)];
   
   EndDialog(NULL);
 }

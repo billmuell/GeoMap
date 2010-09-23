@@ -12,6 +12,9 @@ DlgProviders
 #include "stdafx.h"
 #include "MyDialog.h"
 
+#include <sstream>
+#include <iomanip>
+
 #include "ProvidersCollection.h"
 #include "DlgProviders.h"
 
@@ -157,6 +160,72 @@ void GeoMap_MyDialog2()
 
 }
 
+String Round(double value, int numDecs)
+{
+  std::wostringstream rounder;
+  rounder << std::fixed << std::setprecision(numDecs) << value;
+  
+  String valueStr = rounder.str();
+  int pos = valueStr.find(L",");
+  if (pos > 1) {
+    valueStr = valueStr.substr(0, pos + numDecs);
+  }
+  
+  return valueStr;
+}
+
+String GetSelectedExtent() {
+  ads_name selection;
+  int returnValue = acedSSGet(_T("I"), NULL, NULL, NULL, selection);
+  if (returnValue == RTCAN) return 0;
+  if (returnValue != RTNORM) {
+    return L"";
+  }
+
+  if (acedSSSetFirst(selection, NULL) != RTNORM) {
+    acedSSFree(selection);
+    return L"";
+  }
+  ads_name element;
+  acedSSName(selection, 0, element);
+  acedSSFree(selection);
+  
+  AcDbObjectId idEntity;
+  if (acdbGetObjectId(idEntity, element) != Acad::eOk) {
+    acedSSFree(element);
+    return L"";
+  }
+  
+  AcDbEntity * entity;
+  if ((acdbGetObjectId(idEntity, element) != Acad::eOk) || 
+      (acdbOpenObject(entity, idEntity, AcDb::kForRead) != Acad::eOk)) {
+    
+    acedSSFree(element);
+    return L"";
+  }
+  
+  acedSSFree(element);
+  
+  if (!entity->isKindOf(AcDbPolyline::desc())) return L"";
+  
+  AcDbPolyline * poly = static_cast<AcDbPolyline*>(entity);
+  if (!poly->isClosed()) return 0;
+  
+  String extent = L"POLYGON((";
+  for (int i = 0; i < poly->numVerts(); i++) {
+    AcGePoint2d point;
+    poly->getPointAt(i, point);
+    
+    if (i > 0) extent += L", ";
+    extent += Round(point.x, 0) + L" " + Round(point.y, 0);
+  }
+  extent += L"))";
+  
+  poly->close();
+  
+  return extent;
+}
+
 int ads_DlgProviders()
 {
   CProvidersCollection pc;
@@ -178,14 +247,18 @@ int ads_DlgProviders()
     DlgLayers dlgLayers(connection);
     dlgLayers.DoModal();
     CFeatureClass * featureClass = dlgLayers.GetFeatureClass();
+    if (featureClass == 0) {
+      ads_retnil();
+      return( RSRSLT);
+    }
     
+    String extent = GetSelectedExtent();
+
     connection->Open();
-    
-    String extent = L"";
     CFeatureReader featureReader = featureClass->SelectByExtent(extent);
     featureReader.DrawAll();
-    
     connection->Close();
+    
     delete featureClass;
   }
   delete connection;
@@ -243,25 +316,17 @@ int ads_TestReadData()
     acedSSFree(element);
     return 0;
   }
-  /*AcDbEntity * entity;
-  if ((acdbGetObjectId(idEntity, element) != Acad::eOk) || 
-      (acdbOpenObject(entity, idEntity, AcDb::kForRead) != Acad::eOk)) {
-    
-    acedSSFree(element);
-    return 0;
-  }*/
 
   acedSSFree(element);
   
   CCadEntity cadEntity(idEntity);
-  //CCadEntity cadEntity(entity);
   acutPrintf((L"\n" + cadEntity.GetData().ToFormattedString() + L"\n").c_str());
-  //entity->close();
   
   return 1;
 }
 void GeoMap_TestReadData() { ads_TestReadData(); }
 #endif
+
 
 ////////////////////////////////////////////////////
 #ifndef BRX_APP
