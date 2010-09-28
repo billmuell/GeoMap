@@ -3,13 +3,15 @@
 
 #include <fdo.h>
 
-CProvidersCollection::CProvidersCollection(void)
+CProvidersCollection::CProvidersCollection(bool onlySupported)
 {
   FdoPtr<IProviderRegistry> pRegistry = FdoFeatureAccessManager::GetProviderRegistry();
   const FdoProviderCollection * providers = pRegistry->GetProviders();
   for (int i = 0; i < providers->GetCount(); i++ ) {
     FdoPtr<FdoProvider> provider = providers->GetItem(i);
-    _providers.push_back(CProvider(provider));
+    if (onlySupported && IsSupported(provider)) {
+      _providers.push_back(CProvider(provider));
+    }
   }
 }
 
@@ -40,4 +42,9 @@ CStringPairs CProvidersCollection::ToStringPairs() {
     providersList.push_back(CStringPair(provider.GetDisplayName(), provider.GetName()));
   }
   return providersList;
+}
+
+bool CProvidersCollection::IsSupported(FdoPtr<FdoProvider> provider) {
+  String name = provider->GetDisplayName();
+  return name.find(L"SHP") != -1 || name.find(L"PostGIS") != -1 || name.find(L"ArcSDE") != -1;
 }

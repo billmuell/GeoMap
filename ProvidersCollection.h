@@ -5,11 +5,10 @@
 class CProvidersCollection
 {
 protected:
-  //FdoProviderCollection * _providers;
   std::vector<CProvider> _providers;
 
 public:
-  CProvidersCollection(void);
+  CProvidersCollection(bool onlySupported = false);
 public:
   ~CProvidersCollection(void);
 public:
@@ -17,4 +16,7 @@ public:
   CProvider GetItem(int num) const;
   CProvider GetItem(String id) const;
   CStringPairs ToStringPairs();
+
+protected:
+  bool IsSupported(FdoPtr<FdoProvider> provider);
 };

@@ -212,13 +212,22 @@ String GetSelectedExtent() {
   if (!poly->isClosed()) return 0;
   
   String extent = L"POLYGON((";
+  AcGePoint2d start;
+  AcGePoint2d current;
   for (int i = 0; i < poly->numVerts(); i++) {
-    AcGePoint2d point;
-    poly->getPointAt(i, point);
+    poly->getPointAt(i, current);
     
-    if (i > 0) extent += L", ";
-    extent += Round(point.x, 0) + L" " + Round(point.y, 0);
+    if (i > 0) {
+      extent += L", ";
+    } else {
+      start = current;
+    }
+    extent += Round(current.x, 0) + L" " + Round(current.y, 0);
   }
+  if (!start.isEqualTo(current)) {
+    extent += L", " + Round(start.x, 0) + L" " + Round(start.y, 0);
+  }
+  
   extent += L"))";
   
   poly->close();
@@ -228,7 +237,7 @@ String GetSelectedExtent() {
 
 int ads_DlgProviders()
 {
-  CProvidersCollection pc;
+  CProvidersCollection pc(true);
   CStringPairs providersList = pc.ToStringPairs();
   
   DlgProviders dlg(providersList, CWnd::FromHandle(adsw_acadMainWnd()));
@@ -256,7 +265,10 @@ int ads_DlgProviders()
 
     connection->Open();
     CFeatureReader featureReader = featureClass->SelectByExtent(extent);
-    featureReader.DrawAll();
+    try {
+      featureReader.DrawAll();
+    } catch (...) {
+    }
     connection->Close();
     
     delete featureClass;
