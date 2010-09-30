@@ -3601,3 +3601,34 @@ ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D3
 ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
 GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
 ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1
+
+--------------- 30-09-2010 17:45:09 ---------------
+Exception:
+ACCESS_VIOLATION (C0000005) in module GeoMap.Brx at 001B:022DB3F4
+Registers:
+EAX=000000C8  EBX=01A52520  ECX=010D0000  EDX=116C0608  ESI=0D39C8E4  EDI=044E3A30  EBP=0D39C86C  ESP=0D39C7F4  EIP=022DB3F4  FLG=00010202  CS=001B  DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
+
+Call stack:
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\connection.cpp(27): CConnection::Open()+68 byte(s), (0x313618CD 0x044E3A30 0x0D39C8E4 0x01A52520)GeoMap.Brx, 001B:022DB3F4
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\featurereader.cpp(102): CFeatureReader::DrawAll()+58 byte(s), (0x31361CB9 0x044E3A30 0x0455C510 0x01A52520)GeoMap.Brx, 001B:022E23CA
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(276): ads_DlgProviders()+865 byte(s), (0x044E3A30 0x0455C510 0x01A52520 0x78134C39)GeoMap.Brx, 001B:022CBAB1
+c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(291): GeoMap_DlgProviders()+14 byte(s), (0x044E3A30 0x62FB95DE 0x044E3A30 0x3F9538DE)GeoMap.Brx, 001B:022CBDEE
+OdEdCommand::module()+776 byte(s), (0x0455C510 0x044E3A30 0x31AC1459 0x02D1A2B4)DD_Root_2.06_8.dll, 001B:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x0432E548 0x00000000 0x31AC3695 0x015EFA60)cadapp.dll, 001B:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x31AC36A5 0xBAADF00D 0x015EFA60)cadapp.dll, 001B:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x31AC3609)cadapp.dll, 001B:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 001B:014C0EA7
+, (0x31AC3631 0xBAADF00D 0xBAADF00D 0x00000000), 001B:31AC3609
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 001B:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 001B:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 001B:7C82FFB1
+
+--------------- 30-09-2010 17:58:25 ---------------
+Exception:
+ACCESS_VIOLATION (C0000005) in module sde.dll at 001B:11BADA6E
+Registers:
+EAX=125C1858  EBX=11783D04  ECX=00000004  EDX=00000000  ESI=125C1858  EDI=11C8D39C  EBP=11783CB0  ESP=0D39C848  EIP=11BADA6E  FLG=00210246  CS=001B  DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
+
+Call stack:
+SES_stream_ok()+30 byte(s), (0x1291FDC0 0x00000000 0x00000000 0x00000000)sde.dll, 001B:11BADA6E
+, (0x00000034 0x00000044 0x00000054 0x00480057), 001B:11777270

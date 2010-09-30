@@ -1,29 +1,23 @@
 #pragma once
 
 #include "resource.h"
-
-#include "Connection.h"
 #include "afxwin.h"
 #include "FeatureClass.h"
-
-typedef std::map<String, CFeatureClass*> FeatureClasses;
 
 // Cuadro de diálogo de DlgLayers
 class DlgLayers : public CDialog
 {
 protected:
-  CConnection * _connection;
-  CFeatureClass * _featureClass;
-  FeatureClasses features;
+  String _featureClassName;
+  FeatureClasses * _featureClasses;
 
 public:
-  void SetConnection(CConnection * connection);
-  CFeatureClass * GetFeatureClass();
-
+  String GetFeatureClassName();
+  
   DECLARE_DYNAMIC(DlgLayers)
 
 public:
-	DlgLayers(CConnection * connection, CWnd* pParent = NULL);   // Constructor estándar
+	DlgLayers(FeatureClasses * featureClasses, CWnd* pParent = NULL);   // Constructor estándar
 	virtual ~DlgLayers();
 
 // Datos del cuadro de diálogo
@@ -35,7 +29,7 @@ protected:
   virtual void OnCancel();
   virtual void OnOK();
   
-  virtual BOOL FillLayersList(const String & schemaName);
+  virtual BOOL FillLayersList();
 
 	DECLARE_MESSAGE_MAP()
 public:

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ConnectionParam.h"
-
 #include <fdo.h>
 
 typedef std::vector<CConnectionParam> CConnectionParams;
@@ -24,6 +23,4 @@ public:
   CConnectionParams GetParams() const;
   CConnectionParam GetParam(String id) const;
   FdoICommand * CreateCommand(FdoCommandType commandType);
-
-protected:
 };

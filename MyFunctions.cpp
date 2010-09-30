@@ -253,16 +253,24 @@ int ads_DlgProviders()
   
   CConnection * connection = dlgProviders.GetConnection();
   if (connection != NULL) {
-    DlgLayers dlgLayers(connection);
+    FeatureClasses * featureClasses = CFeatureClass::GetFeatureClasses(connection);
+    
+    DlgLayers dlgLayers(featureClasses);
     dlgLayers.DoModal();
-    CFeatureClass * featureClass = dlgLayers.GetFeatureClass();
+    String featureClassName = dlgLayers.GetFeatureClassName();
+    if (featureClassName.length() == 0) {
+      ads_retnil();
+      return( RSRSLT);
+    }
+    
+    CFeatureClass * featureClass = featureClasses->operator [](featureClassName);
     if (featureClass == 0) {
       ads_retnil();
       return( RSRSLT);
     }
     
     String extent = GetSelectedExtent();
-
+    
     connection->Open();
     CFeatureReader featureReader = featureClass->SelectByExtent(extent);
     try {

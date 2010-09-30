@@ -2,8 +2,10 @@
 
 #include "Connection.h"
 #include "FeatureReader.h"
-
 #include <fdo.h>
+
+class CFeatureClass;
+typedef std::map<String, CFeatureClass*> FeatureClasses;
 
 class CFeatureClass
 {
@@ -17,4 +19,5 @@ public:
   ~CFeatureClass(void);
 public:
   CFeatureReader SelectByExtent(String &extent);
+  static FeatureClasses * GetFeatureClasses(CConnection * connection);
 };

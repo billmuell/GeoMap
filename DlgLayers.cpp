@@ -8,8 +8,8 @@
 
 IMPLEMENT_DYNAMIC(DlgLayers, CDialog)
 
-DlgLayers::DlgLayers(CConnection * connection, CWnd* pParent /*=NULL*/)
-	: CDialog(DlgLayers::IDD, pParent), _connection(connection)
+DlgLayers::DlgLayers(FeatureClasses * featureClasses, CWnd* pParent /*=NULL*/)
+	: CDialog(DlgLayers::IDD, pParent), _featureClasses(featureClasses)
 {
 }
 
@@ -17,11 +17,7 @@ DlgLayers::~DlgLayers()
 {
 }
 
-void DlgLayers::SetConnection(CConnection * connection) {
-  _connection = connection;
-}
-
-CFeatureClass * DlgLayers::GetFeatureClass() { return _featureClass; }
+String DlgLayers::GetFeatureClassName() { return _featureClassName; }
 
 void DlgLayers::DoDataExchange(CDataExchange* pDX)
 {
@@ -32,51 +28,20 @@ void DlgLayers::DoDataExchange(CDataExchange* pDX)
 BOOL DlgLayers::OnInitDialog() {
   CDialog::OnInitDialog();
   
-  return FillLayersList(L"SDE");
+  return FillLayersList();
 }
 
-BOOL DlgLayers::FillLayersList(const String & schemaName) 
-{
-  _connection->Open();
-  
-  FdoPtr<FdoIDescribeSchema> cmdGDS = NULL;
-  try {
-    cmdGDS = (FdoIDescribeSchema*)_connection->CreateCommand(FdoCommandType_DescribeSchema); 
-  } catch (FdoException * e) {
-    AfxMessageBox(e->GetExceptionMessage());
-    return FALSE;
+BOOL DlgLayers::FillLayersList()
+{ 
+  for (FeatureClasses::iterator it = _featureClasses->begin(); it != _featureClasses->end(); it++) {
+    lstLayers.AddString(it->first.c_str());
   }
-  
-  FdoPtr<FdoFeatureSchemaCollection> schemas = cmdGDS->Execute();
-  for (FdoInt32 i = 0; i < schemas->GetCount(); i++) { 
-    FdoPtr<FdoFeatureSchema> schema = schemas->GetItem(0);
-    String schemaName = schema->GetName();
-    
-    FdoClassCollection * layers = schema->GetClasses();
-    for (FdoInt32 j = 0; j < layers->GetCount(); j++) { 
-      FdoClassDefinition * layer = layers->GetItem(j);
-      FdoPtr<FdoPropertyDefinitionCollection> properties = layer->GetProperties();
-      for (FdoInt32 i = 0; i < properties->GetCount(); i++) {
-        FdoPropertyDefinition * prop = properties->GetItem(i);
-        if (prop->GetPropertyType() != FdoPropertyType_GeometricProperty) continue;
-        
-        String featureClassName = layer->GetName();
-        String spatialColumn = prop->GetName();
-        
-        features[schemaName + L"." + featureClassName] = new CFeatureClass(_connection, featureClassName, spatialColumn);
-        
-        lstLayers.AddString((schemaName + L"." + featureClassName).c_str());
-      }
-    }
-  }
-  
-  _connection->Close();
   
   return TRUE;
 }
 
 void DlgLayers::OnCancel() {
-  _featureClass = 0;
+  _featureClassName = L"";
 
   CDialog::OnCancel();
 }
@@ -84,13 +49,12 @@ void DlgLayers::OnCancel() {
 void DlgLayers::OnOK() {
   CString layer;
   lstLayers.GetText(lstLayers.GetCurSel(), layer);
-  _featureClass = features[String(layer)];
+  _featureClassName = layer;
   
   EndDialog(NULL);
 }
 
 BEGIN_MESSAGE_MAP(DlgLayers, CDialog)
 END_MESSAGE_MAP()
-
 
 // Controladores de mensajes de DlgLayers

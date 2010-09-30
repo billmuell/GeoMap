@@ -9,7 +9,11 @@ CProvidersCollection::CProvidersCollection(bool onlySupported)
   const FdoProviderCollection * providers = pRegistry->GetProviders();
   for (int i = 0; i < providers->GetCount(); i++ ) {
     FdoPtr<FdoProvider> provider = providers->GetItem(i);
-    if (onlySupported && IsSupported(provider)) {
+    if (onlySupported) {
+      if (IsSupported(provider)) {
+        _providers.push_back(CProvider(provider));
+      }
+    } else {
       _providers.push_back(CProvider(provider));
     }
   }

@@ -37,3 +37,46 @@ CFeatureReader CFeatureClass::SelectByExtent(String &extent)
     return CFeatureReader(0, String(L""));
 	}
 }
+
+FeatureClasses * CFeatureClass::GetFeatureClasses(CConnection * connection) 
+{
+  connection->Open();
+  
+  FdoPtr<FdoIDescribeSchema> cmdGDS = NULL;
+  try {
+    cmdGDS = (FdoIDescribeSchema*)connection->CreateCommand(FdoCommandType_DescribeSchema); 
+  } catch (FdoException * e) {
+    AfxMessageBox(e->GetExceptionMessage());
+    connection->Close();
+    return 0;
+  }
+  
+  FeatureClasses * featureClasses = new FeatureClasses();
+  
+  FdoPtr<FdoFeatureSchemaCollection> schemas = cmdGDS->Execute();
+  for (FdoInt32 i = 0; i < schemas->GetCount(); i++) { 
+    FdoPtr<FdoFeatureSchema> schema = schemas->GetItem(0);
+    String schemaName = schema->GetName();
+    
+    FdoClassCollection * layers = schema->GetClasses();
+    for (FdoInt32 j = 0; j < layers->GetCount(); j++) { 
+      FdoClassDefinition * layer = layers->GetItem(j);
+      FdoPtr<FdoPropertyDefinitionCollection> properties = layer->GetProperties();
+      for (FdoInt32 i = 0; i < properties->GetCount(); i++) {
+        FdoPropertyDefinition * prop = properties->GetItem(i);
+        if (prop->GetPropertyType() != FdoPropertyType_GeometricProperty) continue;
+        
+        String featureClassName = layer->GetName();
+        String spatialColumn = prop->GetName();
+        
+        //String layerNameStr = schemaName + L"." + featureClassName;
+        String layerNameStr = featureClassName;
+        featureClasses->operator [](layerNameStr) = new CFeatureClass(connection, featureClassName, spatialColumn);
+      }
+    }
+  }
+  
+  connection->Close();
+  
+  return featureClasses;
+}
