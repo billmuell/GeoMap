@@ -36,6 +36,7 @@ DlgProviders
 //*ads* *underscore sperator* *Lisp function Name*
 // Sample command    *Group name*  *global name* *local name*
  
+#ifdef TEST
 // *appname* _ *commandname*
   void GeoMap_MyCommand(void)
   {
@@ -159,6 +160,7 @@ void GeoMap_MyDialog2()
   ads_MyDialog();
 
 }
+#endif
 
 String Round(double value, int numDecs)
 {
@@ -235,7 +237,7 @@ String GetSelectedExtent() {
   return extent;
 }
 
-int ads_DlgProviders()
+int ads_gm_import()
 {
   CProvidersCollection pc(true);
   CStringPairs providersList = pc.ToStringPairs();
@@ -287,9 +289,9 @@ int ads_DlgProviders()
   return( RSRSLT);
 }
 
-void GeoMap_DlgProviders()
+void GeoMap_gm_import()
 {
-  ads_DlgProviders();
+  ads_gm_import();
 }
 
 #ifdef TEST
@@ -358,11 +360,11 @@ void GeoMap_TestReadData() { ads_TestReadData(); }
 
 #endif  // BRX_APP
 
+#ifdef TEST
 // sample arx command
 ACED_ARXCOMMAND_ENTRY_AUTO(, GeoMap, _MyCommand, MyCommand, ACRX_CMD_TRANSPARENT, NULL)
 
 // sample Lisp function                    *func name*
-
 ACED_ADSCOMMAND_ENTRY_AUTO(, MyCommand, false)
 
 ACED_ADSSYMBOL_ENTRY_AUTO(, MyFunc_, false)
@@ -373,9 +375,10 @@ ACED_ADSCOMMAND_ENTRY_AUTO(, MyCommand12, false)
 
 ACED_ADSCOMMAND_ENTRY_AUTO( , MyDialog, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _MyDialog2, MyDialog2, ACRX_CMD_TRANSPARENT, NULL)
+#endif
 
-ACED_ADSCOMMAND_ENTRY_AUTO( , DlgProviders, false)
-ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _DlgProviders, DlgProviders, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ADSCOMMAND_ENTRY_AUTO( , gm_import, false)
+ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _gm_import, gm_import, ACRX_CMD_TRANSPARENT, NULL)
 
 #ifdef TEST
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestProviderCollection, false)

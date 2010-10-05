@@ -19,21 +19,8 @@ void CButtonFile::SetTextBoxFile(CEdit * textBox) { _textBox = textBox; }
 
 void CButtonFile::OnBnClickedButton()
 {
-  /*// TODO: Add your control notification handler code here
-  CFile flEmployees;
-  char strFilter[] = { "Employees Records (*.mpl)|*.mpl|Palace Ice Cream Files (*.pis)|*.pis|All Files (*.*)|*.*||" };
-
-  CFileDialog FileDlg(TRUE, ".mpl", NULL, 0, strFilter);
-
-  if( FileDlg.DoModal() != IDOK ) return;
-
-  if( flEmployees.Open(FileDlg.GetFileName(), CFile::modeRead) == FALSE ) return;
-  CArchive ar(&flEmployees, CArchive::load);
+  CFileDialog fileDlg(TRUE, _defaultExt.c_str(), NULL, OFN_HIDEREADONLY, _filterStr.c_str());
+  if(fileDlg.DoModal() != IDOK ) return;
   
-  ar >> m_FirstName >> m_LastName >> m_Address >> m_City >> m_State >> m_ZIPCode >> m_HourlySalary >> m_EmploymentStatus;
-  ar.Close();
-  
-  flEmployees.Close();
-
-  UpdateData(FALSE);*/
+  _textBox->SetWindowTextW(fileDlg.GetFileName());
 }

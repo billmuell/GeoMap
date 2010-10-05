@@ -109,7 +109,7 @@ void DlgProviderParam::showProviderParamsCtrls() {
     
     } else {
       CEdit * value = new CEdit();
-
+      
       if (param->IsFilePath() || param->IsFileName()) {
         rect.left = rect.right - 30;
         rect.right = rect.left + 30;

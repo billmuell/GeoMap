@@ -10,7 +10,7 @@ public:
   ~CButtonFile(void);
 public:
   void SetTextBoxFile(CEdit * textBox);
-
+  
 protected:
   //DECLARE_DYNAMIC(CButtonFile)
   DECLARE_MESSAGE_MAP()
@@ -20,4 +20,7 @@ protected:
 
 protected:
   CEdit * _textBox;
+
+  String _filterStr;
+  String _defaultExt;
 };
