@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CustSection xml:lang="en-US">
+
+  <MenuGroup Name="GEOMAP">
+    <MacroGroup Name="Import">
+      
+      <MenuMacro UID="import">
+        <Macro>
+          <Name>Import</Name>
+          <Command>^c^cgm_import</Command>
+        </Macro>
+      </MenuMacro>
+    </MacroGroup>
+    <MenuRoot>
+      <PopMenuRoot>
+        <PopMenu UID="ID_MnGeoMap">
+          <Alias>GEOMAP</Alias>
+          <Name>&amp;GeoMap</Name>
+          
+          
+          <PopMenuItem>
+            <NameRef>&amp;Import</NameRef>
+            <MenuItem>
+              <MacroRef MenuMacroID="import"/>
+            </MenuItem>
+          </PopMenuItem>
+        </PopMenu>
+      </PopMenuRoot>
+    </MenuRoot>
+  </MenuGroup>
+
+
+
+
+
+
+
+</CustSection>
