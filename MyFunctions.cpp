@@ -288,11 +288,46 @@ int ads_gm_import()
   ads_retnil();
   return( RSRSLT);
 }
+void GeoMap_gm_import() { ads_gm_import(); }
 
-void GeoMap_gm_import()
+int ads_gm_get_data() 
 {
-  ads_gm_import();
+  ads_name selection;
+  int returnValue = acedSSGet(_T("I"), NULL, NULL, NULL, selection);
+  if (returnValue == RTCAN || returnValue != RTNORM) return 0;
+  
+  long num = 0;
+  returnValue = acedSSLength(selection, &num);
+  if (returnValue == RTCAN || returnValue != RTNORM) return 0;
+  if (num != 1) {
+    acedSSSetFirst(NULL, NULL);
+    
+    returnValue = acedSSGet(L"_:S", NULL, NULL, NULL, selection);
+    if (returnValue == RTCAN || returnValue != RTNORM) return 0;
+    
+    if (acedSSSetFirst(selection, NULL) != RTNORM) {
+      acedSSFree(selection);
+      return 0;
+    }
+  }
+  ads_name element;
+  acedSSName(selection, 0, element);
+  acedSSFree(selection);
+  
+  AcDbObjectId idEntity;
+  if (acdbGetObjectId(idEntity, element) != Acad::eOk) {
+    acedSSFree(element);
+    return 0;
+  }
+
+  acedSSFree(element);
+  
+  CCadEntity cadEntity(idEntity);
+  acutPrintf((L"\n" + cadEntity.GetData().ToFormattedString() + L"\n").c_str());
+  
+  return 1;
 }
+void GeoMap_gm_get_data() { ads_gm_get_data(); }
 
 #ifdef TEST
 int ads_TestProviderCollection() { return CTestProviderCollection::TestAll(); }
@@ -313,40 +348,6 @@ int ads_TestAll()
   return 1;
 }
 void GeoMap_TestAll() { ads_TestAll(); }
-
-int ads_TestReadData() 
-{
-  acedSSSetFirst(NULL, NULL);
-  
-  ads_name selection;
-  int returnValue = acedSSGet(L"_:S", NULL, NULL, NULL, selection);
-  if (returnValue == RTCAN) return 0;
-  if (returnValue != RTNORM) {
-    return 0;
-  }
-
-  if (acedSSSetFirst(selection, NULL) != RTNORM) {
-    acedSSFree(selection);
-    return 0;
-  }
-  ads_name element;
-  acedSSName(selection, 0, element);
-  acedSSFree(selection);
-  
-  AcDbObjectId idEntity;
-  if (acdbGetObjectId(idEntity, element) != Acad::eOk) {
-    acedSSFree(element);
-    return 0;
-  }
-
-  acedSSFree(element);
-  
-  CCadEntity cadEntity(idEntity);
-  acutPrintf((L"\n" + cadEntity.GetData().ToFormattedString() + L"\n").c_str());
-  
-  return 1;
-}
-void GeoMap_TestReadData() { ads_TestReadData(); }
 #endif
 
 
@@ -379,6 +380,8 @@ ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _MyDialog2, MyDialog2, ACRX_CMD_TRANSPAREN
 
 ACED_ADSCOMMAND_ENTRY_AUTO( , gm_import, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _gm_import, gm_import, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ADSCOMMAND_ENTRY_AUTO( , gm_get_data, false)
+ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _gm_get_data, gm_get_data, ACRX_CMD_TRANSPARENT, NULL)
 
 #ifdef TEST
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestProviderCollection, false)
@@ -391,6 +394,4 @@ ACED_ADSCOMMAND_ENTRY_AUTO( , TestAll, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestAll, TestAll, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestArcSDE, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestArcSDE, TestArcSDE, ACRX_CMD_TRANSPARENT, NULL)
-ACED_ADSCOMMAND_ENTRY_AUTO( , TestReadData, false)
-ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestReadData, TestReadData, ACRX_CMD_TRANSPARENT, NULL)
 #endif
