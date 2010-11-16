@@ -15,5 +15,5 @@ public:
   ~CCadPolygon(void);
 
 protected:
-  AcDbEntity * getEntity(FdoIPolygon * geom);
+  AcDbEntity * GetEntity(FdoIPolygon * geom);
 };

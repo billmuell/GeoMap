@@ -3,13 +3,13 @@
 
 CCadLine::CCadLine(FdoILineString * geom)
 {
-  _entities.push_back(getEntity(geom));
+  _entities.push_back(GetEntity(geom));
 }
 
 CCadLine::CCadLine(FdoIMultiLineString * geom)
 {
   for (FdoInt32 i = 0; i < geom->GetCount(); i++) {
-    _entities.push_back(getEntity(geom->GetItem(i)));
+    _entities.push_back(GetEntity(geom->GetItem(i)));
   }
 }
 
@@ -17,7 +17,7 @@ CCadLine::~CCadLine(void)
 {
 }
 
-AcDbEntity * CCadLine::getEntity(FdoILineString * geom)
+AcDbEntity * CCadLine::GetEntity(FdoILineString * geom)
 {
   AcDb2dPolyline * line = new AcDb2dPolyline();
   

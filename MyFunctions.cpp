@@ -104,7 +104,7 @@ DlgProviders
 // sample from brxtemplate
 
 //++-- See StdAfx for these types
-  CStringPairs LayerList;
+  StringPairs LayerList;
 
   AcDbDatabase *pDb = acdbHostApplicationServices()->workingDatabase();
     pDb->layerTableId();
@@ -139,7 +139,7 @@ DlgProviders
       LayerColor.Format(_T("Red = %03d   Green = %03d   Blue = %03d "), 
                            clr.red(),    clr.green() ,  clr.blue());
 
-      LayerList.push_back(CStringPair(String(LayerName), String(LayerColor)));
+      LayerList.push_back(StringPair(String(LayerName), String(LayerColor)));
     }
 
     delete pLayerTableIterator;
@@ -240,7 +240,7 @@ String GetSelectedExtent() {
 int ads_gm_import()
 {
   CProvidersCollection pc(true);
-  CStringPairs providersList = pc.ToStringPairs();
+  StringPairs providersList = pc.ToStringPairs();
   
   DlgProviders dlg(providersList, CWnd::FromHandle(adsw_acadMainWnd()));
   dlg.DoModal();
@@ -338,12 +338,15 @@ int ads_TestFunctions() { return CTestFunctions::TestAll(); }
 void GeoMap_TestFunctions() { ads_TestFunctions(); }
 int ads_TestArcSDE() { return CTestFunctions::TestArcSDE(); }
 void GeoMap_TestArcSDE() { ads_TestArcSDE(); }
+int ads_TestLocale() { return CTestFunctions::TestLocale(); }
+void GeoMap_TestLocale() { ads_TestLocale(); }
 
 int ads_TestAll() 
 { 
   ads_TestProviderCollection();
   ads_TestProvider();
   ads_TestFunctions();
+  ads_TestLocale();
   
   return 1;
 }
@@ -394,4 +397,6 @@ ACED_ADSCOMMAND_ENTRY_AUTO( , TestAll, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestAll, TestAll, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestArcSDE, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestArcSDE, TestArcSDE, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ADSCOMMAND_ENTRY_AUTO( , TestLocale, false)
+ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestLocale, TestLocale, ACRX_CMD_TRANSPARENT, NULL)
 #endif

@@ -7,7 +7,7 @@
 // MyDialog dialog
 IMPLEMENT_DYNAMIC(MyDialog, CAcUiDialog)
 
-MyDialog::MyDialog(const CStringPairs &LayerList, CWnd* pParent /*=NULL*/)
+MyDialog::MyDialog(const StringPairs &LayerList, CWnd* pParent /*=NULL*/)
 	: CAcUiDialog(MyDialog::IDD, pParent) , _layerList(LayerList) { }
 
 MyDialog::~MyDialog() { }

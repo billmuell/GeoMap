@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "AppConf.h"
 
 class CTheArxApp: public AcRxArxApp
 {
@@ -10,9 +11,7 @@ public:
   virtual AcRx::AppRetCode On_kInitAppMsg(void* pAppData)
   {
     AcRx::AppRetCode result = AcRxArxApp::On_kInitAppMsg(pAppData);
-
-    //Place your init code here
-
+    CAppConf::SetLocale(L"es");
     return result;
   }
 };

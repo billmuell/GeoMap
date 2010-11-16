@@ -70,8 +70,8 @@
 
 typedef std::wstring String;
 typedef std::vector<String> Strings;
-typedef std::pair<String, String> CStringPair; 
-typedef std::vector<CStringPair> CStringPairs;
+typedef std::pair<String, String> StringPair;
+typedef std::vector<StringPair> StringPairs;
 typedef AcDbObjectPointer<AcDbLayerTable> LayerTablePointer;
 typedef AcDbObjectPointer<AcDbLayerTableRecord> LayerTableRecordPointer;
 

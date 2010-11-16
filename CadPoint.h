@@ -13,5 +13,5 @@ public:
 public:
   ~CCadPoint(void);
 protected:
-  AcDbEntity * getEntity(FdoIPoint * geom);
+  AcDbEntity * GetEntity(FdoIPoint * geom);
 };

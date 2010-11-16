@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "DlgProviderParam.h"
 #include "ButtonFile.h"
+#include "AppConf.h"
 
 // Cuadro de diálogo de DlgProviderParam
 
@@ -32,7 +33,9 @@ void DlgProviderParam::DoDataExchange(CDataExchange* pDX)
 BOOL DlgProviderParam::OnInitDialog() {
   CDialog::OnInitDialog();
   
-  SetWindowText((_T("Connection parameters for ") + _provider.GetName()).c_str());
+  CLocale locale = CAppConf::GetLocale();
+  
+  SetWindowText((locale.GetTranslation("Connection parameters for ") + locale.GetTranslation(_provider.GetName())).c_str());
   showProviderParamsCtrls();
   
   return FALSE;

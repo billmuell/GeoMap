@@ -13,5 +13,5 @@ public:
 public:
   ~CCadLine(void);
 protected:
-  AcDbEntity * getEntity(FdoILineString * geom);
+  AcDbEntity * GetEntity(FdoILineString * geom);
 };

@@ -15,7 +15,7 @@ BEGIN_MESSAGE_MAP(DlgProviders, CDialog)
   ON_NOTIFY(NM_CLICK, IDC_TREE1, &DlgProviders::OnNMClickTree1)
 END_MESSAGE_MAP()
 
-DlgProviders::DlgProviders(CStringPairs providersList, CWnd* pParent /* = NULL */)
+DlgProviders::DlgProviders(StringPairs providersList, CWnd* pParent /* = NULL */)
 	: CDialog(DlgProviders::IDD, pParent), _providersList(providersList), _providerName(L"")
 {
 

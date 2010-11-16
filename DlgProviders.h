@@ -8,7 +8,7 @@
 class DlgProviders : public CDialog
 {
 public:
-  CStringPairs _providersList;
+  StringPairs _providersList;
   String _providerName;
 
   CTreeCtrl m_TreeList;
@@ -16,7 +16,7 @@ public:
 	DECLARE_DYNAMIC(DlgProviders)
 
 public:
-	DlgProviders(CStringPairs providersList, CWnd* pParent = NULL);   // standard constructor
+	DlgProviders(StringPairs providersList, CWnd* pParent = NULL);   // standard constructor
 	virtual ~DlgProviders();
   virtual String GetProviderName() const;
 

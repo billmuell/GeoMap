@@ -376,6 +376,14 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\AppConf.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Locale.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Resource.h"
 				>
 				<FileConfiguration
@@ -411,6 +419,10 @@
 				RelativePath=".\stdafx.h"
 				>
 			</File>
+			<File
+				RelativePath=".\Utils.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -433,6 +445,14 @@
 			>
 			<File
 				RelativePath=".\acrxEntryPoint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\AppConf.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Locale.cpp"
 				>
 			</File>
 			<File
@@ -474,6 +494,10 @@
 						UsePrecompiledHeader="1"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Utils.cpp"
+				>
 			</File>
 		</Filter>
 		<Filter
@@ -685,6 +709,18 @@
 			</File>
 			<File
 				RelativePath=".\ProvidersCollection.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="locale"
+			>
+			<File
+				RelativePath=".\locale\messages.properties"
+				>
+			</File>
+			<File
+				RelativePath=".\locale\messages_es.properties"
 				>
 			</File>
 		</Filter>

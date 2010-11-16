@@ -9,5 +9,6 @@ public:
   static int TestShape();
   static int TestArcSDE();
   static int TestPostGIS();
+  static int TestLocale();
   static int TestAll();
 };

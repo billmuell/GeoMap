@@ -9,6 +9,8 @@
 #include "Provider.h"
 #include "ProvidersCollection.h"
 
+#include "Locale.h"
+
 int CTestFunctions::TestProvider(String &providerName, String &connectionString, 
         String &featureClassName, String &spatialColumn, 
         String &extent) 
@@ -72,6 +74,17 @@ int CTestFunctions::TestArcSDE()
   String spatialColumn = L"SHAPE";
   String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850, 726000 4372508))";
   return TestProvider(providerName, connectionString, featureClassName, spatialColumn, extent);
+}
+
+int CTestFunctions::TestLocale()
+{
+  CLocale locale(L"es");
+  if (locale.GetTranslation(L"User") != L"Usuario") {
+    acutPrintf(L"TestLocale Error: No se ha encontrado la traducción\n");
+    return(RSERR);
+  }
+  
+  return 1;
 }
 
 int CTestFunctions::TestAll() 

@@ -14,7 +14,7 @@ int CTestProviderCollection::TestAll()
   }
   
   try {
-    CStringPairs providersList = pc.ToStringPairs();
+    StringPairs providersList = pc.ToStringPairs();
   } catch (...) {
     acutPrintf(L"Error 'CTestProviderCollection::TestAll': Unexpected error when exporting to StringPairs\n");
     return 0;

@@ -8,10 +8,10 @@
 class CFeatureData
 {
 protected:
-  CStringPairs _data;
+  StringPairs _data;
 public:
   CFeatureData();
-  CFeatureData(CStringPairs data);
+  CFeatureData(StringPairs data);
 public:
   ~CFeatureData(void);
 public:
@@ -21,6 +21,4 @@ public:
   String ToString();
   String ToFormattedString();
   void FromString(String data);
-
-  Strings split(String data, const String & separator);
 };

@@ -39,11 +39,11 @@ CProvider CProvidersCollection::GetItem(String id) const
   throw FdoException::Create((L"Provider " + id + L" not found").c_str());
 }
 
-CStringPairs CProvidersCollection::ToStringPairs() {
-  CStringPairs providersList;
+StringPairs CProvidersCollection::ToStringPairs() {
+  StringPairs providersList;
   for (int i = 0; i < this->GetCount(); i++ ) {
     CProvider provider = this->GetItem(i);
-    providersList.push_back(CStringPair(provider.GetDisplayName(), provider.GetName()));
+    providersList.push_back(StringPair(provider.GetDisplayName(), provider.GetName()));
   }
   return providersList;
 }

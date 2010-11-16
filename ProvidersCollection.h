@@ -15,7 +15,7 @@ public:
   int GetCount() const;
   CProvider GetItem(int num) const;
   CProvider GetItem(String id) const;
-  CStringPairs ToStringPairs();
+  StringPairs ToStringPairs();
 
 protected:
   bool IsSupported(FdoPtr<FdoProvider> provider);

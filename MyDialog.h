@@ -10,7 +10,7 @@ class MyDialog : public CAcUiDialog
 	DECLARE_DYNAMIC(MyDialog)
 
 public:
-	MyDialog(const CStringPairs &LayerList, CWnd* pParent = NULL);   // standard constructor
+	MyDialog(const StringPairs &LayerList, CWnd* pParent = NULL);   // standard constructor
 	virtual ~MyDialog();
 
 // Dialog Data
@@ -28,5 +28,5 @@ protected:
 public:
   CListCtrl m_CListCtrl;
   
-  const CStringPairs & _layerList;
+  const StringPairs & _layerList;
 };
