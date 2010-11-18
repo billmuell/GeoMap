@@ -2,6 +2,7 @@
 
 #include "afxcmn.h"
 #include "resource.h"
+#include "afxwin.h"
 
 // Cuadro de diálogo de DlgProviders
 
@@ -11,9 +12,10 @@ public:
   StringPairs _providersList;
   String _providerName;
 
-  CTreeCtrl m_TreeList;
-  
-	DECLARE_DYNAMIC(DlgProviders)
+  CTreeCtrl _treeList;
+  CButton _cancelButton;
+
+  DECLARE_DYNAMIC(DlgProviders)
 
 public:
 	DlgProviders(StringPairs providersList, CWnd* pParent = NULL);   // standard constructor
@@ -33,6 +35,6 @@ protected:
 protected:
   virtual void fillProvidersList();
 
-public:
+protected:
   afx_msg void OnNMClickTree1(NMHDR *pNMHDR, LRESULT *pResult);
 };

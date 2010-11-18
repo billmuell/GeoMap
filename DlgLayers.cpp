@@ -3,6 +3,8 @@
 
 #include "stdafx.h"
 #include "DlgLayers.h"
+#include "Locale.h"
+#include "AppConf.h"
 
 // Cuadro de diálogo de DlgLayers
 
@@ -22,11 +24,19 @@ String DlgLayers::GetFeatureClassName() { return _featureClassName; }
 void DlgLayers::DoDataExchange(CDataExchange* pDX)
 {
   CDialog::DoDataExchange(pDX);
-  DDX_Control(pDX, IDC_LIST1, lstLayers);
+  DDX_Control(pDX, IDC_LIST1, _layersList);
+  DDX_Control(pDX, IDCANCEL, _cancelButton);
+  DDX_Control(pDX, IDOK, _acceptButton);
 }
 
 BOOL DlgLayers::OnInitDialog() {
   CDialog::OnInitDialog();
+  
+  CLocale locale = CAppConf::GetLocale();
+  
+  SetWindowText(locale.GetTranslation(L"Select layer").c_str());
+  _acceptButton.SetWindowTextW(locale.GetTranslation(L"Accept").c_str());
+  _cancelButton.SetWindowTextW(locale.GetTranslation(L"Cancel").c_str());
   
   return FillLayersList();
 }
@@ -34,7 +44,7 @@ BOOL DlgLayers::OnInitDialog() {
 BOOL DlgLayers::FillLayersList()
 { 
   for (FeatureClasses::iterator it = _featureClasses->begin(); it != _featureClasses->end(); it++) {
-    lstLayers.AddString(it->first.c_str());
+    _layersList.AddString(it->first.c_str());
   }
   
   return TRUE;
@@ -48,7 +58,7 @@ void DlgLayers::OnCancel() {
 
 void DlgLayers::OnOK() {
   CString layer;
-  lstLayers.GetText(lstLayers.GetCurSel(), layer);
+  _layersList.GetText(_layersList.GetCurSel(), layer);
   _featureClassName = layer;
   
   EndDialog(NULL);

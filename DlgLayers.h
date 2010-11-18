@@ -11,6 +11,10 @@ protected:
   String _featureClassName;
   FeatureClasses * _featureClasses;
 
+  CListBox _layersList;
+  CButton _cancelButton;
+  CButton _acceptButton;
+
 public:
   String GetFeatureClassName();
   
@@ -32,6 +36,4 @@ protected:
   virtual BOOL FillLayersList();
 
 	DECLARE_MESSAGE_MAP()
-public:
-  CListBox lstLayers;
 };

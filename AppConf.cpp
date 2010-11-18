@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "AppConf.h"
 
+CLocale * CAppConf::_locale = new CLocale(); 
+
 CAppConf::CAppConf(void)
 {
 }

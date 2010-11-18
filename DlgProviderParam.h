@@ -5,6 +5,7 @@
 
 #include "Connection.h"
 #include "Provider.h"
+#include "afxwin.h"
 
 // Cuadro de diálogo de DlgProviderParam
 
@@ -14,9 +15,12 @@ protected:
   CProvider _provider;
   CConnection * _connection;
   
-  ListaControles* m_Etiquetas;
-  ListaControles* m_ParamCtrls;
+  ListaControles* _etiquetas;
+  ListaControles* _paramControls;
   
+  CButton _cancelButton;
+  CButton _connectButton;
+
   DECLARE_DYNAMIC(DlgProviderParam)
 
 public:

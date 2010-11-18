@@ -12,5 +12,6 @@ public:
 protected:
   String ReadFile(const String & filename);
 public:
+  String GetOriginal(String translation);
   String GetTranslation(String key);
 };
