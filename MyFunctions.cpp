@@ -338,6 +338,8 @@ int ads_TestFunctions() { return CTestFunctions::TestAll(); }
 void GeoMap_TestFunctions() { ads_TestFunctions(); }
 int ads_TestArcSDE() { return CTestFunctions::TestArcSDE(); }
 void GeoMap_TestArcSDE() { ads_TestArcSDE(); }
+int ads_TestPostGIS() { return CTestFunctions::TestPostGIS(); }
+void GeoMap_TestPostGIS() { ads_TestPostGIS(); }
 int ads_TestLocale() { return CTestFunctions::TestLocale(); }
 void GeoMap_TestLocale() { ads_TestLocale(); }
 
@@ -397,6 +399,8 @@ ACED_ADSCOMMAND_ENTRY_AUTO( , TestAll, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestAll, TestAll, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestArcSDE, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestArcSDE, TestArcSDE, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ADSCOMMAND_ENTRY_AUTO( , TestPostGIS, false)
+ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestPostGIS, TestPostGIS, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestLocale, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestLocale, TestLocale, ACRX_CMD_TRANSPARENT, NULL)
 #endif

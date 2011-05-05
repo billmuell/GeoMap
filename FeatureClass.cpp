@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "FeatureClass.h"
 #include "FeatureReaderFactory.h"
+#include "AppConf.h"
+#include "Utils.h"
 
 CFeatureClass::CFeatureClass(CConnection *connection, String &name, String &spatialColumn) 
   : _connection(connection), _name(name), _spatialColumn(spatialColumn)
@@ -31,14 +33,54 @@ CFeatureReader CFeatureClass::SelectByExtent(String &extent)
     return CFeatureReaderFactory::GetFeatureReader(reader, _spatialColumn);
     
   } catch (FdoException * e) {
-		acutPrintf(e->GetExceptionMessage());
+#ifdef TEST
+    acutPrintf(e->GetExceptionMessage());
     if (e->GetCause()) acutPrintf(e->GetCause()->GetExceptionMessage());
     if (e->GetRootCause()) acutPrintf(e->GetRootCause()->GetExceptionMessage());
+#endif
+    acutPrintf(CAppConf::GetLocale().GetTranslation(L"Unexpected error. Please, contact with the publisher").c_str());
     return CFeatureReader(0, String(L""));
 	}
 }
 
-FeatureClasses * CFeatureClass::GetFeatureClasses(CConnection * connection) 
+CFeatureReader CFeatureClass::SelectByAttributes(String &query) 
+{
+  try {
+		FdoPtr<FdoISelect> select = (FdoISelect*)_connection->CreateCommand(FdoCommandType_Select);
+    select->SetFeatureClassName(_name.c_str());
+    
+    if (query.length() > 0) {
+      Strings querySplit = CUtils::Split(query, L"=");
+      String field = querySplit[0];
+      String value = querySplit[1];
+      
+      FdoPtr<FdoIdentifier> fdoField = FdoIdentifier::Create(CUtils::Trim(field).c_str());
+      if (value != L"NULL") {
+        FdoPtr<FdoDataValue> fdoValue = FdoDataValue::Create(CUtils::Trim(value).c_str());
+        FdoPtr<FdoComparisonCondition> filter = FdoComparisonCondition::Create(fdoField, FdoComparisonOperations_EqualTo, fdoValue);
+		    select->SetFilter(filter);
+      } else {
+        FdoPtr<FdoNullCondition> filterNull = FdoNullCondition::Create(fdoField);
+        select->SetFilter(filterNull);
+      }
+    }
+    
+		FdoPtr<FdoIFeatureReader> reader = select->Execute();
+    
+    return CFeatureReaderFactory::GetFeatureReader(reader, _spatialColumn);
+    
+  } catch (FdoException * e) {
+#ifdef TEST
+    acutPrintf(e->GetExceptionMessage());
+    if (e->GetCause()) acutPrintf(e->GetCause()->GetExceptionMessage());
+    if (e->GetRootCause()) acutPrintf(e->GetRootCause()->GetExceptionMessage());
+#endif
+    acutPrintf(CAppConf::GetLocale().GetTranslation(L"Unexpected error. Please, contact with the publisher").c_str());
+    return CFeatureReader(0, String(L""));
+	}
+}
+
+FeatureClasses *CFeatureClass::GetFeatureClasses(CConnection *connection) 
 {
   connection->Open();
   

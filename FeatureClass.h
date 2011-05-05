@@ -19,5 +19,6 @@ public:
   ~CFeatureClass(void);
 public:
   CFeatureReader SelectByExtent(String &extent);
-  static FeatureClasses * GetFeatureClasses(CConnection * connection);
+  CFeatureReader SelectByAttributes(String &query);
+  static FeatureClasses *GetFeatureClasses(CConnection *connection);
 };

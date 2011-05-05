@@ -12,6 +12,17 @@ CUtils::~CUtils(void)
 {
 }
 
+String CUtils::ReadFile(const String & filename)
+{
+  std::wfstream fs(filename.c_str(), std::ios_base::in);
+  if (!fs) return L"";
+  
+  std::wostringstream ss;
+  ss << fs.rdbuf();
+  
+  return ss.str();
+}
+
 Strings CUtils::Split(String data, const String & separator)
 {
   Strings dataSplitted;
@@ -26,13 +37,32 @@ Strings CUtils::Split(String data, const String & separator)
   return dataSplitted;
 }
 
-String CUtils::ReadFile(const String & filename)
+String CUtils::Trim(const String & data)
 {
-  std::wfstream fs(filename.c_str(), std::ios_base::in);
-  if (!fs) return L"";
+  String aux(data);
   
-  std::wostringstream ss;
-  ss << fs.rdbuf();
+  if (aux.length() == 0) return aux;
   
-  return ss.str();
+  aux = LTrim(aux);
+  aux = RTrim(aux);
+  
+  return aux;
+}
+
+String CUtils::LTrim(const String &data)
+{
+  String aux(data);
+  for (int i = 0; (aux.length() > 0) && !iswgraph(aux.substr(i, 1).operator [](0)); ) 
+    aux.erase(i, 1);
+  
+  return aux;
+}
+
+String CUtils::RTrim(const String& data)
+{
+  String  aux(data);
+  for (int i = aux.length() - 1; (aux.length() > 0) && !iswgraph(aux.substr(i, 1).operator [](0)); i--)
+    aux.erase(i, 1);
+  
+  return aux;
 }

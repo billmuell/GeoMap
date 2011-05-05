@@ -1,9 +1,17 @@
 #pragma once
 
+#include "Connection.h"
+
 class CTestFunctions 
 {
 protected:
-  static int TestProvider(String &providerName, String &connectionString, String &featureClassName, String &spatialColumn, String &extent);
+  static CConnection TestProvider(String &providerName, String &connectionString);
+  static int TestSelectByAttributes(CConnection &connection, 
+    String &featureClassName, String &spatialColumn,
+    String &query);
+  static int TestSelectByExtent(CConnection &connection, 
+    String &featureClassName, String &spatialColumn,
+    String &extent);
 
 public:  
   static int TestShape();
