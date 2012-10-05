@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioUserFile
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="9,00"
 	ShowAllFiles="false"
 	>
 	<Configurations>
@@ -93,10 +93,10 @@
 			Name="DebugA17|Win32"
 			>
 			<DebugSettings
-				Command=""
+				Command="C:\Archivos de programa\AutoCAD 2010\acad.exe"
 				WorkingDirectory=""
 				CommandArguments=""
-				Attach="false"
+				Attach="true"
 				DebuggerType="3"
 				Remote="1"
 				RemoteMachine="P8516"
@@ -106,7 +106,7 @@
 				SQLDebugging=""
 				Environment=""
 				EnvironmentMerge="true"
-				DebuggerFlavor=""
+				DebuggerFlavor="0"
 				MPIRunCommand=""
 				MPIRunArguments=""
 				MPIRunWorkingDirectory=""

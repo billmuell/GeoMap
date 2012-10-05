@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "AcDb/AcDbEntity.h"
+// #include "AcDb/AcDbEntity.h"
 #include "FeatureData.h"
 
 typedef std::vector<AcDbEntity*> Entities;
