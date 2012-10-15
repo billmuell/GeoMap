@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="GeoMap">
+</Property><Property Name="Archivo de la solución" Value="C:\Documents and Settings\LIVER6\Mis documentos\Visual Studio 2008\Projects\GeoMap\GeoMap.sln">
+</Property><Property Name="Date" Value="jueves, 04 de octubre de 2012">
+</Property><Property Name="Time" Value="12:18">
+</Property></Properties><Event ErrorLevel="0" Project="GeoMap" Source="GeoMap.vcproj" Description="Ya no se permite la implementación web en el servidor de IIS local. La herramienta de compilación de implementación web se ha quitado de la configuración del proyecto.">
+</Event><Event ErrorLevel="1" Project="GeoMap" Source="GeoMap.vcproj" Description="Esta aplicación se ha actualizado para incluir la configuración relacionada con la característica Control de cuentas de usuario (UAC) de Windows Vista. De manera predeterminada, cuando se ejecuta en Windows Vista con el Control de cuentas de usuario habilitado, la aplicación está marcada para que se ejecute con los mismos privilegios que el proceso que la inició y para que no pueda ejecutarse con virtualización. Puede cambiar la configuración relativa al Control de cuentas de usuario desde las páginas de propiedades del proyecto.">
+</Event><Event ErrorLevel="0" Project="GeoMap" Source="GeoMap.vcproj" Description="Proyecto actualizado correctamente.">
+</Event><Event ErrorLevel="3" Project="GeoMap" Source="GeoMap.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="GeoMap.sln" Description="La solución se convirtió correctamente">
+</Event><Event ErrorLevel="3" Project="" Source="GeoMap.sln" Description="Converted">
+</Event></UpgradeLog>
