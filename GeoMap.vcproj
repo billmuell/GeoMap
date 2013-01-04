@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="9,00"
 	Name="GeoMap"
 	ProjectGUID="{FE3AFA4A-6837-4622-82AD-E8BF7466EB8D}"
 	RootNamespace="MyArxApp"
 	Keyword="MFCDLLProj"
+	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -50,7 +51,7 @@
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="1"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -75,6 +76,8 @@
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				LinkTimeCodeGeneration="0"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -94,9 +97,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -164,6 +164,8 @@
 				OptimizeReferences="1"
 				EnableCOMDATFolding="2"
 				LinkTimeCodeGeneration="0"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -183,9 +185,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -252,6 +251,8 @@
 				OptimizeReferences="1"
 				EnableCOMDATFolding="2"
 				LinkTimeCodeGeneration="0"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -271,9 +272,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -309,12 +307,12 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="&quot;C:\AutoCAD 2004\arx_sdk\inc&quot;;&quot;$(FDO_PATH)\Inc&quot;"
-				PreprocessorDefinitions="_ACRXAPP;_AFXEXT;_WINDOWS;NDEBUG;WIN32"
+				AdditionalIncludeDirectories="&quot;C:\ObjectARX 2010\inc-win32&quot;;&quot;C:\ObjectARX 2010\inc&quot;;&quot;$(FDO_PATH)\Inc&quot;;&quot;$(BOOST_ROOT)&quot;"
+				PreprocessorDefinitions="_ACRXAPP;_AFXEXT;_WINDOWS;NDEBUG;WIN32;TEST"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="1"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -334,11 +332,13 @@
 				AdditionalDependencies="FDO.lib FDOCommon.lib FDOGeometry.lib "
 				OutputFile="$(OutDir)\$(ProjectName).Arx"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;C:\AutoCAD 2004\arx_sdk\lib&quot;;&quot;$(FDO_PATH)\Lib&quot;;"
+				AdditionalLibraryDirectories="&quot;C:\ObjectARX 2010\lib-win32&quot;;&quot;C:\ObjectARX 2010\lib&quot;;&quot;$(FDO_PATH)\Lib&quot;;&quot;$(BOOST_ROOT)\libs&quot;"
 				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				LinkTimeCodeGeneration="0"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -358,9 +358,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"

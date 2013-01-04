@@ -19,4 +19,5 @@ public:
   static int TestPostGIS();
   static int TestLocale();
   static int TestAll();
+  static int TestSaveEntityInMemory();
 };

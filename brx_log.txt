@@ -1,10 +1,8 @@
 
---------------- 09-09-2010 17:40:04 ---------------
+--------------- 04-10-2012 14:26:20 ---------------
 
-File: .\imp\AcDb\AcDbObject.cpp
-Function: int __thiscall AcDbObject::isReadEnabled(void) const
-Line: 701
-Description: Not opened for read
+Function: class AcDbObjectId __thiscall AcDbSymbolUtilities::ServicesImp::blockModelSpaceId(class AcDbDatabase *) const
+Export   : ?blockModelSpaceId@ServicesImp@AcDbSymbolUtilities@@UBE?AVAcDbObjectId@@PAVAcDbDatabase@@@Z
 
 
 Registers:
@@ -13,156 +11,15 @@ EDI=00000000  EBP=00000000  ESP=00000000  EIP=00000000  FLG=00000000
 CS=0000   DS=0000  SS=0000  ES=0000  FS=0000  GS=0000
 
 Call stack:
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\cadentity.cpp(30): CCadEntity::AddEntity()+20 byte(s), (0x04561730 0x1F4E930B 0x044E3760 0x0455C7A0)GeoMap.Brx, 0000:022D3634
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\cadentity.cpp(15): CCadEntity::CCadEntity()+115 byte(s), (0x0D39CC6C 0x1F4E94F3 0x044E3760 0x0455C7A0)GeoMap.Brx, 0000:022D35E3
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(243): ads_TestReadData()+254 byte(s), (0x044E3760 0x0455C7A0 0x01A52290 0x78134C39)GeoMap.Brx, 0000:022C925E
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(250): GeoMap_TestReadData()+14 byte(s), (0x044E3760 0x62FB95DE 0x044E3760 0xB2E525D8)GeoMap.Brx, 0000:022C943E
-OdEdCommand::module()+776 byte(s), (0x0455C7A0 0x044E3760 0xB7215EF8 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
-ca::CommandProcessor::execStr()+2492 byte(s), (0x04548AA0 0x00000000 0xB7217C34 0x015EFA60)cadapp.dll, 0000:014BFD0C
-ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xB7217C04 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
-ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xB7217CA8)cadapp.dll, 0000:014C0DB3
+c:\documents and settings\liver6\mis documentos\visual studio 2008\projects\geomap\testfunctions.cpp(213): CTestFunctions::TestSaveEntityInMemory()+481 byte(s), (0x044EA840 0x04505460 0x01A52DE0 0x0001CBAC)GeoMap.brx, 0000:10030FE1
+c:\documents and settings\liver6\mis documentos\visual studio 2008\projects\geomap\myfunctions.cpp(360): ads_TestSaveEntityInMemory()+14 byte(s), (0x044EA840 0x04505460 0x01A52DE0 0x78134C39)GeoMap.brx, 0000:100241CE
+c:\documents and settings\liver6\mis documentos\visual studio 2008\projects\geomap\myfunctions.cpp(361): GeoMap_TestSaveEntityInMemory()+14 byte(s), (0x044EA840 0x62FB95DE 0x044EA840 0xAF6DD566)GeoMap.brx, 0000:100241EE
+OdEdCommand::module()+776 byte(s), (0x04505460 0x044EA840 0xA4A9C2E2 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x044E4120 0x00000000 0xA4A9E02E 0x015EFA60)cadapp.dll, 0000:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xA4A9E01E 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xA4A9E0B2)cadapp.dll, 0000:014C0DB3
 ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
-, (0xB7217C90 0xBAADF00D 0xBAADF00D 0x00000000), 0000:B7217CA8
-ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
-GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
-ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C82FFB1
-
---------------- 09-09-2010 17:40:06 ---------------
-
-File: .\imp\AcRx\AcRxObject.cpp
-Function: enum OdResult __thiscall AcRxObject::releaseOdObject(void) const
-Line: 361
-Expression: m_numOdRefsAdded > 0
-
-
-Registers:
-EAX=FEEEFEEE  EBX=00000000  ECX=000001F0  EDX=00000208  ESI=781C1BD8
-EDI=7813ED1F  EBP=0D39BA2C  ESP=0D39BA1C  EIP=7C91E514  FLG=00200206
-CS=001B   DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
-
-Call stack:
-AcRxObject::isA()+3477 byte(s), (0x0455C7A0 0x022D37C1 0x1F4E930F 0x044E3760)brx.dll, 0000:11409405
-AcDbObject::close()+39 byte(s), (0x1F4E94F3 0x044E3760 0x0455C7A0 0x01A52290)brx.dll, 0000:1144D357
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(248): ads_TestReadData()+547 byte(s), (0x044E3760 0x0455C7A0 0x01A52290 0x78134C39)GeoMap.Brx, 0000:022C9383
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(250): GeoMap_TestReadData()+14 byte(s), (0x044E3760 0x62FB95DE 0x044E3760 0xB2E525D8)GeoMap.Brx, 0000:022C943E
-OdEdCommand::module()+776 byte(s), (0x0455C7A0 0x044E3760 0xB7215EF8 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
-ca::CommandProcessor::execStr()+2492 byte(s), (0x04548AA0 0x00000000 0xB7217C34 0x015EFA60)cadapp.dll, 0000:014BFD0C
-ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xB7217C04 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
-ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xB7217CA8)cadapp.dll, 0000:014C0DB3
-ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
-, (0xB7217C90 0xBAADF00D 0xBAADF00D 0x00000000), 0000:B7217CA8
-ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
-GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
-ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C82FFB1
-
---------------- 09-09-2010 17:40:21 ---------------
-
-File: .\imp\AcDb\AcDbObject.cpp
-Function: int __thiscall AcDbObject::isReadEnabled(void) const
-Line: 701
-Description: Not opened for read
-
-
-Registers:
-EAX=00000000  EBX=00000000  ECX=00000000  EDX=00000000  ESI=00000000
-EDI=00000000  EBP=00000000  ESP=00000000  EIP=00000000  FLG=00000000
-CS=0000   DS=0000  SS=0000  ES=0000  FS=0000  GS=0000
-
-Call stack:
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\cadentity.cpp(30): CCadEntity::AddEntity()+20 byte(s), (0x04784A60 0x1F4E930B 0x044E3760 0x0455C7A0)GeoMap.Brx, 0000:022D3634
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\cadentity.cpp(15): CCadEntity::CCadEntity()+115 byte(s), (0x0D39CC6C 0x1F4E94F3 0x044E3760 0x0455C7A0)GeoMap.Brx, 0000:022D35E3
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(243): ads_TestReadData()+254 byte(s), (0x044E3760 0x0455C7A0 0x01A52290 0x78134C39)GeoMap.Brx, 0000:022C925E
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(250): GeoMap_TestReadData()+14 byte(s), (0x044E3760 0x62FB95DE 0x044E3760 0xB2E525D8)GeoMap.Brx, 0000:022C943E
-OdEdCommand::module()+776 byte(s), (0x0455C7A0 0x044E3760 0xB7215EF8 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
-ca::CommandProcessor::execStr()+2492 byte(s), (0x048962E0 0x00000000 0xB7217C34 0x015EFA60)cadapp.dll, 0000:014BFD0C
-ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xB7217C04 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
-ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xB7217CA8)cadapp.dll, 0000:014C0DB3
-ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
-, (0xB7217C90 0xBAADF00D 0xBAADF00D 0x00000000), 0000:B7217CA8
-ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
-GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
-ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C82FFB1
-
---------------- 09-09-2010 17:40:25 ---------------
-
-File: .\imp\AcRx\AcRxObject.cpp
-Function: enum OdResult __thiscall AcRxObject::releaseOdObject(void) const
-Line: 361
-Expression: m_numOdRefsAdded > 0
-
-
-Registers:
-EAX=FEEEFEEE  EBX=00000000  ECX=0000008C  EDX=00000108  ESI=781C1BD8
-EDI=7813ED1F  EBP=0D39BA2C  ESP=0D39BA1C  EIP=7C91E514  FLG=00200206
-CS=001B   DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
-
-Call stack:
-AcRxObject::isA()+3477 byte(s), (0x0455C7A0 0x022D37C1 0x1F4E930F 0x044E3760)brx.dll, 0000:11409405
-AcDbObject::close()+39 byte(s), (0x1F4E94F3 0x044E3760 0x0455C7A0 0x01A52290)brx.dll, 0000:1144D357
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(248): ads_TestReadData()+547 byte(s), (0x044E3760 0x0455C7A0 0x01A52290 0x78134C39)GeoMap.Brx, 0000:022C9383
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(250): GeoMap_TestReadData()+14 byte(s), (0x044E3760 0x62FB95DE 0x044E3760 0xB2E525D8)GeoMap.Brx, 0000:022C943E
-OdEdCommand::module()+776 byte(s), (0x0455C7A0 0x044E3760 0xB7215EF8 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
-ca::CommandProcessor::execStr()+2492 byte(s), (0x048962E0 0x00000000 0xB7217C34 0x015EFA60)cadapp.dll, 0000:014BFD0C
-ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xB7217C04 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
-ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xB7217CA8)cadapp.dll, 0000:014C0DB3
-ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
-, (0xB7217C90 0xBAADF00D 0xBAADF00D 0x00000000), 0000:B7217CA8
-ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
-GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
-ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C82FFB1
-
---------------- 09-09-2010 17:41:03 ---------------
-
-File: .\imp\AcDb\AcDbObject.cpp
-Function: int __thiscall AcDbObject::isReadEnabled(void) const
-Line: 701
-Description: Not opened for read
-
-
-Registers:
-EAX=00000000  EBX=00000000  ECX=00000000  EDX=00000000  ESI=00000000
-EDI=00000000  EBP=00000000  ESP=00000000  EIP=00000000  FLG=00000000
-CS=0000   DS=0000  SS=0000  ES=0000  FS=0000  GS=0000
-
-Call stack:
-_AfxInitManaged()+-1 byte(s), (0x04724128 0x1F4E930B 0x044E3760 0x0455C7A0)GeoMap.Brx, 0000:022B1014
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\cadentity.cpp(15): CCadEntity::CCadEntity()+115 byte(s), (0x0D39CC6C 0x1F4E94F3 0x044E3760 0x0455C7A0)GeoMap.Brx, 0000:022D35E3
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(243): ads_TestReadData()+254 byte(s), (0x044E3760 0x0455C7A0 0x01A52290 0x78134C39)GeoMap.Brx, 0000:022C925E
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(250): GeoMap_TestReadData()+14 byte(s), (0x044E3760 0x62FB95DE 0x044E3760 0xB2E525D8)GeoMap.Brx, 0000:022C943E
-OdEdCommand::module()+776 byte(s), (0x0455C7A0 0x044E3760 0xB7215EF8 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
-ca::CommandProcessor::execStr()+2492 byte(s), (0x0471BB90 0x00000000 0xB7217C34 0x015EFA60)cadapp.dll, 0000:014BFD0C
-ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xB7217C04 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
-ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xB7217CA8)cadapp.dll, 0000:014C0DB3
-ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
-, (0xB7217C90 0xBAADF00D 0xBAADF00D 0x00000000), 0000:B7217CA8
-ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
-GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
-ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C82FFB1
-
---------------- 09-09-2010 17:41:14 ---------------
-
-File: .\imp\AcRx\AcRxObject.cpp
-Function: enum OdResult __thiscall AcRxObject::releaseOdObject(void) const
-Line: 361
-Expression: m_numOdRefsAdded > 0
-
-
-Registers:
-EAX=0D39CBA4  EBX=00000000  ECX=0D39CBA4  EDX=0D39CBA4  ESI=781C1BD8
-EDI=7813ED1F  EBP=0D39BA2C  ESP=0D39BA1C  EIP=7C91E514  FLG=00200206
-CS=001B   DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
-
-Call stack:
-AcRxObject::isA()+3477 byte(s), (0x0455C7A0 0x022D37C1 0x1F4E930F 0x044E3760)brx.dll, 0000:11409405
-AcDbObject::close()+39 byte(s), (0x1F4E94F3 0x044E3760 0x0455C7A0 0x01A52290)brx.dll, 0000:1144D357
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(248): ads_TestReadData()+547 byte(s), (0x044E3760 0x0455C7A0 0x01A52290 0x78134C39)GeoMap.Brx, 0000:022C9383
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(250): GeoMap_TestReadData()+14 byte(s), (0x044E3760 0x62FB95DE 0x044E3760 0xB2E525D8)GeoMap.Brx, 0000:022C943E
-OdEdCommand::module()+776 byte(s), (0x0455C7A0 0x044E3760 0xB7215EF8 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
-ca::CommandProcessor::execStr()+2492 byte(s), (0x0471BB90 0x00000000 0xB7217C34 0x015EFA60)cadapp.dll, 0000:014BFD0C
-ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xB7217C04 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
-ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xB7217CA8)cadapp.dll, 0000:014C0DB3
-ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
-, (0xB7217C90 0xBAADF00D 0xBAADF00D 0x00000000), 0000:B7217CA8
+, (0xA4A9E08A 0xBAADF00D 0xBAADF00D 0x00000000), 0000:A4A9E0B2
 ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
 GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
 ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C82FFB1
