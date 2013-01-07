@@ -18,8 +18,9 @@ public:
 public:
   void Add(String key, String value);
   String GetValue(String key);
-  Strings * CFeatureData::GetKeys();
+  Strings * GetKeys();
   
   String ToString();
   String ToFormattedString();
+  void FromString(String data);
 };

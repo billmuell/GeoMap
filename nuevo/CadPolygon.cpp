@@ -7,19 +7,14 @@ CCadPolygon::CCadPolygon()
 
 CCadPolygon::CCadPolygon(FdoIPolygon * geom)
 {
-  AddEntity(GetEntity(geom));
+  _entities.push_back(GetEntity(geom));
 }
 
 CCadPolygon::CCadPolygon(FdoIMultiPolygon * geom)
 {
   for (FdoInt32 i = 0; i < geom->GetCount(); i++) {
-    AddEntity(GetEntity(geom->GetItem(i)));
+    _entities.push_back(GetEntity(geom->GetItem(i)));
   }
-}
-
-CCadPolygon::CCadPolygon(AcDbEntity * entity)
-{
-  AddEntity(entity);
 }
 
 CCadPolygon::~CCadPolygon(void)
@@ -31,7 +26,7 @@ FdoPtr<FdoIGeometry> CCadPolygon::ToGeometry()
   return 0;
 }
 
-AcDbEntity * CCadPolygon::GetEntity(FdoIPolygon * geom)
+AcDbEntity * CCadPolygon::GetEntity(FdoPtr<FdoIPolygon> geom)
 {
   FdoPtr<FdoILinearRing> exteriorRing = geom->GetExteriorRing();
 	

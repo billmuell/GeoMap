@@ -10,13 +10,11 @@ class CCadPoint :
 public:
   CCadPoint(FdoIPoint * geom);
   CCadPoint(FdoIMultiPoint * geom);
-  CCadPoint(AcDbEntity * entity);
 public:
   ~CCadPoint(void);
 public:
-  virtual FdoPtr<FdoIGeometry> ToGeometry();
+  FdoPtr<FdoIGeometry> ToGeometry();
 protected:
-  //FdoIPoint * GetPoint(AcDbPoint * point);
-  FdoIPoint * GetPoint(Entity * entity);
-  AcDbEntity * GetEntity(FdoIPoint * geom);
+  FdoPtr<FdoIPoint> ToGeometry(AcGePoint3d & point);
+  AcDbEntity * GetEntity(FdoPtr<FdoIPoint> geom);
 };

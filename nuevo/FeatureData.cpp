@@ -4,17 +4,13 @@
 
 #include <fdo.h>
 
-CFeatureData::CFeatureData(void)
+CFeatureData::CFeatureData()
 {
 }
 
 CFeatureData::CFeatureData(String data)
 {
-  Strings fields = CUtils::Split(data, FIELD_SEPARATOR);
-  for (Strings::iterator it = fields.begin(); it != fields.end(); it++) {
-    Strings fieldValue = CUtils::Split(*it, VALUE_SEPARATOR);
-    _data.push_back(StringPair(fieldValue[0], fieldValue.size() > 1 ? fieldValue[1] : L""));
-  }
+  FromString(data);
 }
 
 CFeatureData::CFeatureData(StringPairs data)
@@ -27,7 +23,6 @@ CFeatureData::~CFeatureData(void)
 }
 
 void CFeatureData::Add(String key, String value) { _data.push_back(StringPair(key, value)); }
-
 String CFeatureData::GetValue(String key) 
 { 
   for (StringPairs::iterator it = _data.begin(); it != _data.end(); it++) {
@@ -39,7 +34,7 @@ String CFeatureData::GetValue(String key)
 
 Strings * CFeatureData::GetKeys() 
 {
-  Strings * keys = new Strings();
+  Strings * keys = new std::vector<String>();
   for (StringPairs::iterator it = _data.begin(); it != _data.end(); it++) {
     keys->push_back(it->first);
   }
@@ -63,4 +58,13 @@ String CFeatureData::ToFormattedString()
     toS += it->first + L": " + it->second + L"\n";
   }
   return toS;
+}
+
+void CFeatureData::FromString(String data) 
+{
+  Strings fields = CUtils::Split(data, FIELD_SEPARATOR);
+  for (Strings::iterator it = fields.begin(); it != fields.end(); it++) {
+    Strings fieldValue = CUtils::Split(*it, VALUE_SEPARATOR);
+    _data.push_back(StringPair(fieldValue[0], fieldValue.size() > 1 ? fieldValue[1] : L""));
+  }
 }

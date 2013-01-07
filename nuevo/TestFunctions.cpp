@@ -3,33 +3,34 @@
 #include "stdafx.h"
 #include "TestFunctions.h"
 
-#include "CadEntity.h"
-#include "CadEntityFactory.h"
 #include "Connection.h"
 #include "FeatureClass.h"
 #include "FeatureReader.h"
-#include "FeatureWriter.h"
 #include "Provider.h"
 #include "ProvidersCollection.h"
 
 #include "Locale.h"
 
-CCadEntities * CTestFunctions::TestSelectByAttributes(CConnection & connection, 
-  String & featureClassName, String & spatialColumn, String & idColumn,
-  String & query)
+int CTestFunctions::TestSelectByAttributes(CConnection &connection, 
+  String &featureClassName, String &spatialColumn, String & idColumn,
+  String &query)
 {
   CFeatureClass featureClass(&connection, featureClassName, spatialColumn, idColumn);
   CFeatureReader featureReader = featureClass.SelectByAttributes(query);
-  return featureReader.DrawAll();
+  featureReader.DrawAll();
+
+  return 1;
 }
 
-CCadEntities * CTestFunctions::TestSelectByExtent(CConnection & connection, 
-  String & featureClassName, String & spatialColumn, String & idColumn,
-  String & extent) 
+int CTestFunctions::TestSelectByExtent(CConnection &connection, 
+  String &featureClassName, String &spatialColumn, String & idColumn,
+  String &extent) 
 {
   CFeatureClass featureClass(&connection, featureClassName, spatialColumn, idColumn);
   CFeatureReader featureReader = featureClass.SelectByExtent(extent);
-  return featureReader.DrawAll();
+  featureReader.DrawAll();
+
+  return 1;
 }  
 
 CConnection CTestFunctions::TestProvider(String &providerName, String &connectionString) 
@@ -87,17 +88,13 @@ int CTestFunctions::TestPostGIS()
   String spatialColumn = L"the_geom";
   String idColumn = L"gid";
   String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850, 726000 4372508))";
-  CCadEntities * entities = TestSelectByExtent(connection, featureClassName, spatialColumn, idColumn, extent);
-  if (entities == 0) return(RSERR);
-  delete entities;
+  if (TestSelectByExtent(connection, featureClassName, spatialColumn, idColumn, extent) != 1) {
+    return(RSERR);
+  }
   
   // No hace falta poner comillas
   String query = L"clase = SUNP";
-  entities = TestSelectByAttributes(connection, featureClassName, spatialColumn, idColumn, query);
-  
-  int result = (entities != 0 ? 1 : 0);
-  delete entities;
-  return result;
+  return TestSelectByAttributes(connection, featureClassName, spatialColumn, idColumn, query);
 }
 
 int CTestFunctions::TestShape() 
@@ -111,20 +108,16 @@ int CTestFunctions::TestShape()
   
   String featureClassName = L"barrios";
   String spatialColumn = L"Geometry";
-  String idColumn = L"NOMBRE";
+  String idColumn = L"nombre";
   String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850, 726000 4372508))";
-  CCadEntities * entities = TestSelectByExtent(connection, featureClassName, spatialColumn, idColumn, extent);
-  if (entities == 0) return(RSERR);
-  delete entities;
+  if (TestSelectByExtent(connection, featureClassName, spatialColumn, idColumn, extent) != 1) {
+    return(RSERR);
+  }
   
   // El campo debe estar en mayúsculas...
   String query = L"CODDISTRIT = 1";
   //String query = L"coddistrit = 1";
-  entities = TestSelectByAttributes(connection, featureClassName, spatialColumn, idColumn, query);
-  
-  int result = (entities != 0 ? 1 : 0);
-  delete entities;
-  return result;
+  return TestSelectByAttributes(connection, featureClassName, spatialColumn, idColumn, query);
 }
 
 int CTestFunctions::TestArcSDE() 
@@ -140,16 +133,12 @@ int CTestFunctions::TestArcSDE()
   String spatialColumn = L"SHAPE";
   String idColumn = L"OBJECTID";
   String extent = L"POLYGON((726000 4372508, 726500 4372508, 726500 4372850, 726000 4372850, 726000 4372508))";
-  CCadEntities * entities = TestSelectByExtent(connection, featureClassName, spatialColumn, idColumn, extent);
-  if (entities == 0) return(RSERR);
-  delete entities;
-
+  if (TestSelectByExtent(connection, featureClassName, spatialColumn, idColumn, extent) != 1) {
+    return(RSERR);
+  }
+  
   String query = L"codvia = 10";
-  entities = TestSelectByAttributes(connection, featureClassName, spatialColumn, idColumn, query);
-
-  int result = (entities != 0 ? 1 : 0);
-  delete entities;
-  return result;
+  return TestSelectByAttributes(connection, featureClassName, spatialColumn, idColumn, query);
 }
 
 int CTestFunctions::TestLocale()
@@ -163,32 +152,10 @@ int CTestFunctions::TestLocale()
   return 1;
 }
 
-int CTestFunctions::TestWrite()
-{
-  String providerName = L"OSGeo.ArcSDE.3.5";
-  String connectionString = L"Server=dsigsde2;Instance=esri_sde;Username=sde;Password=benaguacil;Datastore=esri_sde";
-  CConnection connection = TestProvider(providerName, connectionString);
-  if (connection.Open() != FdoConnectionState_Open) {
-    return (RSERR);
-  }
-  
-  String featureClassName = L"CALLEJERO_PNT";
-  String spatialColumn = L"SHAPE";
-  String idColumn = L"OBJECTID";
-  String query = L"codvia = 10";
-  CCadEntities * entities = TestSelectByAttributes(connection, featureClassName, spatialColumn, idColumn, query);
-  
-  CFeatureClass featureClass(&connection, featureClassName, spatialColumn, idColumn);
-  CFeatureWriter writer(&featureClass);
-  writer.Write(entities);
-  delete entities;
-  
-  return 1;
-}
-
 int CTestFunctions::TestAll() 
 {
-  CTestFunctions::TestShape();
+  // CTestFunctions::TestShape();
+  CTestFunctions::TestLocale();
   CTestFunctions::TestArcSDE();
   CTestFunctions::TestPostGIS();
   

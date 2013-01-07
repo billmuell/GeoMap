@@ -2,6 +2,8 @@
 
 #include <fdo.h>
 
+#include "CadEntity.h"
+#include "CadEntities.h"
 #include "FeatureData.h"
 
 class CFeatureReader
@@ -19,6 +21,6 @@ protected:
   CFeatureData GetData();
   String GetDataValue(FdoString * name, FdoDataType dataType);
 public:
-  void Draw();
-  void DrawAll();
+  CCadEntity * Draw();
+  CCadEntities * DrawAll();
 };

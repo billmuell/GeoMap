@@ -11,11 +11,10 @@ protected:
 public:
   CCadPolygon(FdoIPolygon * geom);
   CCadPolygon(FdoIMultiPolygon * geom);
-  CCadPolygon(AcDbEntity * entity);
 public:
   ~CCadPolygon(void);
 public:
-  virtual FdoPtr<FdoIGeometry> ToGeometry();
+  FdoPtr<FdoIGeometry> ToGeometry();
 protected:
-  AcDbEntity * GetEntity(FdoIPolygon * geom);
+  AcDbEntity * GetEntity(FdoPtr<FdoIPolygon> geom);
 };

@@ -1,10 +1,79 @@
 
---------------- 09-09-2010 17:40:04 ---------------
+--------------- 07-01-2013 09:32:24 ---------------
 
-File: .\imp\AcDb\AcDbObject.cpp
-Function: int __thiscall AcDbObject::isReadEnabled(void) const
-Line: 701
-Description: Not opened for read
+File: .\internal\AwClassManager.cpp
+Function: class OdRxClass *__thiscall AwClassManager::lookup(const class AcRxClass *) const
+Line: 93
+Expression: false
+
+
+Registers:
+EAX=00000000  EBX=00000000  ECX=00000000  EDX=00000000  ESI=00000000
+EDI=00000000  EBP=00000000  ESP=00000000  EIP=00000000  FLG=00000000
+CS=0000   DS=0023  SS=0000  ES=0023  FS=003B  GS=0000
+
+Call stack:
+AcDbSymbolUtilities::ServicesImp::blockModelSpaceName()+120900 byte(s), (0x0F27ABA8 0x69617007 0x044D10A0 0x04564D18)brx.dll, 0000:0EF83C24
+AcRxObject::x()+501 byte(s), (0x04564D18 0x696170F7 0x044D10A0 0x04564D18)brx.dll, 0000:0EF99CA5
+AcRxObject::x()+2020 byte(s), (0x00000001 0x6961708B 0x044D10A0 0x04564D18)brx.dll, 0000:0EF9A294
+AcDbPoint::position()+55 byte(s), (0x0D39C804 0x044D10A0 0x04564D18 0x01A53908)brx.dll, 0000:0EFD12E7
+()+-1 byte(s), (0x04564D18 0x01A53908 0x0D39C8EC 0x100228BE)GeoMap.brx, 0000:1000101B
+, (0x044B4FD8 0x68373BF0 0x044D10A0 0x04564D18), 0000:044D10A0
+c:\documents and settings\liver6\mis documentos\github\geomap\cadpoint.cpp(29): CCadPoint::ToGeometry()+132 byte(s), (0x0D39CA88 0x683738C4 0x044D10A0 0x04564D18)GeoMap.brx, 0000:10039594
+c:\documents and settings\liver6\mis documentos\github\geomap\featurewriter.cpp(23): CFeatureWriter::Write()+158 byte(s), (0x0F3D0288 0x68373E54 0x044D10A0 0x04564D18)GeoMap.brx, 0000:1004554E
+c:\documents and settings\liver6\mis documentos\github\geomap\testfunctions.cpp(183): CTestFunctions::TestWrite()+385 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x00010000)GeoMap.brx, 0000:10034E11
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(392): ads_TestWrite()+14 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x78134C39)GeoMap.brx, 0000:100269AE
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(393): GeoMap_TestWrite()+14 byte(s), (0x044D10A0 0x62FB95DE 0x044D10A0 0x723D5030)GeoMap.brx, 0000:100269CE
+OdEdCommand::module()+776 byte(s), (0x04564D18 0x044D10A0 0x7779CC55 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x04360C60 0x00000000 0x7779EE99 0x015EFA60)cadapp.dll, 0000:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x7779EEA9 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x7779EE05)cadapp.dll, 0000:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
+, (0x7779EE3D 0xBAADF00D 0xBAADF00D 0x00000000), 0000:7779EE05
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C8316CD
+
+--------------- 07-01-2013 09:32:33 ---------------
+
+File: .\imp\AcRx\AcRxObject.cpp
+Function: void __thiscall AcRxObject::checkOdObject(void) const
+Line: 541
+Expression: NULL != pRequiredOdClass
+
+
+Registers:
+EAX=FEEEFEEE  EBX=00000000  ECX=00000400  EDX=000001F9  ESI=781C1BD8
+EDI=7813ED1F  EBP=00000000  ESP=00000000  EIP=00000000  FLG=00000000
+CS=0000   DS=0000  SS=0000  ES=0000  FS=0000  GS=0000
+
+Call stack:
+AcRxObject::x()+534 byte(s), (0x04564D18 0x696170F7 0x044D10A0 0x04564D18)brx.dll, 0000:0EF99CC6
+AcRxObject::x()+2020 byte(s), (0x00000001 0x6961708B 0x044D10A0 0x04564D18)brx.dll, 0000:0EF9A294
+AcDbPoint::position()+55 byte(s), (0x0D39C804 0x044D10A0 0x04564D18 0x01A53908)brx.dll, 0000:0EFD12E7
+()+-1 byte(s), (0x04564D18 0x01A53908 0x0D39C8EC 0x100228BE)GeoMap.brx, 0000:1000101B
+, (0x044B4FD8 0x68373BF0 0x044D10A0 0x04564D18), 0000:044D10A0
+c:\documents and settings\liver6\mis documentos\github\geomap\cadpoint.cpp(29): CCadPoint::ToGeometry()+132 byte(s), (0x0D39CA88 0x683738C4 0x044D10A0 0x04564D18)GeoMap.brx, 0000:10039594
+c:\documents and settings\liver6\mis documentos\github\geomap\featurewriter.cpp(23): CFeatureWriter::Write()+158 byte(s), (0x0F3D0288 0x68373E54 0x044D10A0 0x04564D18)GeoMap.brx, 0000:1004554E
+c:\documents and settings\liver6\mis documentos\github\geomap\testfunctions.cpp(183): CTestFunctions::TestWrite()+385 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x00010000)GeoMap.brx, 0000:10034E11
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(392): ads_TestWrite()+14 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x78134C39)GeoMap.brx, 0000:100269AE
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(393): GeoMap_TestWrite()+14 byte(s), (0x044D10A0 0x62FB95DE 0x044D10A0 0x723D5030)GeoMap.brx, 0000:100269CE
+OdEdCommand::module()+776 byte(s), (0x04564D18 0x044D10A0 0x7779CC55 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x04360C60 0x00000000 0x7779EE99 0x015EFA60)cadapp.dll, 0000:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x7779EEA9 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x7779EE05)cadapp.dll, 0000:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
+, (0x7779EE3D 0xBAADF00D 0xBAADF00D 0x00000000), 0000:7779EE05
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C8316CD
+
+--------------- 07-01-2013 09:32:40 ---------------
+
+File: .\imp\AcRx\AcRxObject.cpp
+Function: void __thiscall AcRxObject::checkOdObject(void) const
+Line: 586
+Expression: false
 
 
 Registers:
@@ -13,54 +82,32 @@ EDI=00000000  EBP=00000000  ESP=00000000  EIP=00000000  FLG=00000000
 CS=0000   DS=0000  SS=0000  ES=0000  FS=0000  GS=0000
 
 Call stack:
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\cadentity.cpp(30): CCadEntity::AddEntity()+20 byte(s), (0x04561730 0x1F4E930B 0x044E3760 0x0455C7A0)GeoMap.Brx, 0000:022D3634
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\cadentity.cpp(15): CCadEntity::CCadEntity()+115 byte(s), (0x0D39CC6C 0x1F4E94F3 0x044E3760 0x0455C7A0)GeoMap.Brx, 0000:022D35E3
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(243): ads_TestReadData()+254 byte(s), (0x044E3760 0x0455C7A0 0x01A52290 0x78134C39)GeoMap.Brx, 0000:022C925E
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(250): GeoMap_TestReadData()+14 byte(s), (0x044E3760 0x62FB95DE 0x044E3760 0xB2E525D8)GeoMap.Brx, 0000:022C943E
-OdEdCommand::module()+776 byte(s), (0x0455C7A0 0x044E3760 0xB7215EF8 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
-ca::CommandProcessor::execStr()+2492 byte(s), (0x04548AA0 0x00000000 0xB7217C34 0x015EFA60)cadapp.dll, 0000:014BFD0C
-ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xB7217C04 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
-ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xB7217CA8)cadapp.dll, 0000:014C0DB3
+AcRxObject::x()+1058 byte(s), (0x04564D18 0x696170F7 0x044D10A0 0x04564D18)brx.dll, 0000:0EF99ED2
+AcRxObject::x()+2020 byte(s), (0x00000001 0x6961708B 0x044D10A0 0x04564D18)brx.dll, 0000:0EF9A294
+AcDbPoint::position()+55 byte(s), (0x0D39C804 0x044D10A0 0x04564D18 0x01A53908)brx.dll, 0000:0EFD12E7
+()+-1 byte(s), (0x04564D18 0x01A53908 0x0D39C8EC 0x100228BE)GeoMap.brx, 0000:1000101B
+, (0x044B4FD8 0x68373BF0 0x044D10A0 0x04564D18), 0000:044D10A0
+c:\documents and settings\liver6\mis documentos\github\geomap\cadpoint.cpp(29): CCadPoint::ToGeometry()+132 byte(s), (0x0D39CA88 0x683738C4 0x044D10A0 0x04564D18)GeoMap.brx, 0000:10039594
+c:\documents and settings\liver6\mis documentos\github\geomap\featurewriter.cpp(23): CFeatureWriter::Write()+158 byte(s), (0x0F3D0288 0x68373E54 0x044D10A0 0x04564D18)GeoMap.brx, 0000:1004554E
+c:\documents and settings\liver6\mis documentos\github\geomap\testfunctions.cpp(183): CTestFunctions::TestWrite()+385 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x00010000)GeoMap.brx, 0000:10034E11
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(392): ads_TestWrite()+14 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x78134C39)GeoMap.brx, 0000:100269AE
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(393): GeoMap_TestWrite()+14 byte(s), (0x044D10A0 0x62FB95DE 0x044D10A0 0x723D5030)GeoMap.brx, 0000:100269CE
+OdEdCommand::module()+776 byte(s), (0x04564D18 0x044D10A0 0x7779CC55 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x04360C60 0x00000000 0x7779EE99 0x015EFA60)cadapp.dll, 0000:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x7779EEA9 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x7779EE05)cadapp.dll, 0000:014C0DB3
 ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
-, (0xB7217C90 0xBAADF00D 0xBAADF00D 0x00000000), 0000:B7217CA8
+, (0x7779EE3D 0xBAADF00D 0xBAADF00D 0x00000000), 0000:7779EE05
 ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
 GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
-ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C82FFB1
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C8316CD
 
---------------- 09-09-2010 17:40:06 ---------------
+--------------- 07-01-2013 09:32:41 ---------------
 
-File: .\imp\AcRx\AcRxObject.cpp
-Function: enum OdResult __thiscall AcRxObject::releaseOdObject(void) const
-Line: 361
-Expression: m_numOdRefsAdded > 0
-
-
-Registers:
-EAX=FEEEFEEE  EBX=00000000  ECX=000001F0  EDX=00000208  ESI=781C1BD8
-EDI=7813ED1F  EBP=0D39BA2C  ESP=0D39BA1C  EIP=7C91E514  FLG=00200206
-CS=001B   DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
-
-Call stack:
-AcRxObject::isA()+3477 byte(s), (0x0455C7A0 0x022D37C1 0x1F4E930F 0x044E3760)brx.dll, 0000:11409405
-AcDbObject::close()+39 byte(s), (0x1F4E94F3 0x044E3760 0x0455C7A0 0x01A52290)brx.dll, 0000:1144D357
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(248): ads_TestReadData()+547 byte(s), (0x044E3760 0x0455C7A0 0x01A52290 0x78134C39)GeoMap.Brx, 0000:022C9383
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(250): GeoMap_TestReadData()+14 byte(s), (0x044E3760 0x62FB95DE 0x044E3760 0xB2E525D8)GeoMap.Brx, 0000:022C943E
-OdEdCommand::module()+776 byte(s), (0x0455C7A0 0x044E3760 0xB7215EF8 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
-ca::CommandProcessor::execStr()+2492 byte(s), (0x04548AA0 0x00000000 0xB7217C34 0x015EFA60)cadapp.dll, 0000:014BFD0C
-ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xB7217C04 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
-ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xB7217CA8)cadapp.dll, 0000:014C0DB3
-ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
-, (0xB7217C90 0xBAADF00D 0xBAADF00D 0x00000000), 0000:B7217CA8
-ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
-GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
-ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C82FFB1
-
---------------- 09-09-2010 17:40:21 ---------------
-
-File: .\imp\AcDb\AcDbObject.cpp
-Function: int __thiscall AcDbObject::isReadEnabled(void) const
-Line: 701
-Description: Not opened for read
+File: .\imp\AcDb\AcDbPoint.cpp
+Function: class AcGePoint3d __thiscall AcDbPoint::position(void) const
+Line: 158
+Expression: false
 
 
 Registers:
@@ -69,54 +116,30 @@ EDI=00000000  EBP=00000000  ESP=00000000  EIP=00000000  FLG=00000000
 CS=0000   DS=0000  SS=0000  ES=0000  FS=0000  GS=0000
 
 Call stack:
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\cadentity.cpp(30): CCadEntity::AddEntity()+20 byte(s), (0x04784A60 0x1F4E930B 0x044E3760 0x0455C7A0)GeoMap.Brx, 0000:022D3634
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\cadentity.cpp(15): CCadEntity::CCadEntity()+115 byte(s), (0x0D39CC6C 0x1F4E94F3 0x044E3760 0x0455C7A0)GeoMap.Brx, 0000:022D35E3
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(243): ads_TestReadData()+254 byte(s), (0x044E3760 0x0455C7A0 0x01A52290 0x78134C39)GeoMap.Brx, 0000:022C925E
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(250): GeoMap_TestReadData()+14 byte(s), (0x044E3760 0x62FB95DE 0x044E3760 0xB2E525D8)GeoMap.Brx, 0000:022C943E
-OdEdCommand::module()+776 byte(s), (0x0455C7A0 0x044E3760 0xB7215EF8 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
-ca::CommandProcessor::execStr()+2492 byte(s), (0x048962E0 0x00000000 0xB7217C34 0x015EFA60)cadapp.dll, 0000:014BFD0C
-ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xB7217C04 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
-ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xB7217CA8)cadapp.dll, 0000:014C0DB3
+AcDbPoint::position()+282 byte(s), (0x0D39C804 0x044D10A0 0x04564D18 0x01A53908)brx.dll, 0000:0EFD13CA
+()+-1 byte(s), (0x04564D18 0x01A53908 0x0D39C8EC 0x100228BE)GeoMap.brx, 0000:1000101B
+, (0x044B4FD8 0x68373BF0 0x044D10A0 0x04564D18), 0000:044D10A0
+c:\documents and settings\liver6\mis documentos\github\geomap\cadpoint.cpp(29): CCadPoint::ToGeometry()+132 byte(s), (0x0D39CA88 0x683738C4 0x044D10A0 0x04564D18)GeoMap.brx, 0000:10039594
+c:\documents and settings\liver6\mis documentos\github\geomap\featurewriter.cpp(23): CFeatureWriter::Write()+158 byte(s), (0x0F3D0288 0x68373E54 0x044D10A0 0x04564D18)GeoMap.brx, 0000:1004554E
+c:\documents and settings\liver6\mis documentos\github\geomap\testfunctions.cpp(183): CTestFunctions::TestWrite()+385 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x00010000)GeoMap.brx, 0000:10034E11
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(392): ads_TestWrite()+14 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x78134C39)GeoMap.brx, 0000:100269AE
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(393): GeoMap_TestWrite()+14 byte(s), (0x044D10A0 0x62FB95DE 0x044D10A0 0x723D5030)GeoMap.brx, 0000:100269CE
+OdEdCommand::module()+776 byte(s), (0x04564D18 0x044D10A0 0x7779CC55 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x04360C60 0x00000000 0x7779EE99 0x015EFA60)cadapp.dll, 0000:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x7779EEA9 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x7779EE05)cadapp.dll, 0000:014C0DB3
 ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
-, (0xB7217C90 0xBAADF00D 0xBAADF00D 0x00000000), 0000:B7217CA8
+, (0x7779EE3D 0xBAADF00D 0xBAADF00D 0x00000000), 0000:7779EE05
 ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
 GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
-ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C82FFB1
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C8316CD
 
---------------- 09-09-2010 17:40:25 ---------------
+--------------- 07-01-2013 09:32:45 ---------------
 
-File: .\imp\AcRx\AcRxObject.cpp
-Function: enum OdResult __thiscall AcRxObject::releaseOdObject(void) const
-Line: 361
-Expression: m_numOdRefsAdded > 0
-
-
-Registers:
-EAX=FEEEFEEE  EBX=00000000  ECX=0000008C  EDX=00000108  ESI=781C1BD8
-EDI=7813ED1F  EBP=0D39BA2C  ESP=0D39BA1C  EIP=7C91E514  FLG=00200206
-CS=001B   DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
-
-Call stack:
-AcRxObject::isA()+3477 byte(s), (0x0455C7A0 0x022D37C1 0x1F4E930F 0x044E3760)brx.dll, 0000:11409405
-AcDbObject::close()+39 byte(s), (0x1F4E94F3 0x044E3760 0x0455C7A0 0x01A52290)brx.dll, 0000:1144D357
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(248): ads_TestReadData()+547 byte(s), (0x044E3760 0x0455C7A0 0x01A52290 0x78134C39)GeoMap.Brx, 0000:022C9383
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(250): GeoMap_TestReadData()+14 byte(s), (0x044E3760 0x62FB95DE 0x044E3760 0xB2E525D8)GeoMap.Brx, 0000:022C943E
-OdEdCommand::module()+776 byte(s), (0x0455C7A0 0x044E3760 0xB7215EF8 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
-ca::CommandProcessor::execStr()+2492 byte(s), (0x048962E0 0x00000000 0xB7217C34 0x015EFA60)cadapp.dll, 0000:014BFD0C
-ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xB7217C04 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
-ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xB7217CA8)cadapp.dll, 0000:014C0DB3
-ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
-, (0xB7217C90 0xBAADF00D 0xBAADF00D 0x00000000), 0000:B7217CA8
-ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
-GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
-ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C82FFB1
-
---------------- 09-09-2010 17:41:03 ---------------
-
-File: .\imp\AcDb\AcDbObject.cpp
-Function: int __thiscall AcDbObject::isReadEnabled(void) const
-Line: 701
-Description: Not opened for read
+File: .\internal\AwClassManager.cpp
+Function: class OdRxClass *__thiscall AwClassManager::lookup(const class AcRxClass *) const
+Line: 93
+Expression: false
 
 
 Registers:
@@ -125,44 +148,123 @@ EDI=00000000  EBP=00000000  ESP=00000000  EIP=00000000  FLG=00000000
 CS=0000   DS=0000  SS=0000  ES=0000  FS=0000  GS=0000
 
 Call stack:
-_AfxInitManaged()+-1 byte(s), (0x04724128 0x1F4E930B 0x044E3760 0x0455C7A0)GeoMap.Brx, 0000:022B1014
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\cadentity.cpp(15): CCadEntity::CCadEntity()+115 byte(s), (0x0D39CC6C 0x1F4E94F3 0x044E3760 0x0455C7A0)GeoMap.Brx, 0000:022D35E3
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(243): ads_TestReadData()+254 byte(s), (0x044E3760 0x0455C7A0 0x01A52290 0x78134C39)GeoMap.Brx, 0000:022C925E
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(250): GeoMap_TestReadData()+14 byte(s), (0x044E3760 0x62FB95DE 0x044E3760 0xB2E525D8)GeoMap.Brx, 0000:022C943E
-OdEdCommand::module()+776 byte(s), (0x0455C7A0 0x044E3760 0xB7215EF8 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
-ca::CommandProcessor::execStr()+2492 byte(s), (0x0471BB90 0x00000000 0xB7217C34 0x015EFA60)cadapp.dll, 0000:014BFD0C
-ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xB7217C04 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
-ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xB7217CA8)cadapp.dll, 0000:014C0DB3
+AcDbSymbolUtilities::ServicesImp::blockModelSpaceName()+120900 byte(s), (0x0F27ABA8 0x69617007 0x044D10A0 0x04564D18)brx.dll, 0000:0EF83C24
+AcRxObject::x()+501 byte(s), (0x04564D18 0x696170F7 0x044D10A0 0x04564D18)brx.dll, 0000:0EF99CA5
+AcRxObject::x()+2020 byte(s), (0x00000001 0x6961708B 0x044D10A0 0x04564D18)brx.dll, 0000:0EF9A294
+AcDbPoint::position()+55 byte(s), (0x0D39C81C 0x044D10A0 0x04564D18 0x01A53908)brx.dll, 0000:0EFD12E7
+()+-1 byte(s), (0x04564D18 0x01A53908 0x0D39C8EC 0x100228BE)GeoMap.brx, 0000:1000102C
+, (0x044B4FD8 0x68373BF0 0x044D10A0 0x04564D18), 0000:044D10A0
+c:\documents and settings\liver6\mis documentos\github\geomap\cadpoint.cpp(29): CCadPoint::ToGeometry()+132 byte(s), (0x0D39CA88 0x683738C4 0x044D10A0 0x04564D18)GeoMap.brx, 0000:10039594
+c:\documents and settings\liver6\mis documentos\github\geomap\featurewriter.cpp(23): CFeatureWriter::Write()+158 byte(s), (0x0F3D0288 0x68373E54 0x044D10A0 0x04564D18)GeoMap.brx, 0000:1004554E
+c:\documents and settings\liver6\mis documentos\github\geomap\testfunctions.cpp(183): CTestFunctions::TestWrite()+385 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x00010000)GeoMap.brx, 0000:10034E11
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(392): ads_TestWrite()+14 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x78134C39)GeoMap.brx, 0000:100269AE
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(393): GeoMap_TestWrite()+14 byte(s), (0x044D10A0 0x62FB95DE 0x044D10A0 0x723D5030)GeoMap.brx, 0000:100269CE
+OdEdCommand::module()+776 byte(s), (0x04564D18 0x044D10A0 0x7779CC55 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x04360C60 0x00000000 0x7779EE99 0x015EFA60)cadapp.dll, 0000:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x7779EEA9 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x7779EE05)cadapp.dll, 0000:014C0DB3
 ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
-, (0xB7217C90 0xBAADF00D 0xBAADF00D 0x00000000), 0000:B7217CA8
+, (0x7779EE3D 0xBAADF00D 0xBAADF00D 0x00000000), 0000:7779EE05
 ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
 GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
-ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C82FFB1
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C8316CD
 
---------------- 09-09-2010 17:41:14 ---------------
+--------------- 07-01-2013 09:32:47 ---------------
 
 File: .\imp\AcRx\AcRxObject.cpp
-Function: enum OdResult __thiscall AcRxObject::releaseOdObject(void) const
-Line: 361
-Expression: m_numOdRefsAdded > 0
+Function: void __thiscall AcRxObject::checkOdObject(void) const
+Line: 541
+Expression: NULL != pRequiredOdClass
 
 
 Registers:
-EAX=0D39CBA4  EBX=00000000  ECX=0D39CBA4  EDX=0D39CBA4  ESI=781C1BD8
-EDI=7813ED1F  EBP=0D39BA2C  ESP=0D39BA1C  EIP=7C91E514  FLG=00200206
-CS=001B   DS=0023  SS=0023  ES=0023  FS=003B  GS=0000
+EAX=00000000  EBX=00000000  ECX=00000000  EDX=00000000  ESI=00000000
+EDI=00000000  EBP=00000000  ESP=00000000  EIP=00000000  FLG=00000000
+CS=0000   DS=0000  SS=0000  ES=0000  FS=0000  GS=0000
 
 Call stack:
-AcRxObject::isA()+3477 byte(s), (0x0455C7A0 0x022D37C1 0x1F4E930F 0x044E3760)brx.dll, 0000:11409405
-AcDbObject::close()+39 byte(s), (0x1F4E94F3 0x044E3760 0x0455C7A0 0x01A52290)brx.dll, 0000:1144D357
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(248): ads_TestReadData()+547 byte(s), (0x044E3760 0x0455C7A0 0x01A52290 0x78134C39)GeoMap.Brx, 0000:022C9383
-c:\archivos de programa\bricsys\bricscad v9\api\brx\geomap\myfunctions.cpp(250): GeoMap_TestReadData()+14 byte(s), (0x044E3760 0x62FB95DE 0x044E3760 0xB2E525D8)GeoMap.Brx, 0000:022C943E
-OdEdCommand::module()+776 byte(s), (0x0455C7A0 0x044E3760 0xB7215EF8 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
-ca::CommandProcessor::execStr()+2492 byte(s), (0x0471BB90 0x00000000 0xB7217C34 0x015EFA60)cadapp.dll, 0000:014BFD0C
-ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xB7217C04 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
-ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xB7217CA8)cadapp.dll, 0000:014C0DB3
+AcRxObject::x()+534 byte(s), (0x04564D18 0x696170F7 0x044D10A0 0x04564D18)brx.dll, 0000:0EF99CC6
+AcRxObject::x()+2020 byte(s), (0x00000001 0x6961708B 0x044D10A0 0x04564D18)brx.dll, 0000:0EF9A294
+AcDbPoint::position()+55 byte(s), (0x0D39C81C 0x044D10A0 0x04564D18 0x01A53908)brx.dll, 0000:0EFD12E7
+()+-1 byte(s), (0x04564D18 0x01A53908 0x0D39C8EC 0x100228BE)GeoMap.brx, 0000:1000102C
+, (0x044B4FD8 0x68373BF0 0x044D10A0 0x04564D18), 0000:044D10A0
+c:\documents and settings\liver6\mis documentos\github\geomap\cadpoint.cpp(29): CCadPoint::ToGeometry()+132 byte(s), (0x0D39CA88 0x683738C4 0x044D10A0 0x04564D18)GeoMap.brx, 0000:10039594
+c:\documents and settings\liver6\mis documentos\github\geomap\featurewriter.cpp(23): CFeatureWriter::Write()+158 byte(s), (0x0F3D0288 0x68373E54 0x044D10A0 0x04564D18)GeoMap.brx, 0000:1004554E
+c:\documents and settings\liver6\mis documentos\github\geomap\testfunctions.cpp(183): CTestFunctions::TestWrite()+385 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x00010000)GeoMap.brx, 0000:10034E11
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(392): ads_TestWrite()+14 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x78134C39)GeoMap.brx, 0000:100269AE
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(393): GeoMap_TestWrite()+14 byte(s), (0x044D10A0 0x62FB95DE 0x044D10A0 0x723D5030)GeoMap.brx, 0000:100269CE
+OdEdCommand::module()+776 byte(s), (0x04564D18 0x044D10A0 0x7779CC55 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x04360C60 0x00000000 0x7779EE99 0x015EFA60)cadapp.dll, 0000:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x7779EEA9 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x7779EE05)cadapp.dll, 0000:014C0DB3
 ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
-, (0xB7217C90 0xBAADF00D 0xBAADF00D 0x00000000), 0000:B7217CA8
+, (0x7779EE3D 0xBAADF00D 0xBAADF00D 0x00000000), 0000:7779EE05
 ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
 GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
-ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C82FFB1
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C8316CD
+
+--------------- 07-01-2013 09:32:47 ---------------
+
+File: .\imp\AcRx\AcRxObject.cpp
+Function: void __thiscall AcRxObject::checkOdObject(void) const
+Line: 586
+Expression: false
+
+
+Registers:
+EAX=00000000  EBX=00000000  ECX=00000000  EDX=00000000  ESI=00000000
+EDI=00000000  EBP=00000000  ESP=00000000  EIP=00000000  FLG=00000000
+CS=0000   DS=0000  SS=0000  ES=0000  FS=0000  GS=0000
+
+Call stack:
+AcRxObject::x()+1058 byte(s), (0x04564D18 0x696170F7 0x044D10A0 0x04564D18)brx.dll, 0000:0EF99ED2
+AcRxObject::x()+2020 byte(s), (0x00000001 0x6961708B 0x044D10A0 0x04564D18)brx.dll, 0000:0EF9A294
+AcDbPoint::position()+55 byte(s), (0x0D39C81C 0x044D10A0 0x04564D18 0x01A53908)brx.dll, 0000:0EFD12E7
+()+-1 byte(s), (0x04564D18 0x01A53908 0x0D39C8EC 0x100228BE)GeoMap.brx, 0000:1000102C
+, (0x044B4FD8 0x68373BF0 0x044D10A0 0x04564D18), 0000:044D10A0
+c:\documents and settings\liver6\mis documentos\github\geomap\cadpoint.cpp(29): CCadPoint::ToGeometry()+132 byte(s), (0x0D39CA88 0x683738C4 0x044D10A0 0x04564D18)GeoMap.brx, 0000:10039594
+c:\documents and settings\liver6\mis documentos\github\geomap\featurewriter.cpp(23): CFeatureWriter::Write()+158 byte(s), (0x0F3D0288 0x68373E54 0x044D10A0 0x04564D18)GeoMap.brx, 0000:1004554E
+c:\documents and settings\liver6\mis documentos\github\geomap\testfunctions.cpp(183): CTestFunctions::TestWrite()+385 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x00010000)GeoMap.brx, 0000:10034E11
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(392): ads_TestWrite()+14 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x78134C39)GeoMap.brx, 0000:100269AE
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(393): GeoMap_TestWrite()+14 byte(s), (0x044D10A0 0x62FB95DE 0x044D10A0 0x723D5030)GeoMap.brx, 0000:100269CE
+OdEdCommand::module()+776 byte(s), (0x04564D18 0x044D10A0 0x7779CC55 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x04360C60 0x00000000 0x7779EE99 0x015EFA60)cadapp.dll, 0000:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x7779EEA9 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x7779EE05)cadapp.dll, 0000:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
+, (0x7779EE3D 0xBAADF00D 0xBAADF00D 0x00000000), 0000:7779EE05
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C8316CD
+
+--------------- 07-01-2013 09:32:48 ---------------
+
+File: .\imp\AcDb\AcDbPoint.cpp
+Function: class AcGePoint3d __thiscall AcDbPoint::position(void) const
+Line: 158
+Expression: false
+
+
+Registers:
+EAX=00000000  EBX=00000000  ECX=00000000  EDX=00000000  ESI=00000000
+EDI=00000000  EBP=00000000  ESP=00000000  EIP=00000000  FLG=00000000
+CS=0000   DS=0000  SS=0000  ES=0000  FS=0000  GS=0000
+
+Call stack:
+AcDbPoint::position()+282 byte(s), (0x0D39C81C 0x044D10A0 0x04564D18 0x01A53908)brx.dll, 0000:0EFD13CA
+()+-1 byte(s), (0x04564D18 0x01A53908 0x0D39C8EC 0x100228BE)GeoMap.brx, 0000:1000102C
+, (0x044B4FD8 0x68373BF0 0x044D10A0 0x04564D18), 0000:044D10A0
+c:\documents and settings\liver6\mis documentos\github\geomap\cadpoint.cpp(29): CCadPoint::ToGeometry()+132 byte(s), (0x0D39CA88 0x683738C4 0x044D10A0 0x04564D18)GeoMap.brx, 0000:10039594
+c:\documents and settings\liver6\mis documentos\github\geomap\featurewriter.cpp(23): CFeatureWriter::Write()+158 byte(s), (0x0F3D0288 0x68373E54 0x044D10A0 0x04564D18)GeoMap.brx, 0000:1004554E
+c:\documents and settings\liver6\mis documentos\github\geomap\testfunctions.cpp(183): CTestFunctions::TestWrite()+385 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x00010000)GeoMap.brx, 0000:10034E11
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(392): ads_TestWrite()+14 byte(s), (0x044D10A0 0x04564D18 0x01A53908 0x78134C39)GeoMap.brx, 0000:100269AE
+c:\documents and settings\liver6\mis documentos\github\geomap\myfunctions.cpp(393): GeoMap_TestWrite()+14 byte(s), (0x044D10A0 0x62FB95DE 0x044D10A0 0x723D5030)GeoMap.brx, 0000:100269CE
+OdEdCommand::module()+776 byte(s), (0x04564D18 0x044D10A0 0x7779CC55 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x04360C60 0x00000000 0x7779EE99 0x015EFA60)cadapp.dll, 0000:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x7779EEA9 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x7779EE05)cadapp.dll, 0000:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
+, (0x7779EE3D 0xBAADF00D 0xBAADF00D 0x00000000), 0000:7779EE05
+ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
+GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
+ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C8316CD

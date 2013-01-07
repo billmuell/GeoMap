@@ -10,11 +10,10 @@ class CCadLine :
 public:
   CCadLine(FdoILineString * geom);
   CCadLine(FdoIMultiLineString * geom);
-  CCadLine(AcDbEntity * entity);
 public:
   ~CCadLine(void);
 public:
-  virtual FdoPtr<FdoIGeometry> ToGeometry();
+  FdoPtr<FdoIGeometry> ToGeometry();
 protected:
-  AcDbEntity * GetEntity(FdoILineString * geom);
+  AcDbEntity * GetEntity(FdoPtr<FdoILineString> geom);
 };

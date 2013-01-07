@@ -4,8 +4,8 @@
 #include "AppConf.h"
 #include "Utils.h"
 
-CFeatureClass::CFeatureClass(CConnection *connection, String &name, String &spatialColumn) 
-  : _connection(connection), _name(name), _spatialColumn(spatialColumn)
+CFeatureClass::CFeatureClass(CConnection *connection, String &name, String &spatialColumn, String & idColumn) 
+  : _connection(connection), _name(name), _spatialColumn(spatialColumn), _idColumn(idColumn), editing(false)
 {
 }
 
@@ -93,6 +93,11 @@ FeatureClasses *CFeatureClass::GetFeatureClasses(CConnection *connection)
     return 0;
   }
   
+  /*** TODO ***/
+  /* Debería obtenerse del proveedor... */
+  String idColumn = L"OBJECTID";
+  /*** TODO ***/
+
   FeatureClasses * featureClasses = new FeatureClasses();
   
   FdoPtr<FdoFeatureSchemaCollection> schemas = cmdGDS->Execute();
@@ -111,9 +116,9 @@ FeatureClasses *CFeatureClass::GetFeatureClasses(CConnection *connection)
         String featureClassName = layer->GetName();
         String spatialColumn = prop->GetName();
         
-        //String layerNameStr = schemaName + L"." + featureClassName;
+        // String layerNameStr = schemaName + L"." + featureClassName;
         String layerNameStr = featureClassName;
-        featureClasses->operator [](layerNameStr) = new CFeatureClass(connection, featureClassName, spatialColumn);
+        featureClasses->operator [](layerNameStr) = new CFeatureClass(connection, featureClassName, spatialColumn, idColumn);
       }
     }
   }
@@ -121,4 +126,34 @@ FeatureClasses *CFeatureClass::GetFeatureClasses(CConnection *connection)
   connection->Close();
   
   return featureClasses;
+}
+
+String CFeatureClass::GetIdColumn() { return _idColumn; }
+
+void CFeatureClass::StartInsertOrUpdate()
+{
+  if (editing) return;
+  _connection->Open();
+  editing = true;
+}
+
+void CFeatureClass::StopInsertOrUpdate(bool saveEdits)
+{
+  if (!editing) return;
+  _connection->Close();
+  editing = false;
+}
+
+bool CFeatureClass::Insert(FdoPtr<FdoIGeometry> geom, Strings & keys, CFeatureData & data)
+{
+  if (!editing) return false;
+  
+  return true;
+}
+
+bool CFeatureClass::Update(FdoPtr<FdoIGeometry> geom, Strings & keys, CFeatureData & data)
+{
+  if (!editing) return false;
+  
+  return true;
 }

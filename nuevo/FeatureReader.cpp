@@ -78,42 +78,32 @@ String CFeatureReader::GetDataValue(FdoString * name, FdoDataType dataType)
     }
 }
 
-CCadEntity * CFeatureReader::Draw() 
+void CFeatureReader::Draw() 
 {
   FdoPtr<FdoFgfGeometryFactory> gf = FdoFgfGeometryFactory::GetInstance();
   
-  if (_reader->IsNull(_spatialColumn.c_str())) return 0;
-  
-	FdoPtr<FdoByteArray> geometry = _reader->GetGeometry (_spatialColumn.c_str());
-  FdoPtr<FdoIGeometry> geom = gf->CreateGeometryFromFgf(geometry);
-  
-  CCadEntity * entity = CCadEntityFactory::GetCadEntity(geom);
-  if (entity == 0) return 0;
-  
-  entity->SetData(this->GetData());
-  entity->Draw();
-  
-  return entity;
+  if (!_reader->IsNull(_spatialColumn.c_str())) {
+		FdoPtr<FdoByteArray> geometry = _reader->GetGeometry(_spatialColumn.c_str());
+    FdoPtr<FdoIGeometry> geom = gf->CreateGeometryFromFgf(geometry);
+    
+    CCadEntity * entity = CCadEntityFactory::GetCadEntity(geom);
+    if (entity != 0) {
+      entity->SetData(this->GetData());
+      entity->Draw();
+      delete entity;
+    }
+	}
 }
 
-CCadEntities * CFeatureReader::DrawAll() 
+void CFeatureReader::DrawAll() 
 {
-  CCadEntities * entities = new CCadEntities();
   try {
     while (_reader->ReadNext ())
 	  {
-  		CCadEntity * cadEntity = this->Draw();
-      if (cadEntity == 0) {
-        delete entities;
-        return 0;
-      }
-      entities->push_back(cadEntity);
+  		this->Draw();
     }
-    return entities;
-  
   } catch (FdoException * e) {
 		acutPrintf(e->GetExceptionMessage());
-    delete entities;
-    return 0;
+    return;
 	}
 }

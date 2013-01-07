@@ -14,6 +14,33 @@ CCadEntityFactory::~CCadEntityFactory(void)
 {
 }
 
+CCadEntity * CCadEntityFactory::GetCadEntity(AcDbObjectId & idEntity)
+{
+  AcDbEntity * entity;
+  if (acdbOpenObject(entity, idEntity, AcDb::kForRead) != Acad::eOk) {
+    return 0;
+  }
+  
+  CCadEntity * cadEntity = GetCadEntity(entity);
+  entity->close();
+  return cadEntity;
+}
+
+CCadEntity * CCadEntityFactory::GetCadEntity(AcDbEntity * entity) 
+{
+  CCadEntity * cadEntity = 0;
+  
+  resbuf * data = entity->xData(APPNAME);
+  if (data != NULL) {
+    cadEntity->SetData(CFeatureData(static_cast<String>(data->rbnext->resval.rstring)));
+  }
+  acutRelRb(data);
+  
+  cadEntity->AddEntity(entity);
+  
+  return cadEntity;
+}
+
 CCadEntity * CCadEntityFactory::GetCadEntity(FdoPtr<FdoIGeometry> geom) 
 {
   FdoGeometryType type = geom->GetDerivedType();
@@ -104,55 +131,4 @@ CCadEntity * CCadEntityFactory::GetCadEntity(FdoPtr<FdoIGeometry> geom)
 			acutPrintf(L"FdoGeometryType_Unexpected\n");
       return 0;
 	}
-}
-
-CCadEntity * CCadEntityFactory::GetCadEntity(AcDbObjectId & idEntity)
-{
-  AcDbEntity * entity = 0;
-  if (acdbOpenObject(entity, idEntity, AcDb::kForRead) != Acad::eOk) return 0;
-  
-  CCadEntity * cadEntity = CCadEntityFactory::GetCadEntity(entity);
-  entity->close();
-  
-  return cadEntity;
-}
-
-CCadEntity * CCadEntityFactory::GetCadEntity(AcDbEntity * entity)
-{
-  CCadEntity * cadEntity = 0;
-  if (entity->isKindOf(AcDbPoint::desc()) ||
-    entity->isKindOf(AcDbText::desc()) ||
-    entity->isKindOf(AcDbMText::desc()) ||
-    entity->isKindOf(AcDbBlockReference::desc())) {
-    
-      cadEntity = new CCadPoint(entity);
-  
-  } else if (entity->isKindOf(AcDbLine::desc()) ||
-      entity->isKindOf(AcDbArc::desc()) ||
-      entity->isKindOf(AcDbSpline::desc())) {
-        
-        cadEntity = new CCadLine(entity);
-  
-  } else if (entity->isKindOf(AcDbEllipse::desc()) ||
-    entity->isKindOf(AcDbCircle::desc())) {
-      cadEntity = new CCadPolygon(entity);
-  
-  } else if (entity->isKindOf(AcDb2dPolyline::desc())) {
-    
-    AcDb2dPolyline * e = AcDb2dPolyline::cast(entity);
-    if (e->isClosed()) cadEntity = new CCadPolygon(entity);
-    else cadEntity = new CCadLine(entity);
-    
-  } else if (entity->isKindOf(AcDbPolyline::desc())) {
-    
-    AcDbPolyline * e = AcDbPolyline::cast(entity);
-    if (e->isClosed()) cadEntity = new CCadPolygon(entity);
-    else cadEntity = new CCadLine(entity);
-  }
-  
-  resbuf * data = entity->xData(APPNAME);
-  if (data != NULL) cadEntity->SetData(CFeatureData(data->rbnext->resval.rstring));
-  acutRelRb(data);
-  
-  return cadEntity;
 }

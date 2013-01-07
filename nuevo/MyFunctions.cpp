@@ -23,12 +23,10 @@ DlgProviders
 
 #include "FeatureClass.h"
 #include "FeatureReader.h"
-#include "FeatureWriter.h"
 #include "Connection.h"
 
-#include "CadEntityFactory.h"
 #include "CadEntity.h"
-#include "CadEntities.h"
+#include "CadEntityFactory.h"
 
 #ifdef TEST
 #include "TestProviderCollection.h"
@@ -328,53 +326,10 @@ int ads_gm_get_data()
   CCadEntity * cadEntity = CCadEntityFactory::GetCadEntity(idEntity);
   acutPrintf((L"\n" + cadEntity->GetData().ToFormattedString() + L"\n").c_str());
   delete cadEntity;
-  
+
   return 1;
 }
 void GeoMap_gm_get_data() { ads_gm_get_data(); }
-
-int ads_gm_write() 
-{
-  ads_name selection;
-  int returnValue = acedSSGet(_T("I"), NULL, NULL, NULL, selection);
-  if (returnValue == RTCAN || returnValue != RTNORM) return 0;
-  
-  long num = 0;
-  returnValue = acedSSLength(selection, &num);
-  if (returnValue == RTCAN || returnValue != RTNORM) return 0;
-  if (num == 0) return 0;
-  
-  CCadEntities entities;
-  
-  ads_name element;
-  for (long i = 0; i < num; i++) {
-    acedSSName(selection, i, element);
-    
-    AcDbObjectId idEntity;
-    if (acdbGetObjectId(idEntity, element) != Acad::eOk) {
-      acedSSFree(element);
-      acedSSFree(selection);
-      return 0;
-    }
-    
-    acedSSFree(element);
-    
-    CCadEntity * cadEntity = CCadEntityFactory::GetCadEntity(idEntity);
-    entities.push_back(cadEntity);
-  }
-  acedSSFree(selection);
-  
-  // Obtener el feature class en edición
-  CFeatureClass * featureClass = 0;
-  CFeatureWriter writer(featureClass);
-  writer.Write(&entities);
-  
-  delete featureClass;
-  
-  return 1;
-}
-
-void GeoMap_gm_write() { ads_gm_write(); }
 
 #ifdef TEST
 int ads_TestProviderCollection() { return CTestProviderCollection::TestAll(); }
@@ -389,8 +344,6 @@ int ads_TestPostGIS() { return CTestFunctions::TestPostGIS(); }
 void GeoMap_TestPostGIS() { ads_TestPostGIS(); }
 int ads_TestLocale() { return CTestFunctions::TestLocale(); }
 void GeoMap_TestLocale() { ads_TestLocale(); }
-int ads_TestWrite() { return CTestFunctions::TestWrite(); }
-void GeoMap_TestWrite() { ads_TestWrite(); }
 
 int ads_TestAll() 
 { 
@@ -436,8 +389,6 @@ ACED_ADSCOMMAND_ENTRY_AUTO( , gm_import, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _gm_import, gm_import, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSCOMMAND_ENTRY_AUTO( , gm_get_data, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _gm_get_data, gm_get_data, ACRX_CMD_TRANSPARENT, NULL)
-ACED_ADSCOMMAND_ENTRY_AUTO( , gm_write, false)
-ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _gm_write, gm_write, ACRX_CMD_TRANSPARENT, NULL)
 
 #ifdef TEST
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestProviderCollection, false)
@@ -454,6 +405,4 @@ ACED_ADSCOMMAND_ENTRY_AUTO( , TestPostGIS, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestPostGIS, TestPostGIS, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestLocale, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestLocale, TestLocale, ACRX_CMD_TRANSPARENT, NULL)
-ACED_ADSCOMMAND_ENTRY_AUTO( , TestWrite, false)
-ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestWrite, TestWrite, ACRX_CMD_TRANSPARENT, NULL)
 #endif
