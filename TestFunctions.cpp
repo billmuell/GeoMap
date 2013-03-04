@@ -195,4 +195,65 @@ int CTestFunctions::TestAll()
   return 1;
 }
 
+int CTestFunctions::TestSaveEntityInMemory()
+{
+  ads_name seleccion;
+  int returnValue = acedSSGet(_T("_I"), NULL, NULL, NULL, seleccion);
+  if (returnValue != RTNORM) {
+    acutPrintf(_T("\nSe produjo un error al seleccionar entidades. Asegúrese de tener al menos un elemento seleccionado\n"));
+    return 0;
+  }
+  
+  long tamanyoSel = 0;
+  if (acedSSLength(seleccion, &tamanyoSel) != RTNORM) {
+    acedSSFree(seleccion);
+    acutPrintf(_T("\nSe produjo un error al comprobar el número de entidades seleccionadas\n"));
+    return 0;
+  }
+  if (tamanyoSel == 0) {
+    acedSSFree(seleccion);
+    acutPrintf(_T("\nNo se ha podido seleccionar ninguna entidad\n"));
+    return 0;
+  }
+  
+  AcDbDatabase * db = acdbHostApplicationServices()->workingDatabase();
+
+  bool error = false;
+  AcDbEntity * entidad;
+  ads_name nombreElemento;
+  for (long i = 0; i < tamanyoSel; i++) {
+    acedSSName(seleccion, i, nombreElemento);
+    
+    AcDbObjectId objectIdElemento;
+    if (acdbGetObjectId(objectIdElemento, nombreElemento) != Acad::eOk) {
+      error = true;
+    } else if (acdbOpenObject(entidad, objectIdElemento, AcDb::kForRead) != Acad::eOk) {
+      error = true;
+    }
+       
+    if (error) {
+      acedSSFree(nombreElemento);
+      acutPrintf(_T("\nSe produjo un error al consultar alguna entidad\n"));
+      return false;
+    }
+    acedSSFree(nombreElemento);
+    
+    entidad->close();
+    
+    AcDbIdMapping idMapping;
+    //AcDbObject * nuevaEntidad;
+    //pBlockTableRecord->deepClone(entidad, nuevaEntidad, idMapping, false);
+    AcDbObjectIdArray oidArray;
+    oidArray.append(objectIdElemento);
+    
+    AcDbObjectId modelId = acdbSymUtil()->blockModelSpaceId(db);
+    
+    Acad::ErrorStatus status = db->deepCloneObjects(oidArray, modelId, idMapping, false);
+    acutPrintf(_T("ErrorStatus: %d\n"), status);
+    
+  }
+  
+  return 1;
+}
+
 #endif

@@ -21,4 +21,5 @@ public:
   static int TestLocale();
   static int TestWrite();
   static int TestAll();
+  static int TestSaveEntityInMemory();
 };

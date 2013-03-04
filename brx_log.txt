@@ -1,10 +1,17 @@
 
+<<<<<<< HEAD
 --------------- 07-01-2013 09:32:24 ---------------
 
 File: .\internal\AwClassManager.cpp
 Function: class OdRxClass *__thiscall AwClassManager::lookup(const class AcRxClass *) const
 Line: 93
 Expression: false
+=======
+--------------- 04-10-2012 14:26:20 ---------------
+
+Function: class AcDbObjectId __thiscall AcDbSymbolUtilities::ServicesImp::blockModelSpaceId(class AcDbDatabase *) const
+Export   : ?blockModelSpaceId@ServicesImp@AcDbSymbolUtilities@@UBE?AVAcDbObjectId@@PAVAcDbDatabase@@@Z
+>>>>>>> origin/master
 
 
 Registers:
@@ -48,6 +55,7 @@ EDI=7813ED1F  EBP=00000000  ESP=00000000  EIP=00000000  FLG=00000000
 CS=0000   DS=0000  SS=0000  ES=0000  FS=0000  GS=0000
 
 Call stack:
+<<<<<<< HEAD
 AcRxObject::x()+534 byte(s), (0x04564D18 0x696170F7 0x044D10A0 0x04564D18)brx.dll, 0000:0EF99CC6
 AcRxObject::x()+2020 byte(s), (0x00000001 0x6961708B 0x044D10A0 0x04564D18)brx.dll, 0000:0EF9A294
 AcDbPoint::position()+55 byte(s), (0x0D39C804 0x044D10A0 0x04564D18 0x01A53908)brx.dll, 0000:0EFD12E7
@@ -265,6 +273,17 @@ ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0x7779EEA9 0xBAAD
 ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0x7779EE05)cadapp.dll, 0000:014C0DB3
 ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
 , (0x7779EE3D 0xBAADF00D 0xBAADF00D 0x00000000), 0000:7779EE05
+=======
+c:\documents and settings\liver6\mis documentos\visual studio 2008\projects\geomap\testfunctions.cpp(213): CTestFunctions::TestSaveEntityInMemory()+481 byte(s), (0x044EA840 0x04505460 0x01A52DE0 0x0001CBAC)GeoMap.brx, 0000:10030FE1
+c:\documents and settings\liver6\mis documentos\visual studio 2008\projects\geomap\myfunctions.cpp(360): ads_TestSaveEntityInMemory()+14 byte(s), (0x044EA840 0x04505460 0x01A52DE0 0x78134C39)GeoMap.brx, 0000:100241CE
+c:\documents and settings\liver6\mis documentos\visual studio 2008\projects\geomap\myfunctions.cpp(361): GeoMap_TestSaveEntityInMemory()+14 byte(s), (0x044EA840 0x62FB95DE 0x044EA840 0xAF6DD566)GeoMap.brx, 0000:100241EE
+OdEdCommand::module()+776 byte(s), (0x04505460 0x044EA840 0xA4A9C2E2 0x02D1A2B4)DD_Root_2.06_8.dll, 0000:62FB7FB8
+ca::CommandProcessor::execStr()+2492 byte(s), (0x044E4120 0x00000000 0xA4A9E02E 0x015EFA60)cadapp.dll, 0000:014BFD0C
+ca::CommandProcessor::processString()+414 byte(s), (0x0D39FF28 0xA4A9E01E 0xBAADF00D 0x015EFA60)cadapp.dll, 0000:014C037E
+ca::CommandProcessor::processNextInput()+339 byte(s), (0x015EFA60 0x015EFA60 0x0D39FF8C 0xA4A9E0B2)cadapp.dll, 0000:014C0DB3
+ca::CommandProcessor::main()+23 byte(s), (0xBAADF00D 0xBAADF00D 0x00000000 0x0D39FF6C)cadapp.dll, 0000:014C0EA7
+, (0xA4A9E08A 0xBAADF00D 0xBAADF00D 0x00000000), 0000:A4A9E0B2
+>>>>>>> origin/master
 ca::CommandProcessor::mainWorkFlowProc()+69 byte(s), (0x00000000 0xBAADF00D 0xBAADF00D 0x00000000)cadapp.dll, 0000:014C10A5
 GetModuleFileNameA()+442 byte(s), (0x014C1060 0x00000000 0x00000000 0x01B8AFF0)kernel32.dll, 0000:7C80B729
 ConvertThreadToFiber()+147 byte(s), (0x00000000 0x00000000 0x00000000 0x00000000)kernel32.dll, 0000:7C8316CD

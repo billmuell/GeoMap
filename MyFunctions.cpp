@@ -402,6 +402,12 @@ int ads_TestAll()
   return 1;
 }
 void GeoMap_TestAll() { ads_TestAll(); }
+
+int ads_TestSaveEntityInMemory()
+{
+  return CTestFunctions::TestSaveEntityInMemory();
+}
+void GeoMap_TestSaveEntityInMemory() { ads_TestSaveEntityInMemory(); }
 #endif
 
 
@@ -454,6 +460,11 @@ ACED_ADSCOMMAND_ENTRY_AUTO( , TestPostGIS, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestPostGIS, TestPostGIS, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestLocale, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestLocale, TestLocale, ACRX_CMD_TRANSPARENT, NULL)
+<<<<<<< HEAD
 ACED_ADSCOMMAND_ENTRY_AUTO( , TestWrite, false)
 ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestWrite, TestWrite, ACRX_CMD_TRANSPARENT, NULL)
+=======
+ACED_ADSCOMMAND_ENTRY_AUTO( , TestSaveEntityInMemory, false)
+ACED_ARXCOMMAND_ENTRY_AUTO( , GeoMap, _TestSaveEntityInMemory, TestSaveEntityInMemory, ACRX_CMD_TRANSPARENT + ACRX_CMD_USEPICKSET + ACRX_CMD_REDRAW, NULL)
+>>>>>>> origin/master
 #endif
