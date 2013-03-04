@@ -1,12 +1,6 @@
 #pragma once
 
 #include <vector>
-<<<<<<< HEAD
-#include <fdo.h>
-#include "AcDb/AcDbEntity.h"
-=======
-// #include "AcDb/AcDbEntity.h"
->>>>>>> origin/master
 #include "FeatureData.h"
 
 typedef std::pair<AcDbObjectId, AcDbEntity *> Entity;
