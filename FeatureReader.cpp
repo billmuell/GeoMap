@@ -32,13 +32,13 @@ CFeatureData CFeatureReader::GetData()
     FdoString * name = prop->GetName();
     String value = L"";
     
+    FdoDataPropertyDefinition * propDef = (FdoDataPropertyDefinition*)prop;
     if (_reader->IsNull(name)){
       value = L"__NULL__";
     } else {
-      FdoDataPropertyDefinition * propDef = (FdoDataPropertyDefinition*)prop;
       value = this->GetDataValue(name, propDef->GetDataType());
     }
-    featureData.Add(name, value);
+    featureData.Add(name, value, propDef->GetDataType());
   }
   
   return featureData;

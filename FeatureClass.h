@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Connection.h"
+#include "FeatureData.h"
 #include "FeatureReader.h"
 #include <fdo.h>
 

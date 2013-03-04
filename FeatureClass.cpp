@@ -155,5 +155,34 @@ bool CFeatureClass::Update(FdoPtr<FdoIGeometry> geom, Strings & keys, CFeatureDa
 {
   if (!editing) return false;
   
-  return true;
+  FdoPtr<FdoIUpdate> updateCommand = (FdoIUpdate *) _connection->CreateCommand(FdoCommandType_Update);
+  updateCommand->SetFeatureClassName(_name.c_str());
+    
+  FdoPtr<FdoPropertyValueCollection> propertyValues = updateCommand->GetPropertyValues();
+  
+  FdoPtr<FdoDataValue> dataValue;
+  for (Strings::iterator itKeys = keys.begin(); itKeys != keys.end(); itKeys++) {
+    String key = *itKeys;
+    if (key == _idColumn) continue;
+    
+    propertyValues->Add(data.GetPropertyValue(key));
+  }
+  
+  FdoPtr<FdoFilter> filter = FdoComparisonCondition::Create(
+    FdoPtr<FdoIdentifier>(FdoIdentifier::Create(_idColumn.c_str())), 
+    FdoComparisonOperations_EqualTo, 
+    FdoDataValue::Create(data.GetValue(_idColumn).c_str()));
+  
+  updateCommand->SetFilter(filter);
+  
+  int count = 0;
+  try {
+    count = updateCommand->Execute();
+  } catch (FdoException * e) {
+    acutPrintf(e->GetExceptionMessage());
+    if (e->GetCause()) acutPrintf(e->GetCause()->GetExceptionMessage());
+    if (e->GetRootCause()) acutPrintf(e->GetRootCause()->GetExceptionMessage());
+  }
+  
+  return count == 1;
 }
